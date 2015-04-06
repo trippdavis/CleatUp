@@ -1,39 +1,47 @@
 # Schema Information
 
-## blogs
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-owner_id    | integer   | not null, foreign key (references users)
-title       | string    | not null
+## events
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+group_id     | integer   | not null, foreign key (references groups)
+title        | string    | not null
+description  | text      | not null
+time         | time      | not null
+location     | string    | not null
+image_url    | string    | not null
 
-## followings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-blog_id     | integer   | not null, foreign key (references blogs)
-follower_id | integer   | not null, foreign key (references users)
+## groups
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+organizor_id | integer   | not null, foreign key (references users)
+title        | string    | not null
+description  | text      | not null
+image_url    | string    | not null
 
-## posts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users)
-title       | string    | not null
-body        | string    |
+## joins
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+user_id       | integer   | not null, foreign key (references users)
+joinable_id   | integer   | not null, foreign key (references groups or events)
+joinable_type | integer   | not null ("group" or "event")
 
-## tags
+<!--
+## interests
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 label       | string    | not null, unique
 
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-post_id     | integer   | not null, foreign key (references posts)
-tag_id      | integer   | not null, foreign key (references tags)
+## interestings
+column name       | data type | details
+------------------|-----------|-----------------------
+id                | integer   | not null, primary key
+interest_id       | integer   | not null, foreign key (references interests)
+interestable_id   | integer   | not null, foreign key (references users or groups)
+interestable_type | string    | not null ("group" or "user") -->
 
 ## users
 column name     | data type | details
@@ -42,4 +50,3 @@ id              | integer   | not null, primary key
 email           | string    | not null, unique
 password_digest | string    | not null
 session_token   | string    | not null, unique
-

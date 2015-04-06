@@ -9,16 +9,22 @@ Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [x] Create accounts
-- [x] Create sessions (log in)
-- [x] Create blogs
-- [x] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Create accounts
+- [ ] Create sessions (log in)
+- [ ] Create a list of interests
+- [ ] View recommended groups based on interests
+- [ ] Search for groups (by keyword or interest)
+- [ ] View group events
+- [ ] Join groups
+- [ ] View joined groups
+- [ ] View events for joined groups
+- [ ] Search for events (by keyword or interest)
+- [ ] Join events
+- [ ] View joined events
+- [ ] Create groups
+- [ ] Attach interests to created groups
+- [ ] Create events for created groups
+- [ ] Attach interests to created events
 
 ## Design Docs
 * [View Wireframes][views]
@@ -29,63 +35,87 @@ Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
+### Phase 1: User Authentication (~1/2 day)
 I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create blogs using
-a simple text form in a Rails view. The most important part of this phase will
-be pushing the app to Heroku and ensuring that everything works before moving on
-to phase 2.
+App Academy. By the end of this phase, users will be able to create an account
+and sign in, where they will redirected to the user's profile page.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Blogs and Posts (~2 days)
-I will add API routes to serve blog and post data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create blogs and view both blogs and posts, all
-inside a single Backbone app.
+### Phase 2: Creating Groups (~1/2 day)
+I will add a rails model and controller for groups so that data can be
+stored and retrieved from the database. By the end of this phase, users will be
+able to create groups and view a list of groups, as well as information on
+specific groups. Users will also be able to edit and destroy groups.
 
 [Details][phase-two]
 
-### Phase 3: Editing and Displaying Posts (~2 days)
-I plan to use third-party libraries to add functionality to the `PostForm` and
-`PostShow` views in this phase. First I'll need to add a Markdown editor to the
-`PostForm`, and make sure that the Markdown is properly escaped and formatted in
-the `PostShow` view. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
+### Phase 3: Viewing Groups (~1 day)
+I will add an API route to serve group data as JSON, then add Backbone models
+and collections that fetch data from those routes. By the end of this phase,
+users will be able to create view, update, and destroy groups within a Backbone
+app.
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 4: Creating Events (~1/2 day)
+I will add a rails model and controller for events so that event data can be
+stored and retrieved from the database. The route to create a new event will be
+nested under groups so the controller can access the group id. By the end of
+this phase, users will be able to create events for an group and view a list of
+events, as well as information on specific events. Users will also be able to
+edit and destroy events.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 5: Viewing Events (~1 1/2 days)
+I will add an API route for events and adjust the JSON response built by the
+groups controller to include event data, then add Backbone models and
+collections that fetch data from those routes. By the end of this phase,
+users will be able to create, view, update, and destroy events within the
+Backbone app.
 
 [Details][phase-five]
 
+### Phase 6: Joining Groups and Events (~1/2 day)
+I will add a rails model and controller to be able to store and retrieve join
+data from the database. The user model will be updated to store its joined
+groups and events. Joins will be polymorphic so that the same model and
+collection can be used to represent joining an event and a group. By the end of
+this phase, users will be able to join events and groups and view a list of
+events and groups that they have joined.
+
+[Details][phase-six]
+
+### Phase 7: Viewing Joined and Organized Groups and Events (~2 days)
+I will add a root view that will display groups and events for the user in three
+categories: created, joined, and recommended. By the end of this phase, users
+will be able to navigate to the root page and view the desired groups and
+events.
+
+[Details][phase-seven]
+
+### Phase 8: Search for Groups and Events (~2 days)
+I will add search routes to both the Groups and Events controllers. On the
+Backbone side, there will be a SearchResults composite view that has GroupsIndex
+and EventsIndex subviews. These views use events and groups collections, but
+will fetch from the new search routes.
+
+[Details][phase-eight]
+
 ### Bonus Features (TBD)
-- [ ] "Like" button and counter for posts
-- [ ] Custom blog urls
-- [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
-- [ ] Post types (image posts, quote posts, etc)
-- [ ] Reblogging
-- [ ] Multiple sessions/session management
-- [ ] User avatars
-- [ ] Typeahead search bar
+- [ ] Interests
+- [ ] Calendar Features (event time)
+- [ ] Mapping Features (event location)
+- [ ] Comments or Reviews (events and groups)
+- [ ] User profile page
+- [ ] Infinite scroll (events and groups)
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-
+[phase-six]: ./docs/phases/phase6.md
+[phase-seven]: ./docs/phases/phase7.md
+[phase-eight]: ./docs/phases/phase8.md

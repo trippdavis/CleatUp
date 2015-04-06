@@ -1,13 +1,17 @@
-# Phase 4: User Feeds
+# Phase 4: Creating Events
 
 ## Rails
 ### Models
+* Event
 
 ### Controllers
-Api::PostsController (feed)
+* EventsController (new, create, show, index, destroy, edit, update)
 
 ### Views
-posts/feed.json.jbuilder
+* events/new.html.erb
+* events/show.html.erb
+* events/index.html.erb
+* event/edit.html.erb
 
 ## Backbone
 ### Models
@@ -15,6 +19,5 @@ posts/feed.json.jbuilder
 ### Collections
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
 
 ## Gems/Libraries

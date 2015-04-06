@@ -1,21 +1,23 @@
-# Phase 3: Editing and Displaying Posts
+# Phase 3: Viewing Groups
 
 ## Rails
 ### Models
 
 ### Controllers
+* Api::GroupsController (create, show, destroy, index, edit)
 
 ### Views
+* groups/show.json.jbuilder
 
 ## Backbone
 ### Models
+* Group
 
 ### Collections
+* Groups
 
 ### Views
-* PostForm
+* GroupForm
+* GroupShow
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
-* Bootstrap Markdown
