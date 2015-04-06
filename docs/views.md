@@ -33,14 +33,14 @@
 ## Search Results
 ![search-results]
 
-[new-session]: ./wireframes/new_session.jpg
-[feed-show]: ./wireframes/root.jpg
-[group-show]: ./wireframes/group_show.jpg
-[group-form]: ./wireframes/group_form.jpg
-[group-feed]: ./wireframes/group_feed.jpg
-[group-item]: ./wireframes/group_item.jpg
-[event-show]: ./wireframes/event_show.jpg
-[event-form]: ./wireframes/event_form.jpg
-[event-feed]: ./wireframes/event_feed.jpg
-[event-search-item]: ./wireframes/event_search_item.jpg
-[search-results]: ./wireframes/search_results.jpg
+[new-session]: ./wireframes/new_session.png
+[feed-show]: ./wireframes/root.png
+[group-show]: ./wireframes/group_show.png
+[group-form]: ./wireframes/group_form.png
+[group-feed]: ./wireframes/group_feed.png
+[group-item]: ./wireframes/group_item.png
+[event-show]: ./wireframes/event_show.png
+[event-form]: ./wireframes/event_form.png
+[event-feed]: ./wireframes/event_feed.png
+[event-search-item]: ./wireframes/event_search_item.png
+[search-results]: ./wireframes/search_results.png
