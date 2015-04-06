@@ -1,30 +1,30 @@
-# Flux-capacitr
+# CleatUp
 
-[Heroku link][heroku]
+<!-- [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]: http://flux-capacitr.herokuapp.com -->
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
+CleatUp is a clone of MeetUp built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create accounts
 - [ ] Create sessions (log in)
-- [ ] Create a list of interests
-- [ ] View recommended groups based on interests
-- [ ] Search for groups (by keyword or interest)
+<!-- - [ ] Create a list of interests -->
+- [ ] View recommended groups <!-- based on interests -->
+- [ ] Search for groups (by keyword<!-- or interest -->)
 - [ ] View group events
 - [ ] Join groups
 - [ ] View joined groups
 - [ ] View events for joined groups
-- [ ] Search for events (by keyword or interest)
+- [ ] Search for events (by keyword<!-- or interest -->)
 - [ ] Join events
 - [ ] View joined events
 - [ ] Create groups
-- [ ] Attach interests to created groups
+<!-- - [ ] Attach interests to created groups -->
 - [ ] Create events for created groups
-- [ ] Attach interests to created events
+<!-- - [ ] Attach interests to created events -->
 
 ## Design Docs
 * [View Wireframes][views]
