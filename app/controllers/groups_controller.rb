@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :require_signed_in
+
   def index
     @groups = Group.all
   end

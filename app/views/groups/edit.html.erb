@@ -1,5 +1,13 @@
 <h3>Edit Group:</h3>
 
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <form action="/groups/<%= @group.id %>" method="post">
   <input
     type="hidden"
