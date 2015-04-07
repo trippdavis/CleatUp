@@ -1,2 +1,24 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h3>New Group:</h3>
+
+<form action="/groups" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <div>
+    <input
+      type="text"
+      name="group[title]"
+      placeholder="Title"
+      value="<%= @group.title %>">
+  </div>
+
+  <div>
+    <textarea name="group[description]"
+      rows="8" cols="40"
+      placeholder="Description"><%= @group.description %></textarea>
+  </div>
+
+  <input type="submit" value="Create!">
+</form>

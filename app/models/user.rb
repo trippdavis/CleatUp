@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   attr_reader :password
 
-  has_many :groups_organized, class_name: "Group", foreign_key: :organizor_id
+  has_many :groups_organized, class_name: "Group", foreign_key: :organizer_id
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

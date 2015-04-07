@@ -1,2 +1,24 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h3><%= @group.title %></h3>
+
+<div>
+  Created by:
+  <a href="/users/<%= @group.organizer.id %>">
+    <%= @group.organizer.username %>
+  </a>
+</div>
+
+<div>
+  <%= @group.description %>
+</div>
+
+<div>
+  <%= button_to "Edit", edit_group_url(@group), method: :get %>
+</div>
+
+<div>
+  <%= button_to "Destroy!", @group, method: :delete %>
+</div>
+
+<div>
+  <a href="/groups">All Groups</a>
+</div>

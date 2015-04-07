@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-  get 'groups/index'
-
-  get 'groups/new'
-
-  get 'groups/show'
-
-  get 'groups/edit'
+  root :to => "sessions#new"
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
+  resources :groups
 end

@@ -1,2 +1,29 @@
-<h1>Groups#edit</h1>
-<p>Find me in app/views/groups/edit.html.erb</p>
+<h3>Edit Group:</h3>
+
+<form action="/groups/<%= @group.id %>" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <input
+    type="hidden"
+    name="_method"
+    value="patch">
+
+  <div>
+    <input
+      type="text"
+      name="group[title]"
+      placeholder="Title"
+      value="<%= @group.title %>">
+  </div>
+
+  <div>
+    <textarea name="group[description]"
+      rows="8" cols="40"
+      placeholder="Description"><%= @group.description %></textarea>
+  </div>
+
+  <input type="submit" value="Update!">
+</form>
