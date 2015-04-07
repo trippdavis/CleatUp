@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: groups
+#
+#  id           :integer          not null, primary key
+#  organizor_id :integer          not null
+#  title        :string           not null
+#  description  :text             not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organizor_id: 1
+  title: MyString
+  description: MyText
+
+two:
+  organizor_id: 1
+  title: MyString
+  description: MyText

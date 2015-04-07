@@ -14,6 +14,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'newrelic_rpm'
 gem 'bcrypt'
+gem 'annotate'
 
 group :development, :test do
   gem 'byebug'
