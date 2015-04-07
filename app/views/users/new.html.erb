@@ -1,4 +1,12 @@
-<h3>Sign Up!</h3>
+<h3>Sign up</h3>
+
+<% if flash[:errors] %>
+  <ul>
+    <% flash[:errors].each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
 
 <form action="/users" method="post">
   <input
@@ -16,5 +24,5 @@
     <input type="password" name="user[password]">
   </label>
 
-  <input type="submit" value="Sign Up!">
+  <input type="submit" value="Sign up">
 </form>
