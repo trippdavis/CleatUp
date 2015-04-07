@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'newrelic_rpm'
+gem 'bcrypt'
 
 group :development, :test do
   gem 'byebug'
