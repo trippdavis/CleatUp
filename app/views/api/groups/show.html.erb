@@ -12,13 +12,13 @@
 </div>
 
 <div>
-  <%= button_to "Edit", edit_group_url(@group), method: :get %>
+  <%= button_to "Edit", edit_api_group_url(@group), method: :get %>
 </div>
 
 <div>
-  <%= button_to "Destroy!", @group, method: :delete %>
+  <%= button_to "Destroy!", api_group_url(@group), method: :delete %>
 </div>
 
 <div>
-  <a href="/groups">All Groups</a>
+  <a href="/api/groups">All Groups</a>
 </div>

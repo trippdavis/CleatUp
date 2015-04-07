@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Api::GroupsController < ApplicationController
   before_action :require_signed_in
 
   def index
@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     @group.organizer_id = current_user.id
 
     if @group.save
-      redirect_to @group
+      redirect_to api_group_url(@group)
     else
       flash.now[:errors] = @group.errors.full_messages
       render :new
@@ -27,14 +27,14 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-    redirect_to @group unless @group.organizer_id == current_user.id
+    redirect_to api_group_url(@group) unless @group.organizer_id == current_user.id
   end
 
   def update
     @group = Group.find(params[:id])
 
     if @group.update(group_params)
-      redirect_to @group
+      redirect_to api_group_url(@group)
     else
       flash.now[:errors] = @group.errors.full_messages
       render :edit
@@ -44,7 +44,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to groups_url
+    redirect_to api_groups_url
   end
 
   private
