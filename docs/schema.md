@@ -15,7 +15,7 @@ image_url    | string    | not null
 column name  | data type | details
 -------------|-----------|-----------------------
 id           | integer   | not null, primary key
-organizor_id | integer   | not null, foreign key (references users)
+organizer_id | integer   | not null, foreign key (references users)
 title        | string    | not null
 description  | text      | not null
 image_url    | string    | not null
