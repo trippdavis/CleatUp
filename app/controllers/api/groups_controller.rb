@@ -2,11 +2,20 @@ class Api::GroupsController < ApplicationController
   before_action :require_signed_in
 
   def index
-    @groups = Group.all
+    type = params["type"]
+    if type == "created"
+      @groups = Group.where(organizer_id: current_user.id)
+    elsif type == "joined"
+    else
+      @groups = Group.where.not(organizer_id: current_user.id)
+    end
+
+    render :json => @groups
   end
 
   def new
     @group = Group.new
+    render :json => @group
   end
 
   def create
@@ -15,6 +24,7 @@ class Api::GroupsController < ApplicationController
 
     if @group.save
       redirect_to api_group_url(@group)
+      render :json => @group
     else
       flash.now[:errors] = @group.errors.full_messages
       render :new
@@ -23,11 +33,13 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    render :json => @group
   end
 
   def edit
     @group = Group.find(params[:id])
     redirect_to api_group_url(@group) unless @group.organizer_id == current_user.id
+    render :json => @group
   end
 
   def update
@@ -35,6 +47,7 @@ class Api::GroupsController < ApplicationController
 
     if @group.update(group_params)
       redirect_to api_group_url(@group)
+      render :json => @group
     else
       flash.now[:errors] = @group.errors.full_messages
       render :edit
@@ -44,7 +57,7 @@ class Api::GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to api_groups_url
+    render :json => @group
   end
 
   private

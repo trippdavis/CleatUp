@@ -4,6 +4,8 @@ window.CleatUp = {
   Views: {},
   Routers: {},
   initialize: function() {
+    new CleatUp.Routers.App({ $rootEl: $("#content") });
+    Backbone.history.start();
   }
 };
 

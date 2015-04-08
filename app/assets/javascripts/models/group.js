@@ -1,3 +1,3 @@
-FinalProject.Models.Group = Backbone.Model.extend({
+CleatUp.Models.Group = Backbone.Model.extend({
   urlRoot: "/api/groups"
 });

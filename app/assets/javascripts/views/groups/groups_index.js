@@ -1,5 +1,16 @@
-FinalProject.Views.GroupsIndex = Backbone.View.extend({
+CleatUp.Views.GroupsIndex = Backbone.View.extend({
+  initialize: function (options) {
+    this.collection = new CleatUp.Collections.Groups();
+    var type = options.type;
+    this.collection.fetch({ data: { type: type } });
+    this.listenTo(this.collection, "sync add", this.render);
+  },
 
-  template: JST['groups/index']
+  template: JST['groups/index'],
 
+  render: function () {
+    var content = this.template({ groups: this.collection });
+    this.$el.html(content);
+    return this;
+  }
 });
