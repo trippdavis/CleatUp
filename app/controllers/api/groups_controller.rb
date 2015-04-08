@@ -12,18 +12,17 @@ class Api::GroupsController < ApplicationController
 
     render :json => @groups
   end
-
-  def new
-    @group = Group.new
-    render :json => @group
-  end
+  #
+  # def new
+  #   @group = Group.new
+  #   render :json => @group
+  # end
 
   def create
     @group = Group.new(group_params)
     @group.organizer_id = current_user.id
 
     if @group.save
-      redirect_to api_group_url(@group)
       render :json => @group
     else
       flash.now[:errors] = @group.errors.full_messages
@@ -37,11 +36,11 @@ class Api::GroupsController < ApplicationController
     render "show"
   end
 
-  def edit
-    @group = Group.find(params[:id])
-    redirect_to api_group_url(@group) unless @group.organizer_id == current_user.id
-    render :json => @group
-  end
+  # def edit
+  #   @group = Group.find(params[:id])
+  #   redirect_to api_group_url(@group) unless @group.organizer_id == current_user.id
+  #   render :json => @group
+  # end
 
   def update
     @group = Group.find(params[:id])

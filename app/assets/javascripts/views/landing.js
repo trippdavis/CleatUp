@@ -4,6 +4,10 @@ CleatUp.Views.Landing = Backbone.View.extend({
 
   template: JST['landing'],
 
+  events: {
+    "click .new-group": "newGroup"
+  },
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
@@ -20,5 +24,10 @@ CleatUp.Views.Landing = Backbone.View.extend({
   otherGroups: function () {
     var view = new CleatUp.Views.GroupsIndex({ type: "other" });
     this.$el.find(".other-groups").html(view.render().$el);
+  },
+
+  newGroup: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate("#/groups/new");
   }
 });
