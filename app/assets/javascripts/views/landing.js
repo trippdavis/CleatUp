@@ -2,7 +2,8 @@ CleatUp.Views.Landing = Backbone.View.extend({
   template: JST["landing"],
 
   events: {
-    "click .switch": "switch"
+    "click .switch": "switch",
+    "click .new-group": "newGroup"
   },
 
   render: function () {
@@ -32,6 +33,11 @@ CleatUp.Views.Landing = Backbone.View.extend({
   eventsLanding: function () {
     var view = new CleatUp.Views.EventsLanding();
     this._swapLanding(view);
+  },
+
+  newGroup: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate("#/groups/new");
   },
 
   _swapLanding: function (view) {
