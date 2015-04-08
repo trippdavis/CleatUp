@@ -14,4 +14,5 @@ class Group < ActiveRecord::Base
   validates :organizer_id, :title, :description, presence: true
 
   belongs_to :organizer, class_name: "User"
+  has_many :events
 end

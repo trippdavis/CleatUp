@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :groups_organized, class_name: "Group", foreign_key: :organizer_id
+  has_many :events_organized, through: :groups_organized, source: :events
+
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
