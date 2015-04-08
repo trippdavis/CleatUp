@@ -13,14 +13,14 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   landing: function () {
     var view = new CleatUp.Views.Landing();
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   groupShow: function (id) {
     var group = new CleatUp.Models.Group({ id: id });
     group.fetch();
     var view = new CleatUp.Views.GroupShow({ model: group });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   newGroup: function () {
@@ -29,7 +29,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
       formType: "New",
       model: group
     });
-    this.$rootEl.html(view.render().$el);
+    this._swapView(view);
   },
 
   editGroup: function (id) {
@@ -38,6 +38,15 @@ CleatUp.Routers.App = Backbone.Router.extend({
       formType: "Edit",
       model: group
     });
+    this._swapView(view);
+  },
+
+  _swapView: function (view) {
+    if (this.currentView) {
+      this.currentView.remove();
+    }
+
     this.$rootEl.html(view.render().$el);
+    this.currentView = view;
   }
 });
