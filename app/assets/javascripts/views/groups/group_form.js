@@ -1,6 +1,8 @@
 CleatUp.Views.GroupForm = Backbone.View.extend({
   initialize: function (options) {
     this.formType = options.formType;
+    this.model.fetch();
+    this.listenTo(this.model, "sync", this.setupFill);
   },
 
   template: JST["groups/form"],
@@ -13,8 +15,17 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.$el.prepend("<h3>" + (this.formType === "New" ? "New Group" : "Edit Group") + "</h3>");
+    this.formSpecific();
     return this;
+  },
+
+  formSpecific: function () {
+    if (this.formType === "New") {
+      this.$el.prepend("<h3>New Group</h3>");
+
+    } else {
+      this.$el.prepend("<h3>Edit Group</h3>");
+    }
   },
 
   submit: function (event) {
@@ -27,14 +38,33 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
         Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
       }.bind(this),
       error: function (model, response) {
-        debugger
-        Backbone.history.navigate("#/groups/" + model.id, { trigger: true });
-      }
+        this.handleError(model, response);
+        // Backbone.history.navigate("#/groups/new", { trigger: true });
+        // Backbone.history.navigate("#/groups/" + model.id, { trigger: true });
+      }.bind(this)
     });
   },
 
   toIndex: function (event) {
     event.preventDefault();
     Backbone.history.navigate("", { trigger: true });
+  },
+
+  handleError: function (model) {
+    this.fillForm(
+      model.attributes.group.title,
+      model.attributes.group.description
+    );
+  },
+
+  setupFill: function () {
+    if (this.formType == "Edit") {
+      this.fillForm(this.model.get("title"), this.model.get("description"));
+    }
+  },
+
+  fillForm: function (title, description) {
+    this.$el.find(".group-title").val(title);
+    this.$el.find(".group-description").val(description);
   }
 });
