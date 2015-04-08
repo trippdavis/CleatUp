@@ -16,7 +16,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   toLanding: function (event) {
-    debugger
     event.preventDefault();
     Backbone.history.navigate("", { trigger: true });
   }

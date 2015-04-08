@@ -1,5 +1,9 @@
 <ul>
   <% groups.each(function (group) { %>
-    <li><%= group.escape('title') %></li>
+    <li>
+      <a href="#/groups/<%= group.id %>">
+        <%= group.escape('title') %>
+      </a>
+    </li>
   <% }) %>
 </ul>
