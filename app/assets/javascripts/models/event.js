@@ -5,12 +5,12 @@ CleatUp.Models.Event = Backbone.Model.extend({
 
   urlRoot: "/api/events",
 
-  // parse: function (payload) {
-  //   if (payload.organizer) {
-  //     this.organizer = payload.organizer;
-  //     delete payload.organizer;
-  //   }
-  //
-  //   return payload;
-  // }
+  parse: function (payload) {
+    if (payload.organizer) {
+      this.organizer = payload.organizer;
+      delete payload.organizer;
+    }
+
+    return payload;
+  }
 });

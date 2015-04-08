@@ -1,0 +1,9 @@
+<ul>
+  <% events.each(function (event) { %>
+    <li>
+      <a href="#"> 
+        <%= event.escape('title') %>
+      </a>
+    </li>
+  <% }) %>
+</ul>

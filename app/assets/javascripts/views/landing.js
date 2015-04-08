@@ -1,33 +1,45 @@
 CleatUp.Views.Landing = Backbone.View.extend({
-  initialize: function () {
-  },
-
-  template: JST['landing'],
+  template: JST["landing"],
 
   events: {
-    "click .new-group": "newGroup"
+    "click .switch": "switch"
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.createdGroups();
-    this.otherGroups();
+    this.$el.find(".switch").text("Events");
+    this.groupsLanding();
     return this;
   },
 
-  createdGroups: function () {
-    var view = new CleatUp.Views.GroupsIndex({ type: "created" });
-    this.$el.find(".created-groups").html(view.render().$el);
-  },
-
-  otherGroups: function () {
-    var view = new CleatUp.Views.GroupsIndex({ type: "other" });
-    this.$el.find(".other-groups").html(view.render().$el);
-  },
-
-  newGroup: function (event) {
+  switch: function (event) {
     event.preventDefault();
-    Backbone.history.navigate("#/groups/new");
+    if (this.$el.find(".switch").text() === "Events") {
+      this.eventsLanding();
+      this.$el.find(".switch").text("Groups");
+    } else {
+      this.groupsLanding();
+      this.$el.find(".switch").text("Events");
+    }
+  },
+
+  groupsLanding: function () {
+    var view = new CleatUp.Views.GroupsLanding();
+    this._swapLanding(view);
+  },
+
+  eventsLanding: function () {
+    var view = new CleatUp.Views.EventsLanding();
+    this._swapLanding(view);
+  },
+
+  _swapLanding: function (view) {
+    if (this.currentLanding) {
+      this.currentLanding.remove();
+    }
+
+    this.$el.find(".indexes-area").html(view.render().$el);
+    this.currentLanding = view;
   }
 });
