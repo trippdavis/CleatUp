@@ -2,6 +2,12 @@
 <%= event.escape('time') %>
 <%= event.escape('location') %>
 
+<% if (event.organizer){ %>
+  <div>
+    Organized By: <%= event.organizer.username %>
+  </div>
+<% } %>
+
 <hr>
 <div>
   <%= event.escape('description') %>

@@ -13,7 +13,9 @@ class Api::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    render :json => @event
+    @organizer = @event.organizer
+    @owned = { owned: (@event.organizer == current_user) }
+    render "show"
   end
 
   def create
