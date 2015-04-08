@@ -5,7 +5,7 @@ CleatUp.Views.EventShow = Backbone.View.extend({
 
   events: {
     "click .return-to-landing": "toLanding",
-    // "click .delete-group": "destroy",
+    "click .delete-event": "destroy",
     // "click .edit-group": "edit"
   },
 
@@ -27,14 +27,11 @@ CleatUp.Views.EventShow = Backbone.View.extend({
     Backbone.history.navigate("", { trigger: true });
   },
 
-  // destroy: function (event) {
-  //   this.model.destroy({
-  //     success: function () {
-  //       Backbone.history.navigate("", { trigger: true });
-  //     },
-  //     error: function () {
-  //       Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
-  //     }.bind(this)
-  //   });
-  // }
+  destroy: function (event) {
+    this.model.destroy({
+      success: function () {
+        Backbone.history.navigate("", { trigger: true });
+      }
+    });
+  }
 });

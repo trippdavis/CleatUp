@@ -20,9 +20,16 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless current_user
   end
 
-  def require_current_user
+  def group_require_current_user
     group = Group.find(params[:id])
     unless group.organizer_id == current_user.id
+      fail
+    end
+  end
+
+  def event_require_current_user
+    event = Event.find(params[:id])
+    unless event.organizer.id == current_user.id
       fail
     end
   end

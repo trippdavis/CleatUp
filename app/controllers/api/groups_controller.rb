@@ -1,6 +1,6 @@
 class Api::GroupsController < ApplicationController
   before_action :require_signed_in
-  before_action :require_current_user, only: [:update, :destroy]
+  before_action :group_require_current_user, only: [:update, :destroy]
 
   def index
     type = params["type"]

@@ -4,7 +4,7 @@
 
 <% if (event.organizer){ %>
   <div>
-    Organized By: <%= event.organizer.username %>
+  Organized By: <%= event.organizer.username %>
   </div>
 <% } %>
 
@@ -13,4 +13,8 @@
   <%= event.escape('description') %>
 </div>
 
+<% if (event.get('owned')) { %>
+  <button class="edit-event">Edit</button>
+  <button class="delete-event">Delete</button>
+<% } %>
 <button class="return-to-landing">Back</button>

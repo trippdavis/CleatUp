@@ -31,10 +31,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.model.destroy({
       success: function () {
         Backbone.history.navigate("", { trigger: true });
-      },
-      error: function () {
-        Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
-      }.bind(this)
+      }
     });
   }
 });

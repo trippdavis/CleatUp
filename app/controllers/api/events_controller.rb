@@ -1,4 +1,7 @@
 class Api::EventsController < ApplicationController
+  before_action :require_signed_in
+  before_action :event_require_current_user, only: [:update, :destroy]
+
   def index
     type = params["type"]
     if type == "created"
@@ -25,6 +28,9 @@ class Api::EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    render :json => @event
   end
 
   private
