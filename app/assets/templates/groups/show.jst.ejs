@@ -9,6 +9,8 @@
   <%= group.escape('description') %>
 </div>
 
-<button class="edit-group">Edit</button>
-<button class="delete-group">Delete</button>
+<% if (group.get('owned')) { %>
+  <button class="edit-group">Edit</button>
+  <button class="delete-group">Delete</button>
+<% } %>
 <button class="return-to-landing">Back</button>
