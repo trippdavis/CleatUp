@@ -7,6 +7,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
   routes: {
     "": "landing",
     "groups/new": "newGroup",
+    "groups/:id/edit": "editGroup",
     "groups/:id": "groupShow"
   },
 
@@ -23,7 +24,20 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   newGroup: function () {
-    var view = new CleatUp.Views.GroupsNew();
+    var group = new CleatUp.Models.Group();
+    var view = new CleatUp.Views.GroupForm({
+      formType: "New",
+      model: group
+    });
+    this.$rootEl.html(view.render().$el);
+  },
+
+  editGroup: function (id) {
+    var group = new CleatUp.Models.Group({ id: id });
+    var view = new CleatUp.Views.GroupForm({
+      formType: "Edit",
+      model: group
+    });
     this.$rootEl.html(view.render().$el);
   }
 });
