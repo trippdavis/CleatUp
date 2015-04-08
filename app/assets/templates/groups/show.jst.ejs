@@ -1,7 +1,9 @@
 <h3><%= group.escape('title') %></h3>
-<div>
-  Organized By: <%= group.escape('organizer_id') %>
-</div>
+<% if (group.organizer){ %>
+  <div>
+    Organized By: <%= group.organizer.username %>
+  </div>
+<% } %>
 <hr>
 <div>
   <%= group.escape('description') %>

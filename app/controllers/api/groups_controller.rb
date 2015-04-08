@@ -33,7 +33,8 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    render :json => @group
+    @organizer = @group.organizer
+    render "show"
   end
 
   def edit
