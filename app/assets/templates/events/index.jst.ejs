@@ -1,7 +1,7 @@
 <ul>
   <% events.each(function (event) { %>
     <li>
-      <a href="#"> 
+      <a href="#/events/<%= event.id %>"> 
         <%= event.escape('title') %>
       </a>
     </li>

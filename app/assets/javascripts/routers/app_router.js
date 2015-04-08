@@ -8,7 +8,8 @@ CleatUp.Routers.App = Backbone.Router.extend({
     "": "landing",
     "groups/new": "newGroup",
     "groups/:id/edit": "editGroup",
-    "groups/:id": "groupShow"
+    "groups/:id": "groupShow",
+    "events/:id": "eventShow"
   },
 
   landing: function () {
@@ -20,6 +21,13 @@ CleatUp.Routers.App = Backbone.Router.extend({
     var group = new CleatUp.Models.Group({ id: id });
     group.fetch();
     var view = new CleatUp.Views.GroupShow({ model: group });
+    this._swapView(view);
+  },
+
+  eventShow: function (id) {
+    var event = new CleatUp.Models.Event({ id: id });
+    event.fetch();
+    var view = new CleatUp.Views.EventShow({ model: event });
     this._swapView(view);
   },
 
