@@ -9,7 +9,8 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
 
   events: {
     "submit .group-form": "submit",
-    "click .back-to-index": "toIndex"
+    "click .back-to-index": "toIndex",
+    "click .back-to-show": "toShow"
   },
 
   render: function () {
@@ -22,9 +23,10 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
   formSpecific: function () {
     if (this.formType === "New") {
       this.$el.prepend("<h3>New Group</h3>");
-
+      this.$el.append("<button class='back-to-index'>Back</button>");
     } else {
       this.$el.prepend("<h3>Edit Group</h3>");
+      this.$el.append("<button class='back-to-show'>Back</button>");
     }
   },
 
@@ -45,16 +47,30 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
     });
   },
 
+  toShow: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
+  },
+
   toIndex: function (event) {
     event.preventDefault();
     Backbone.history.navigate("", { trigger: true });
   },
 
-  handleError: function (model) {
+  handleError: function (model, response) {
+    this.showErrors(response.responseJSON.errors);
     this.fillForm(
       model.attributes.group.title,
       model.attributes.group.description
     );
+  },
+
+  showErrors: function (errors) {
+    var $ul = this.$el.find("ul.errors");
+    $ul.empty();
+    errors.forEach( function (err) {
+      $ul.append("<li>" + err + "</li>");
+    });
   },
 
   setupFill: function () {

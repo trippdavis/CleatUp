@@ -21,7 +21,8 @@ class Api::GroupsController < ApplicationController
     if @group.save
       render :json => @group
     else
-      render :json => @group, :status => :unprocessable_entity
+      @errors = @group.errors.full_messages
+      render "form", :status => :unprocessable_entity
     end
   end
 
@@ -38,7 +39,8 @@ class Api::GroupsController < ApplicationController
     if @group.update(group_params)
       render :json => @group
     else
-      render :json => @group, :status => :unprocessable_entity
+      @errors = @group.errors.full_messages
+      render "form", :status => :unprocessable_entity
     end
   end
 
