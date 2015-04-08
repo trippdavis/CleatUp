@@ -1,5 +1,6 @@
 class Api::GroupsController < ApplicationController
   before_action :require_signed_in
+  before_action :require_current_user, only: [:update, :destroy]
 
   def index
     type = params["type"]
@@ -20,8 +21,7 @@ class Api::GroupsController < ApplicationController
     if @group.save
       render :json => @group
     else
-      flash.now[:errors] = @group.errors.full_messages
-      render :new
+      render :json => @group
     end
   end
 
