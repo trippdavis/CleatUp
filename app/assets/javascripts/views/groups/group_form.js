@@ -40,9 +40,11 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
         Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
       }.bind(this),
       error: function (model, response) {
-        this.handleError(model, response);
-        // Backbone.history.navigate("#/groups/new", { trigger: true });
-        // Backbone.history.navigate("#/groups/" + model.id, { trigger: true });
+        if (response.status === 500) {
+          Backbone.history.navigate("#/groups/" + model.id, { trigger: true });
+        } else {
+          this.handleError(model, response);
+        }
       }.bind(this)
     });
   },
