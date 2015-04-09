@@ -28,6 +28,7 @@ class Api::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @events = @group.events
     @organizer = @group.organizer
     @owned = { owned: (@group.organizer == current_user) }
     render "show"
