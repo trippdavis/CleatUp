@@ -7,7 +7,12 @@ CleatUp.Models.Group = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.events) {
-      this.events().set(payload.events, { parse: true });
+      this.events = payload.events;
+
+      // SEE IF NEED TO CREATE COLLECTION
+      // debugger
+      // this.events().set(payload.events, { parse: true });
+
       delete payload.events;
     }
 
@@ -19,9 +24,9 @@ CleatUp.Models.Group = Backbone.Model.extend({
     return payload;
   },
 
-  events: function () {
-    this._groupEvents = this._groupEevents ||
-      new CleatUp.Collections.Events([], { group: this });
-    return this._groupEvents;
-  }
+  // events: function () {
+  //   this._groupEvents = this._groupEevents ||
+  //     new CleatUp.Collections.Events();
+  //   return this._groupEvents;
+  // }
 });

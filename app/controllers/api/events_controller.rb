@@ -7,8 +7,10 @@ class Api::EventsController < ApplicationController
     if type == "created"
       @events = Event.joins(group: :organizer).where(users: { id: current_user.id })
     elsif type == "joined"
-    else
+    elsif type == "other"
       @events = Event.joins(group: :organizer).where.not(users: { id: current_user.id })
+    else
+      @events = Event.all
     end
 
     render :json => @events

@@ -1,6 +1,7 @@
 CleatUp.Views.GroupShow = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    // this.listenTo(this.model.events(), "sync", this.addEvents);
   },
 
   events: {
@@ -16,6 +17,13 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.$el.html(content);
     return this;
   },
+
+  // addEvents: function () {
+  //   var view = new CleatUp.Views.GroupEventsIndex({
+  //     collection: this.model.comments()
+  //   });
+  //   this.$el.find(".group-events").html(view.render().$el);
+  // },
 
   edit: function () {
     event.preventDefault();
