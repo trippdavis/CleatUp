@@ -61,10 +61,13 @@ CleatUp.Views.EventForm = Backbone.View.extend({
 
   handleError: function (model, response) {
     this.showErrors(response.responseJSON.errors);
+
     this.fillForm(
       model.attributes.event.title,
       model.attributes.event.location,
-      model.attributes.event.description
+      model.attributes.event.description,
+      model.attributes.event.date,
+      model.attributes.event.time
     );
   },
 
