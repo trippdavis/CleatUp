@@ -15,4 +15,6 @@ class Group < ActiveRecord::Base
 
   belongs_to :organizer, class_name: "User"
   has_many :events
+  has_many :memberships, class_name: "GroupMembership"
+  has_many :members, through: :memberships, source: :member
 end

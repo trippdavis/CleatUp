@@ -13,3 +13,8 @@ Event.create(group_id: 2, title: "Event 3", description: "Third Event", date_tim
 Event.create(group_id: 3, title: "Event 4", description: "Fourth Event", date_time: (DateTime.now + 20), location: "Fourth Event Location")
 Event.create(group_id: 4, title: "Event 5", description: "Fifth Event", date_time: (DateTime.now + 25), location: "Fifth Event Location")
 Event.create(group_id: 4, title: "Event 6", description: "Sixth Event", date_time: (DateTime.now + 30), location: "Sixth Event Location")
+
+GroupMembership.create(group_id: 1, member_id: 2)
+GroupMembership.create(group_id: 1, member_id: 3)
+GroupMembership.create(group_id: 2, member_id: 2)
+GroupMembership.create(group_id: 3, member_id: 2)

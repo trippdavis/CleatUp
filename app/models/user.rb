@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 
   has_many :groups_organized, class_name: "Group", foreign_key: :organizer_id
   has_many :events_organized, through: :groups_organized, source: :events
-
+  has_many :group_memberships, foreign_key: :member_id
+  has_many :groups_joined, through: :group_memberships, source: :group
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
