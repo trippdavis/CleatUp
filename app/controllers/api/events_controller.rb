@@ -45,7 +45,11 @@ class Api::EventsController < ApplicationController
 
   def event_params
     event_params = params.require(:event).permit(:title, :description, :location)
-    event_params["date_time"] = parse_dateTime(params.require(:event).permit(:time, :date))
+    if params[:event][:date] == "" || params[:event][:time] == ""
+      event_params["date_time"] = ""
+    else
+      event_params["date_time"] = parse_dateTime(params.require(:event).permit(:time, :date))
+    end
     return event_params
   end
 end
