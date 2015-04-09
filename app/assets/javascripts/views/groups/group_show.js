@@ -8,7 +8,9 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     "click .return-to-landing": "toLanding",
     "click .delete-group": "destroy",
     "click .edit-group": "edit",
-    "click .create-event": "newEvent"
+    "click .create-event": "newEvent",
+    "click .join-group": "joinGroup",
+    "click .leave-group": "leaveGroup"
   },
 
   template: JST['groups/show'],
@@ -16,6 +18,10 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   render: function () {
     var content = this.template({ group: this.model });
     this.$el.html(content);
+    if (this.model.get("membership_id")) {
+      this.toggleButton();
+    }
+
     return this;
   },
 
@@ -23,6 +29,43 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     event.preventDefault();
     Backbone.history.navigate("groups/" + this.model.id + "/events/new", { trigger: true });
   },
+
+  joinGroup: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/group_memberships",
+      type: "POST",
+      data: { group_id: this.model.id },
+      success: function () {
+        this.toggleButton();
+        this.model.set("membership_id", 0);
+      }.bind(this)
+    });
+  },
+
+  leaveGroup: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/group_memberships/" + this.model.get("membership_id"),
+      type: "DELETE",
+      success: function (membership) {
+        this.model.set("membership_id", membership.id);
+        this.toggleButton();
+      }.bind(this)
+    });
+  },
+
+  toggleButton: function () {
+    $button = $("#joined");
+    $button.toggleClass("join-group");
+    $button.toggleClass("leave-group");
+    if ($button.text() === "Join Us!") {
+      $button.text("Leave Group");
+    } else {
+      $button.text("Join Us!");
+    }
+  },
+
 
   // addEvents: function () {
   //   var view = new CleatUp.Views.GroupEventsIndex({

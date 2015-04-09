@@ -1,6 +1,9 @@
 class GroupMembershipsController < ApplicationController
   def create
-    @membership = GroupMembership.new(membership_params)
+    @membership = GroupMembership.new(
+      group_id: params[:group_id],
+      member_id: current_user.id
+    )
 
     if @membership.save
       render :json => @membership
@@ -13,11 +16,5 @@ class GroupMembershipsController < ApplicationController
     @membership = GroupMembership.find(params[:id])
     @membership.destroy
     render :json => @membership
-  end
-
-  private
-
-  def membership_params
-    params.require(:membership).permit(:group_id, :member_id)
   end
 end

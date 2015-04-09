@@ -10,4 +10,4 @@ end
 
 json.(@owned, :owned)
 
-json.(@joined, :joined)
+json.(@membership_id, :membership_id)
