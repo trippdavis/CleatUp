@@ -7,8 +7,12 @@ class Api::GroupsController < ApplicationController
     if type == "created"
       @groups = Group.where(organizer_id: current_user.id)
     elsif type == "joined"
-    else
-      @groups = Group.where.not(organizer_id: current_user.id)
+      @groups = current_user.groups_joined
+    elsif type == "other"
+      @groups = Group.where.not(
+        organizer_id: current_user.id,
+        id: current_user.groups_joined.map(&:id)
+      )
     end
 
     render :json => @groups
@@ -31,6 +35,7 @@ class Api::GroupsController < ApplicationController
     @events = @group.events
     @organizer = @group.organizer
     @owned = { owned: (@group.organizer == current_user) }
+    @joined = { joined: (current_user.groups_joined.exists?(@group.id)) }
     render "show"
   end
 

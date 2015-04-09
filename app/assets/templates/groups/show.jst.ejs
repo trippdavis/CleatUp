@@ -17,7 +17,12 @@
 <% if (group.get('owned')) { %>
   <button class="edit-group">Edit</button>
   <button class="delete-group">Delete</button>
+<% } else if (group.get('joined')) { %>
+  <button class="leave-group">Leave Group</button>
+<% } else { %>
+  <button class="join-group">Join Us!</button>
 <% } %>
+
 <button class="return-to-landing">Back</button>
 
 <hr>

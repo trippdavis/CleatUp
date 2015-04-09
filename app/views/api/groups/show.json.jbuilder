@@ -9,3 +9,5 @@ json.organizer do
 end
 
 json.(@owned, :owned)
+
+json.(@joined, :joined)

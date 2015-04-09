@@ -5,6 +5,7 @@ CleatUp.Views.GroupsLanding = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.createdGroups();
+    this.joinedGroups();
     this.otherGroups();
     return this;
   },
@@ -12,6 +13,11 @@ CleatUp.Views.GroupsLanding = Backbone.View.extend({
   createdGroups: function () {
     var view = new CleatUp.Views.GroupsIndex({ type: "created" });
     this.$el.find(".created-groups").html(view.render().$el);
+  },
+
+  joinedGroups: function () {
+    var view = new CleatUp.Views.GroupsIndex({ type: "joined" });
+    this.$el.find(".joined-groups").html(view.render().$el);
   },
 
   otherGroups: function () {
