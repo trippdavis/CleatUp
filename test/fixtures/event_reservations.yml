@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: event_reservations
+#
+#  id          :integer          not null, primary key
+#  event_id    :integer          not null
+#  reserver_id :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  reserver_id: 1
+
+two:
+  event_id: 1
+  reserver_id: 1

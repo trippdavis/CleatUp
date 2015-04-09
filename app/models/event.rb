@@ -17,4 +17,7 @@ class Event < ActiveRecord::Base
 
   belongs_to :group
   has_one :organizer, through: :group, source: :organizer
+  has_many :reservations, class_name: "EventReservation"
+  has_many :reservers, through: :reservations, source: :reserver
+
 end
