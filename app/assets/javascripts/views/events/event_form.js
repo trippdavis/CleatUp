@@ -1,7 +1,11 @@
 CleatUp.Views.EventForm = Backbone.View.extend({
   initialize: function (options) {
+    if (options.group_id) {
+      this.group_id = options.group_id;
+    } else {
+      this.group_id = null;
+    }
     this.formType = options.formType;
-    this.model.fetch();
     this.listenTo(this.model, "sync", this.setupFill);
   },
 
@@ -14,7 +18,10 @@ CleatUp.Views.EventForm = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template({ event: this.model });
+    var content = this.template({
+      event: this.model,
+      group_id: this.group_id
+    });
     this.$el.html(content);
     this.formSpecific();
     return this;

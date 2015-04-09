@@ -8,13 +8,27 @@ CleatUp.Routers.App = Backbone.Router.extend({
     "": "landing",
     "groups/new": "newGroup",
     "groups/:id/edit": "editGroup",
+    "groups/:id/events/new": "newEvent",
     "groups/:id": "groupShow",
     "events/:id": "eventShow",
-    "events/:id/edit": "editEvent"
+    "events/:id/edit": "editEvent",
   },
 
   landing: function () {
     var view = new CleatUp.Views.Landing();
+    this._swapView(view);
+  },
+
+  newEvent: function (group_id) {
+    var event = new CleatUp.Models.Event();
+    event.fetch();
+    // var group = new CleatUp.Models.Group({ id: group_id });
+    // group.fetch();
+    var view = new CleatUp.Views.EventForm({
+      formType: "New",
+      model: event,
+      group_id: group_id
+    });
     this._swapView(view);
   },
 
@@ -34,6 +48,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   newGroup: function () {
     var group = new CleatUp.Models.Group();
+    group.fetch();
     var view = new CleatUp.Views.GroupForm({
       formType: "New",
       model: group
@@ -43,6 +58,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   editGroup: function (id) {
     var group = new CleatUp.Models.Group({ id: id });
+    group.fetch();
     var view = new CleatUp.Views.GroupForm({
       formType: "Edit",
       model: group
@@ -52,6 +68,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   editEvent: function (id) {
     var event = new CleatUp.Models.Event({ id: id });
+    event.fetch();
     var view = new CleatUp.Views.EventForm({
       formType: "Edit",
       model: event

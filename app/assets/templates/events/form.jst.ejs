@@ -1,6 +1,10 @@
 <ul class="errors"></ul>
 
 <form class="event-form">
+  <% if (group_id) { %>
+    <input type="hidden" name="event[group_id]" value="<%= group_id %>">
+  <% } %>
+
   <div>
     <input
       type="text"

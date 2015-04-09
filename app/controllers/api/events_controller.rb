@@ -24,6 +24,14 @@ class Api::EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(event_params);
+
+    if @event.save
+      render :json => @event
+    else
+      @errors = @event.errors.full_messages
+      render "form", :status => :unprocessable_entity
+    end
   end
 
   def update
@@ -46,7 +54,7 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    event_params = params.require(:event).permit(:title, :description, :location)
+    event_params = params.require(:event).permit(:group_id, :title, :description, :location)
     if params[:event][:date] == "" || params[:event][:time] == ""
       event_params["date_time"] = ""
     else

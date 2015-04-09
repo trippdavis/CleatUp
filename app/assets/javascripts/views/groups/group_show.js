@@ -7,7 +7,8 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   events: {
     "click .return-to-landing": "toLanding",
     "click .delete-group": "destroy",
-    "click .edit-group": "edit"
+    "click .edit-group": "edit",
+    "click .create-event": "newEvent"
   },
 
   template: JST['groups/show'],
@@ -18,6 +19,11 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     return this;
   },
 
+  newEvent: function (event) {
+    event.preventDefault();
+    Backbone.history.navigate("groups/" + this.model.id + "/events/new", { trigger: true });
+  },
+
   // addEvents: function () {
   //   var view = new CleatUp.Views.GroupEventsIndex({
   //     collection: this.model.comments()
@@ -25,7 +31,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   //   this.$el.find(".group-events").html(view.render().$el);
   // },
 
-  edit: function () {
+  edit: function (event) {
     event.preventDefault();
     Backbone.history.navigate("groups/" + this.model.id + "/edit", { trigger: true });
   },
