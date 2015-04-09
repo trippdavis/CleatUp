@@ -13,7 +13,7 @@
 #
 
 class Event < ActiveRecord::Base
-  validates :group_id, :title, :time, :location, presence: true
+  validates :group_id, :title, :date_time, :location, presence: true
 
   belongs_to :group
   has_one :organizer, through: :group, source: :organizer

@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
       fail
     end
   end
+
+  def parse_dateTime(dateTime)
+    date = dateTime["date"].split("-").map{|val| val.to_i}
+    time = dateTime["time"].split(":").map{|val| val.to_i}
+    DateTime.new(date[0], date[1], date[2], time[0], time[1])
+  end
 end

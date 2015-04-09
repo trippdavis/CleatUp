@@ -63,6 +63,7 @@ CleatUp.Views.EventForm = Backbone.View.extend({
     this.showErrors(response.responseJSON.errors);
     this.fillForm(
       model.attributes.event.title,
+      model.attributes.event.location,
       model.attributes.event.description
     );
   },
@@ -77,12 +78,17 @@ CleatUp.Views.EventForm = Backbone.View.extend({
 
   setupFill: function () {
     if (this.formType == "Edit") {
-      this.fillForm(this.model.get("title"), this.model.get("description"));
+      this.fillForm(
+        this.model.get("title"),
+        this.model.get("location"),
+        this.model.get("description")
+      );
     }
   },
 
-  fillForm: function (title, description) {
+  fillForm: function (title, location, description) {
     this.$el.find(".event-title").val(title);
+    this.$el.find(".event-location").val(location);
     this.$el.find(".event-description").val(description);
   }
 });
