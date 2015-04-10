@@ -2,26 +2,26 @@ CleatUp.Views.Landing = Backbone.View.extend({
   template: JST["landing"],
 
   events: {
-    "click .switch": "switch",
+    "click .groups": "switchLanding",
+    "click .events": "switchLanding",
     "click .new-group": "newGroup"
   },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.$el.find(".switch").text("Events");
     this.groupsLanding();
     return this;
   },
 
-  switch: function (event) {
-    event.preventDefault();
-    if (this.$el.find(".switch").text() === "Events") {
+  switchLanding: function (event) {
+    $(event.target).prop("disabled", true);
+    if ($(event.target).hasClass("events")) {
       this.eventsLanding();
-      this.$el.find(".switch").text("Groups");
+      $(".groups").prop("disabled", false);
     } else {
       this.groupsLanding();
-      this.$el.find(".switch").text("Events");
+      $(".events").prop("disabled", false);
     }
   },
 
