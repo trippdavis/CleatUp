@@ -5,19 +5,21 @@ class Api::EventsController < ApplicationController
   def index
     type = params["type"]
     if type == "created"
-      @events = Event.joins(group: :organizer).where(users: { id: current_user.id })
+      events = Event.joins(group: :organizer).where(users: { id: current_user.id })
     elsif type == "reserved"
-      @events = current_user.events_reserved
+      events = current_user.events_reserved
     elsif type == "joined-group"
-      @events = Event.where(group_id: current_user.groups_joined.map(&:id));
+      events = Event.where(group_id: current_user.groups_joined.map(&:id));
     elsif type == "other"
-      @events = Event.joins(group: :organizer).where.not(
+      events = Event.joins(group: :organizer).where.not(
         users: { id: current_user.id },
         group_id: current_user.groups_joined.map(&:id)
         )
     else
-      @events = Event.all
+      events = Event.all
     end
+
+    @events = events.order("date_time");
 
     render :json => @events
   end
