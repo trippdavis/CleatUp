@@ -1,42 +1,61 @@
 CleatUp.Views.EventsLanding = Backbone.View.extend({
   template: JST['events/landing'],
 
-  // events: {
-  //   "click .new-group": "newGroup"
-  // },
+  events: {
+    "click button": "switchIndex"
+  },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.createdEvents();
+    this.$currentButton = this.$el.find(".reserved-events");
+    this.$currentButton.prop("disbled", true);
     this.reservedEvents();
-    this.joinedGroupEvents();
-    this.otherEvents();
     return this;
+  },
+
+  switchIndex: function (event) {
+    var $button = $(event.target);
+    $button.prop("disabled", true);
+    if ($button.hasClass("created-events")) {
+      this.createdEvents();
+    } else if ($button.hasClass("reserved-events")) {
+      this.reservedEvents();
+    } else if ($button.hasClass("group-events")) {
+      this.joinedGroupEvents();
+    } else {
+      this.otherEvents();
+    }
+    this.$currentButton.prop("disabled", false);
+    this.$currentButton = $button;
   },
 
   createdEvents: function () {
     var view = new CleatUp.Views.EventsIndex({ type: "created" });
-    this.$el.find(".created-events").html(view.render().$el);
+    this._swapIndex(view);
   },
 
   reservedEvents: function () {
     var view = new CleatUp.Views.EventsIndex({ type: "reserved" });
-    this.$el.find(".reserved-events").html(view.render().$el);
+    this._swapIndex(view);
   },
 
   joinedGroupEvents: function () {
     var view = new CleatUp.Views.EventsIndex({ type: "joined-group" });
-    this.$el.find(".joined-group-events").html(view.render().$el);
+    this._swapIndex(view);
   },
 
   otherEvents: function () {
     var view = new CleatUp.Views.EventsIndex({ type: "other" });
-    this.$el.find(".other-events").html(view.render().$el);
+    this._swapIndex(view);
+  },
+
+  _swapIndex: function (view) {
+    if (this.currentIndex) {
+      this.currentIndex.remove();
+    }
+
+    this.$el.find(".events-list").html(view.render().$el);
+    this.currentIndex = view;
   }
-  //
-  // newGroup: function (event) {
-  //   event.preventDefault();
-  //   Backbone.history.navigate("#/groups/new");
-  // }
 });
