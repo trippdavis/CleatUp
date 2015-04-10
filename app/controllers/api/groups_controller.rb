@@ -36,7 +36,7 @@ class Api::GroupsController < ApplicationController
     @organizer = @group.organizer
     @owned = { owned: (@group.organizer == current_user) }
 
-    membership = GroupMembership.where(member_id: current_user.id, group_id: @group.id)
+    membership = GroupMembership.where(member_id: current_user.id, group_id: params[:id])
     if membership[0]
       @membership_id = { membership_id: membership[0].id }
     else

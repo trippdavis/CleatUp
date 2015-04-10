@@ -5,3 +5,5 @@ json.organizer do
 end
 
 json.(@owned, :owned)
+
+json.(@reservation_id, :reservation_id)

@@ -26,6 +26,13 @@ class Api::EventsController < ApplicationController
     @event = Event.find(params[:id])
     @organizer = @event.organizer
     @owned = { owned: (@event.organizer == current_user) }
+
+    reservation = EventReservation.where(reserver_id: current_user.id, event_id: params[:id])
+    if reservation[0]
+      @reservation_id = { reservation_id: reservation[0].id }
+    else
+      @reservation_id = { reservation_id: 0 }
+    end
     render "show"
   end
 

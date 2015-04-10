@@ -6,7 +6,9 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   events: {
     "click .return-to-landing": "toLanding",
     "click .delete-event": "destroy",
-    "click .edit-event": "edit"
+    "click .edit-event": "edit",
+    "click .join-event": "joinEvent",
+    "click .leave-event": "leaveEvent"
   },
 
   template: JST['events/show'],
@@ -14,7 +16,47 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   render: function () {
     var content = this.template({ event: this.model });
     this.$el.html(content);
+    if (this.model.get("reservation_id")) {
+      this.toggleButton();
+    }
+
     return this;
+  },
+
+  toggleButton: function () {
+    $button = $("#joined");
+    $button.toggleClass("join-event");
+    $button.toggleClass("leave-event");
+    if ($button.text() === "Reserve Spot!") {
+      $button.text("Cancel Reservation");
+    } else {
+      $button.text("Reserve Spot!");
+    }
+  },
+
+  joinEvent: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/event_reservations",
+      type: "POST",
+      data: { event_id: this.model.id },
+      success: function (reservation) {
+        this.toggleButton();
+        this.model.set("reservation_id", reservation.id);
+      }.bind(this)
+    });
+  },
+
+  leaveEvent: function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/event_reservations/" + this.model.get("reservation_id"),
+      type: "DELETE",
+      success: function () {
+        this.model.set("reservation_id", 0);
+        this.toggleButton();
+      }.bind(this)
+    });
   },
 
   edit: function () {

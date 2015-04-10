@@ -14,9 +14,13 @@
   <%= event.escape('description') %>
 </div>
 
+<hr>
+
 <% if (event.get('owned')) { %>
   <button class="edit-event">Edit</button>
   <button class="delete-event">Delete</button>
+<% } else { %>
+  <button id="joined" class="join-event">Reserve Spot!</button>
 <% } %>
 
 <button class="return-to-landing">Back</button>

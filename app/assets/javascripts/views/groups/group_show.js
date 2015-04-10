@@ -36,9 +36,9 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       url: "/group_memberships",
       type: "POST",
       data: { group_id: this.model.id },
-      success: function () {
+      success: function (membership) {
         this.toggleButton();
-        this.model.set("membership_id", 0);
+        this.model.set("membership_id", membership.id);
       }.bind(this)
     });
   },
@@ -48,8 +48,8 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     $.ajax({
       url: "/group_memberships/" + this.model.get("membership_id"),
       type: "DELETE",
-      success: function (membership) {
-        this.model.set("membership_id", membership.id);
+      success: function () {
+        this.model.set("membership_id", 0);
         this.toggleButton();
       }.bind(this)
     });
