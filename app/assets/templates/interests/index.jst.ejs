@@ -1,6 +1,10 @@
 <h3>Interests:</h3>
 
-<% interests.each(function (interest) { %>
-  <% var topic = interest.escape("topic") %>
-  <button id="<%= topic %>" class="btn btn-default"><%= topic %></button>
-<% }) %>
+<div>
+  <% interests.each(function (interest) { %>
+    <% var topic = interest.escape("topic") %>
+    <button id="<%= topic %>" class="interest btn btn-default"><%= topic %></button>
+  <% }) %>
+</div>
+
+<button class="submit btn btn-primary">Submit!</button>

@@ -5,7 +5,8 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   routes: {
-    "": "interestsIndex",
+    "": "landing",
+    "interests": "interestsIndex",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/new": "eventNew",

@@ -4,7 +4,8 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
   },
 
   events: {
-    "click button": "handleClick"
+    "click .interest": "handleClick",
+    "click .submit": "submitInterests"
   },
 
   template: JST['interests/index'],
@@ -18,5 +19,9 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
   handleClick: function (event) {
     $button = $(event.target);
     $button.toggleClass("btn-default btn-success");
+  },
+
+  submitInterests: function () {
+    Backbone.history.navigate("", { trigger: true });
   }
 });

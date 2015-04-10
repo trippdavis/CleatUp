@@ -10,4 +10,8 @@
 
 class Interest < ActiveRecord::Base
   validates :topic, presence: true, uniqueness: true
+
+  has_many :interestings
+  has_many :interested_users, through: :interestings, source: :interestable, source_type: "User"
+  has_many :interested_groups, through: :interestings, source: :interestable, source_type: "Group"
 end

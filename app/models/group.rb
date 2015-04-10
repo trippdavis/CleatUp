@@ -17,4 +17,6 @@ class Group < ActiveRecord::Base
   has_many :events
   has_many :memberships, class_name: "GroupMembership"
   has_many :members, through: :memberships, source: :member
+  has_many :interestings, as: :interestable
+  has_many :interests, through: :interestings, source: :interest
 end
