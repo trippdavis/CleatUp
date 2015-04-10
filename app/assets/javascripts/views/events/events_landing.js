@@ -1,4 +1,8 @@
 CleatUp.Views.EventsLanding = Backbone.View.extend({
+  initialize: function () {
+    this.collection = new CleatUp.Collections.Events();
+  },
+
   template: JST['events/landing'],
 
   events: {
@@ -31,22 +35,34 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
   },
 
   createdEvents: function () {
-    var view = new CleatUp.Views.EventsIndex({ type: "created" });
+    var view = new CleatUp.Views.EventsIndex({
+      collection: this.collection,
+      type: "created"
+    });
     this._swapIndex(view);
   },
 
   reservedEvents: function () {
-    var view = new CleatUp.Views.EventsIndex({ type: "reserved" });
+    var view = new CleatUp.Views.EventsIndex({
+      collection: this.collection,
+      type: "reserved"
+    });
     this._swapIndex(view);
   },
 
   joinedGroupEvents: function () {
-    var view = new CleatUp.Views.EventsIndex({ type: "joined-group" });
+    var view = new CleatUp.Views.EventsIndex({
+      collection: this.collection,
+      type: "joined-group"
+    });
     this._swapIndex(view);
   },
 
   otherEvents: function () {
-    var view = new CleatUp.Views.EventsIndex({ type: "other" });
+    var view = new CleatUp.Views.EventsIndex({
+      collection: this.collection,
+      type: "other"
+    });
     this._swapIndex(view);
   },
 
