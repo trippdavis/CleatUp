@@ -4,7 +4,8 @@ CleatUp.Views.Landing = Backbone.View.extend({
   events: {
     "click .groups": "switchLanding",
     "click .events": "switchLanding",
-    "click .new-group": "newGroup"
+    "click .new-group": "newGroup",
+    "click .add-interests": "addInterests"
   },
 
   render: function () {
@@ -12,6 +13,10 @@ CleatUp.Views.Landing = Backbone.View.extend({
     this.$el.html(content);
     this.groupsLanding();
     return this;
+  },
+
+  addInterests: function () {
+    Backbone.history.navigate("/interests", { trigger: true });
   },
 
   switchLanding: function (event) {

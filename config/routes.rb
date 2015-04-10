@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :group_memberships, only: [:create, :destroy]
   resources :event_reservations, only: [:create, :destroy]
+  resources :interestings, only: [:create, :destroy]
 
   namespace :api, :defaults => { :format => :json } do
     resources :groups, except: [:new, :edit]

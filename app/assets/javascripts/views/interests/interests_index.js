@@ -22,6 +22,18 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
   },
 
   submitInterests: function () {
+    buttons = $(".btn-success");
+    buttons.each(function (i, button) {
+      var interest_id = $(button).data("id");
+      $.ajax({
+        url: "/interestings",
+        type: "POST",
+        data: {
+          interest_id: interest_id,
+          type: "User"
+        }
+      });
+    });
     Backbone.history.navigate("", { trigger: true });
   }
 });

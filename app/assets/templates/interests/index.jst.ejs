@@ -2,8 +2,7 @@
 
 <div>
   <% interests.each(function (interest) { %>
-    <% var topic = interest.escape("topic") %>
-    <button id="<%= topic %>" class="interest btn btn-default"><%= topic %></button>
+    <button data-id="<%= interest.id %>" class="interest btn btn-default"><%= interest.escape("topic") %></button>
   <% }) %>
 </div>
 

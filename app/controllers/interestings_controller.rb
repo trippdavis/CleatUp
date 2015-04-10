@@ -1,6 +1,10 @@
 class InterestingsController < ApplicationController
   def create
-    @interesting = Interesting.new(interesting_params)
+    @interesting = Interesting.new(
+      interest_id: params[:interest_id],
+      interestable_id: current_user.id,
+      interestable_type: params[:type]
+    )
 
     if @interesting.save
       render json: @interesting
@@ -16,8 +20,4 @@ class InterestingsController < ApplicationController
   end
 
   private
-
-  def interesting_params
-    params.require(:interesting).permit(:interest_id, :interestable_id, :interestable_type)
-  end
 end
