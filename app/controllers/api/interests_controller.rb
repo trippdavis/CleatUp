@@ -1,7 +1,7 @@
 class Api::InterestsController < ApplicationController
   def index
     @interests = Interest.all
-    render json: @interests
+    render "index"
   end
 
   def show

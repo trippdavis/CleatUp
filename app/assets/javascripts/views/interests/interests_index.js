@@ -1,6 +1,7 @@
 CleatUp.Views.InterestsIndex = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.collection, "sync", this.preselectInterests);
   },
 
   events: {
@@ -14,6 +15,14 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
     var content = this.template({ interests: this.collection });
     this.$el.html(content);
     return this;
+  },
+
+  preselectInterests: function () {
+    this.prevInterests = [];
+    this.collection.where({ user_interest: true }).forEach(function (interest) {
+      this.prevInterests.push(interest.id);
+      $('button[data-id="' + interest.id + '"]').toggleClass("btn-default btn-success");
+    }.bind(this));
   },
 
   handleClick: function (event) {
