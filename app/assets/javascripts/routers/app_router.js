@@ -5,13 +5,22 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   routes: {
-    "": "landing",
+    "": "interestsIndex",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/new": "eventNew",
     "groups/:id": "groupShow",
     "events/:id": "eventShow",
     "events/:id/edit": "eventEdit",
+  },
+
+  interestsIndex: function () {
+    var interests = new CleatUp.Collections.Interests();
+    interests.fetch();
+    var view = new CleatUp.Views.InterestsIndex({
+      collection: interests
+    });
+    this._swapView(view);
   },
 
   landing: function () {

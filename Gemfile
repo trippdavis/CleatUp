@@ -16,6 +16,7 @@ gem 'bcrypt'
 gem 'annotate'
 gem 'backbone-on-rails'
 gem 'ejs'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'

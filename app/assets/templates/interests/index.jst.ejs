@@ -1,0 +1,6 @@
+<h3>Interests:</h3>
+
+<% interests.each(function (interest) { %>
+  <% var topic = interest.escape("topic") %>
+  <button id="<%= topic %>" class="btn btn-default"><%= topic %></button>
+<% }) %>
