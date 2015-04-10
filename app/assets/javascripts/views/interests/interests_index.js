@@ -18,9 +18,9 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
   },
 
   preselectInterests: function () {
-    this.prevInterests = [];
+    this.prevInterestIDs = [];
     this.collection.where({ user_interest: true }).forEach(function (interest) {
-      this.prevInterests.push(interest.id);
+      this.prevInterestIDs.push(interest.id);
       $('button[data-id="' + interest.id + '"]').toggleClass("btn-default btn-success");
     }.bind(this));
   },
@@ -32,17 +32,42 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
 
   submitInterests: function () {
     buttons = $(".btn-success");
+    this.updatedInterestIDs = [];
     buttons.each(function (i, button) {
-      var interest_id = $(button).data("id");
+      this.updatedInterestIDs.push($(button).data("id"));
+    }.bind(this));
+
+    var newInterestIDs = _.difference(this.updatedInterestIDs, this.prevInterestIDs);
+    var oldInterestIDs = _.difference(this.prevInterestIDs, this.updatedInterestIDs);
+
+    this.addInterests(newInterestIDs);
+    this.destroyInterests(oldInterestIDs);
+    Backbone.history.navigate("", { trigger: true });
+  },
+
+  addInterests: function (newInterestIDs) {
+    newInterestIDs.forEach( function (interestID) {
       $.ajax({
         url: "/interestings",
         type: "POST",
         data: {
-          interest_id: interest_id,
+          interest_id: interestID,
           type: "User"
         }
       });
     });
-    Backbone.history.navigate("", { trigger: true });
+  },
+
+  destroyInterests: function (oldInterestIDs) {
+    oldInterestIDs.forEach( function (interestID) {
+      $.ajax({
+        url: "/interestings/1",
+        type: "DELETE",
+        data: {
+          interest_id: interestID,
+          type: "User"
+        }
+      });
+    });
   }
 });

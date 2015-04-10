@@ -14,7 +14,12 @@ class InterestingsController < ApplicationController
   end
 
   def destroy
-    @interestings = Interesting.find(params[:id])
+    @interesting = Interesting.where(
+      interest_id: params[:interest_id],
+      interestable_id: current_user.id,
+      interestable_type: params[:type]
+    ).first
+
     @interesting.destroy
     render json: @interesting
   end
