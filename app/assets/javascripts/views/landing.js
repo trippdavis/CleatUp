@@ -1,11 +1,17 @@
 CleatUp.Views.Landing = Backbone.View.extend({
+  initialize: function () {
+    this.interests = new CleatUp.Collections.Interests();
+    this.myEvents = new CleatUp.Collections.Events();
+  },
+
   template: JST["landing"],
 
   events: {
     "click .groups": "switchLanding",
     "click .events": "switchLanding",
     "click .new-group": "newGroup",
-    "click .add-interests": "addInterests"
+    "click .add-interests": "addInterests",
+    "click .dropdown-item": "showInterest"
   },
 
   render: function () {
@@ -20,6 +26,16 @@ CleatUp.Views.Landing = Backbone.View.extend({
     Backbone.history.navigate("/interests/user", { trigger: true });
   },
 
+  showInterest: function (event) {
+    var interest_id = $(event.target).data("interest-id");
+    var view = new CleatUp.Views.EventsIndex({
+      collection: this.myEvents,
+      type: "interest",
+      interest_id: interest_id
+    });
+    this._swapLanding(view);
+  },
+
   switchLanding: function (event) {
     $(event.target).prop("disabled", true);
     if ($(event.target).hasClass("events")) {
@@ -32,7 +48,9 @@ CleatUp.Views.Landing = Backbone.View.extend({
   },
 
   dropdown: function () {
-    var view = new CleatUp.Views.Dropdown();
+    var view = new CleatUp.Views.Dropdown({
+      collection: this.interests
+    });
     this.$el.find(".dropdown-bar").html(view.render().$el);
   },
 

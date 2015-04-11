@@ -15,6 +15,8 @@ class Api::EventsController < ApplicationController
         users: { id: current_user.id },
         group_id: current_user.groups_joined.map(&:id)
         )
+    elsif type == "interest"
+      events = Event.includes(:interests).where(interests: { id: params[:interest_id] })
     else
       events = Event.all
     end

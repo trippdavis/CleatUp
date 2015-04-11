@@ -19,5 +19,5 @@ class Event < ActiveRecord::Base
   has_one :organizer, through: :group, source: :organizer
   has_many :reservations, class_name: "EventReservation"
   has_many :reservers, through: :reservations, source: :reserver
-
+  has_many :interests, through: :group, source: :interests
 end

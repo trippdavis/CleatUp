@@ -5,7 +5,11 @@
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
     <% interests.each(function (interest) { %>
-      <li><%= interest.escape("topic") %></li>
+      <li>
+        <button data-interest-id="<%= interest.id %>" class="dropdown-item">
+          <%= interest.escape("topic") %>
+        </button>
+      </li>
     <% }) %>
   </ul>
 </div>
