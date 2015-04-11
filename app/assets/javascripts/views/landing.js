@@ -2,6 +2,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
   initialize: function () {
     this.interests = new CleatUp.Collections.Interests();
     this.myEvents = new CleatUp.Collections.Events();
+    this.groups = new CleatUp.Collections.Groups();
   },
 
   template: JST["landing"],
@@ -19,6 +20,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
     this.$el.html(content);
     this.groupsLanding();
     this.dropdown();
+    this.currentClass = "groups";
     return this;
   },
 
@@ -26,8 +28,29 @@ CleatUp.Views.Landing = Backbone.View.extend({
     Backbone.history.navigate("/interests/user", { trigger: true });
   },
 
+  swapClass: function () {
+    this.currentClass = (this.currentClass === "groups" ? "events" : "groups");
+  },
+
   showInterest: function (event) {
     var interest_id = $(event.target).data("interest-id");
+    if (this.currentClass === "groups") {
+      this.interestedGroups(interest_id);
+    } else {
+      this.interestedEvents(interest_id);
+    }
+  },
+
+  interestedGroups: function (interest_id) {
+    var view = new CleatUp.Views.GroupsIndex({
+      collection: this.groups,
+      type: "interest",
+      interest_id: interest_id
+    });
+    this._swapLanding(view);
+  },
+
+  interestedEvents: function (interest_id) {
     var view = new CleatUp.Views.EventsIndex({
       collection: this.myEvents,
       type: "interest",
@@ -45,6 +68,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
       this.groupsLanding();
       $(".events").prop("disabled", false);
     }
+    this.swapClass();
   },
 
   dropdown: function () {
