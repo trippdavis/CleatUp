@@ -13,7 +13,6 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.$currentButton = this.$el.find(".reserved-events");
-    this.$currentButton.prop("disbled", true);
     this.reservedEvents();
     return this;
   },

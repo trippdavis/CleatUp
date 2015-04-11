@@ -1,6 +1,5 @@
 CleatUp.Views.GroupsIndex = Backbone.View.extend({
   initialize: function (options) {
-    this.collection = new CleatUp.Collections.Groups();
     var type = options.type;
     this.collection.fetch({ data: { type: type } });
     this.listenTo(this.collection, "sync add", this.render);
