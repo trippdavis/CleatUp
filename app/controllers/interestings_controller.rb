@@ -3,7 +3,7 @@ class InterestingsController < ApplicationController
     @interesting = Interesting.new(
       interest_id: params[:interest_id],
       interestable_id: current_user.id,
-      interestable_type: params[:type]
+      interestable_type: params[:type].capitalize
     )
 
     if @interesting.save
@@ -17,7 +17,7 @@ class InterestingsController < ApplicationController
     @interesting = Interesting.where(
       interest_id: params[:interest_id],
       interestable_id: current_user.id,
-      interestable_type: params[:type]
+      interestable_type: params[:type].capitalize
     ).first
 
     @interesting.destroy

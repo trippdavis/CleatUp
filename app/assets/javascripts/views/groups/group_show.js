@@ -9,6 +9,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     "click .delete-group": "destroy",
     "click .edit-group": "edit",
     "click .create-event": "newEvent",
+    "click .edit-interests": "editInterests",
     "click .join-group": "joinGroup",
     "click .leave-group": "leaveGroup"
   },
@@ -23,6 +24,10 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     }
 
     return this;
+  },
+
+  editInterests: function () {
+    Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
   },
 
   newEvent: function (event) {

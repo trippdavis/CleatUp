@@ -16,7 +16,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
   },
 
   addInterests: function () {
-    Backbone.history.navigate("/interests", { trigger: true });
+    Backbone.history.navigate("/interests/user", { trigger: true });
   },
 
   switchLanding: function (event) {
