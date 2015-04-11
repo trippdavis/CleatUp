@@ -12,6 +12,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.groupsLanding();
+    this.dropdown();
     return this;
   },
 
@@ -28,6 +29,11 @@ CleatUp.Views.Landing = Backbone.View.extend({
       this.groupsLanding();
       $(".events").prop("disabled", false);
     }
+  },
+
+  dropdown: function () {
+    var view = new CleatUp.Views.Dropdown();
+    this.$el.find(".dropdown-bar").html(view.render().$el);
   },
 
   groupsLanding: function () {

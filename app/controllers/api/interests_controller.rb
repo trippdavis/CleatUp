@@ -2,7 +2,9 @@ class Api::InterestsController < ApplicationController
   def index
     @interests = Interest.all
 
-    if params[:interestable_type] == "user"
+    if params[:type] == "normal"
+      render json: @interests
+    elsif params[:interestable_type] == "user"
       @object = current_user
       render "index"
     else
