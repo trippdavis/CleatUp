@@ -7,6 +7,7 @@ CleatUp.Views.Dropdown = Backbone.View.extend({
   template: JST["dropdown"],
 
   render: function () {
+    debugger
     var content = this.template({ interests: this.collection });
     this.$el.html(content);
     return this;

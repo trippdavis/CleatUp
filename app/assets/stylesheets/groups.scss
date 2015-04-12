@@ -1,3 +1,11 @@
 // Place all the styles related to the groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.group-item {
+  background: aqua;
+  width: 32%;
+  float: left;
+  border: 1px solid black;
+  margin: 0.666%; // first: top/bottom, second: right/left
+}
