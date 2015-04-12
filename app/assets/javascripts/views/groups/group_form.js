@@ -1,6 +1,7 @@
 CleatUp.Views.GroupForm = Backbone.View.extend({
   initialize: function (options) {
     this.formType = options.formType;
+    debugger
     this.listenTo(this.model, "sync", this.setupFill);
   },
 

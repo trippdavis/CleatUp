@@ -38,7 +38,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   eventNew: function (group_id) {
     var event = new CleatUp.Models.Event();
-    event.fetch();
+    // event.fetch();
     // var group = new CleatUp.Models.Group({ id: group_id });
     // group.fetch();
     var view = new CleatUp.Views.EventForm({
@@ -65,7 +65,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   groupNew: function () {
     var group = new CleatUp.Models.Group();
-    group.fetch();
+    // group.fetch();
     var view = new CleatUp.Views.GroupForm({
       formType: "New",
       model: group
