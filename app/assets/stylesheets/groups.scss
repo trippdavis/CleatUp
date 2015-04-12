@@ -3,11 +3,26 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .group-item {
+  position: relative;
   width: 32%;
   float: left;
   margin: 0.666%; // first: top/bottom, second: right/left
 }
 
+.group-item:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .group-image {
   width: 100%;
+}
+
+.group-item-text {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  color: white;
+  font-size: 25px;
 }
