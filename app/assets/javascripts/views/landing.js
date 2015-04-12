@@ -10,8 +10,6 @@ CleatUp.Views.Landing = Backbone.View.extend({
   events: {
     "click .groups": "switchLanding",
     "click .events": "switchLanding",
-    "click .new-group": "newGroup",
-    "click .add-interests": "addInterests",
     "click .dropdown-item": "showInterest"
   },
 
@@ -22,10 +20,6 @@ CleatUp.Views.Landing = Backbone.View.extend({
     this.dropdown();
     this.currentClass = "groups";
     return this;
-  },
-
-  addInterests: function () {
-    Backbone.history.navigate("/interests/user", { trigger: true });
   },
 
   swapClass: function () {
@@ -86,11 +80,6 @@ CleatUp.Views.Landing = Backbone.View.extend({
   eventsLanding: function () {
     var view = new CleatUp.Views.EventsLanding();
     this._swapLanding(view);
-  },
-
-  newGroup: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("#/groups/new");
   },
 
   _swapLanding: function (view) {
