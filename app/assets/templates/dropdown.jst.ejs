@@ -1,5 +1,6 @@
 <button class="btn dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Interests <span class="caret"></span></button>
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  <li><button class="all-interests">All</button></li>
   <% interests.each(function (interest) { %>
     <li>
       <button data-interest-id="<%= interest.id %>" class="dropdown-item">

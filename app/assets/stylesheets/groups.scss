@@ -6,7 +6,11 @@
   position: relative;
   width: 32%;
   float: left;
-  margin: 0.666%; // first: top/bottom, second: right/left
+  margin: 0.666%;
+}
+
+.group-item:hover {
+  cursor: pointer;
 }
 
 .group-item:after {

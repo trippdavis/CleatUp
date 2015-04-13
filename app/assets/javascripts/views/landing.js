@@ -10,7 +10,8 @@ CleatUp.Views.Landing = Backbone.View.extend({
   events: {
     "click .groups": "switchLanding",
     "click .events": "switchLanding",
-    "click .dropdown-item": "showInterest"
+    "click .dropdown-item": "showInterest",
+    "click .all-interests": "allLanding"
   },
 
   render: function () {
@@ -84,6 +85,14 @@ CleatUp.Views.Landing = Backbone.View.extend({
       collection: this.myEvents
     });
     this._swapLanding(view);
+  },
+
+  allLanding: function () {
+    if ($(".groups").is(":disabled")) {
+      this.groupsLanding();
+    } else {
+      this.eventsLanding();
+    }
   },
 
   _swapLanding: function (view) {
