@@ -8,7 +8,7 @@ CleatUp.Views.EventsIndex = Backbone.View.extend({
         interest_id: interest_id
       }
     });
-    this.listenTo(this.collection, "sync add", this.render);
+    this.listenTo(this.collection, "sync", this.addEventItems);
   },
 
   template: JST['events/index'],
@@ -17,5 +17,13 @@ CleatUp.Views.EventsIndex = Backbone.View.extend({
     var content = this.template({ events: this.collection });
     this.$el.html(content);
     return this;
+  },
+
+  addEventItems: function () {
+    $div = $(".event-items");
+    this.collection.each(function (event) {
+      var view = new CleatUp.Views.EventItem({ model: event });
+      $div.append(view.render().$el);
+    });
   }
 });
