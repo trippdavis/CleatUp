@@ -1,8 +1,8 @@
 CleatUp.Views.Landing = Backbone.View.extend({
-  initialize: function () {
-    this.interests = new CleatUp.Collections.Interests();
-    this.myEvents = new CleatUp.Collections.Events();
-    this.groups = new CleatUp.Collections.Groups();
+  initialize: function (options) {
+    this.interests = options.interests;
+    this.myEvents = options.myEvents;
+    this.groups = options.groups;
   },
 
   template: JST["landing"],
@@ -73,12 +73,16 @@ CleatUp.Views.Landing = Backbone.View.extend({
   },
 
   groupsLanding: function () {
-    var view = new CleatUp.Views.GroupsLanding();
+    var view = new CleatUp.Views.GroupsLanding({
+      collection: this.groups
+    });
     this._swapLanding(view);
   },
 
   eventsLanding: function () {
-    var view = new CleatUp.Views.EventsLanding();
+    var view = new CleatUp.Views.EventsLanding({
+      collection: this.myEvents
+    });
     this._swapLanding(view);
   },
 

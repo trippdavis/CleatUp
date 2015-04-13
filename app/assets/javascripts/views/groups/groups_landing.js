@@ -1,8 +1,4 @@
 CleatUp.Views.GroupsLanding = Backbone.View.extend({
-  initialize: function () {
-    this.collection = new CleatUp.Collections.Groups();
-  },
-
   template: JST['groups/landing'],
 
   render: function () {

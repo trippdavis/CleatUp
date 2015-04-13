@@ -1,8 +1,4 @@
 CleatUp.Views.EventsLanding = Backbone.View.extend({
-  initialize: function () {
-    this.collection = new CleatUp.Collections.Events();
-  },
-
   template: JST['events/landing'],
 
   events: {

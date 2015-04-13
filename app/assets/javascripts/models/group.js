@@ -6,6 +6,7 @@ CleatUp.Models.Group = Backbone.Model.extend({
   urlRoot: "/api/groups",
 
   parse: function (payload) {
+    debugger
     if (payload.events) {
       this.events = payload.events;
 
@@ -24,9 +25,9 @@ CleatUp.Models.Group = Backbone.Model.extend({
     return payload;
   },
 
-  // events: function () {
-  //   this._groupEvents = this._groupEevents ||
-  //     new CleatUp.Collections.Events();
-  //   return this._groupEvents;
-  // }
+  groupEvents: function () {
+    this._groupEvents = this._groupEevents ||
+      new CleatUp.Collections.Events();
+    return this._groupEvents;
+  }
 });

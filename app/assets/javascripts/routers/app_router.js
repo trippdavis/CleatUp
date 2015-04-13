@@ -3,7 +3,9 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.$subEl = $("#sub-content");
     this.$banner = $("#landing-banner");
-    // this.collection = new CleatUp.Collections.Groups();
+    this.groups = new CleatUp.Collections.Groups();
+    this.myEvents = new CleatUp.Collections.Events();
+    this.interests = new CleatUp.Collections.Interests();
   },
 
   routes: {
@@ -19,14 +21,13 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   interestsIndex: function (type, id) {
-    var interests = new CleatUp.Collections.Interests();
-    interests.fetch({ data: {
+    this.interests.fetch({ data: {
         interestable_type: type,
         group_id: id
       }
     });
     var view = new CleatUp.Views.InterestsIndex({
-      collection: interests,
+      collection: this.interests,
       type: type,
       group_id: id
     });
@@ -34,16 +35,18 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   landing: function () {
-    var view = new CleatUp.Views.Landing();
+    debugger
+    var view = new CleatUp.Views.Landing({
+      groups: this.groups,
+      myEvents: this.myEvents,
+      interests: this.interests
+    });
     this._swapView(view);
     this.$banner.removeClass("invisible-banner");
   },
 
   eventNew: function (group_id) {
     var event = new CleatUp.Models.Event();
-    // event.fetch();
-    // var group = new CleatUp.Models.Group({ id: group_id });
-    // group.fetch();
     var view = new CleatUp.Views.EventForm({
       formType: "New",
       model: event,
@@ -53,22 +56,23 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   groupShow: function (id) {
-    var group = new CleatUp.Models.Group({ id: id });
-    group.fetch();
-    var view = new CleatUp.Views.GroupShow({ model: group });
+    var group = this.groups.getOrFetch(id);
+    var view = new CleatUp.Views.GroupShow({
+      model: group
+    });
     this._swapView(view);
   },
 
   eventShow: function (id) {
-    var event = new CleatUp.Models.Event({ id: id });
-    event.fetch();
-    var view = new CleatUp.Views.EventShow({ model: event });
+    var event = this.myEvents.getOrFetch(id);
+    var view = new CleatUp.Views.EventShow({
+      model: event
+    });
     this._swapView(view);
   },
 
   groupNew: function () {
     var group = new CleatUp.Models.Group();
-    // group.fetch();
     var view = new CleatUp.Views.GroupForm({
       formType: "New",
       model: group
@@ -77,8 +81,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   groupEdit: function (id) {
-    var group = new CleatUp.Models.Group({ id: id });
-    group.fetch();
+    var group = this.groups.getOrFetch(id);
     var view = new CleatUp.Views.GroupForm({
       formType: "Edit",
       model: group
@@ -87,8 +90,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   eventEdit: function (id) {
-    var event = new CleatUp.Models.Event({ id: id });
-    event.fetch();
+    var event = this.myEvents.getOrFetch(id);
     var view = new CleatUp.Views.EventForm({
       formType: "Edit",
       model: event

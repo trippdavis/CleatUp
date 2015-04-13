@@ -71,7 +71,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     }
   },
 
-
   // addEvents: function () {
   //   var view = new CleatUp.Views.GroupEventsIndex({
   //     collection: this.model.comments()
