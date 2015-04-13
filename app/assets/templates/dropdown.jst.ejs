@@ -1,15 +1,10 @@
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    Interests
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <% interests.each(function (interest) { %>
-      <li>
-        <button data-interest-id="<%= interest.id %>" class="dropdown-item">
-          <%= interest.escape("topic") %>
-        </button>
-      </li>
-    <% }) %>
-  </ul>
-</div>
+<button class="btn dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Interests <span class="caret"></span></button>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+  <% interests.each(function (interest) { %>
+    <li>
+      <button data-interest-id="<%= interest.id %>" class="dropdown-item">
+        <%= interest.escape("topic") %>
+      </button>
+    </li>
+  <% }) %>
+</ul>

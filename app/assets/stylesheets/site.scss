@@ -6,11 +6,24 @@
   text-align: center;
 }
 
-.jumbotron-landing {
-  background-image: url(http://i61.tinypic.com/2rptf9f.png);
-  height: 500px;
+#landing-banner {
+  background: khaki;
 }
 
-.invisible-jumbotron {
+.invisible-banner {
   display: none;
+}
+
+.banner-image {
+  margin: 30px;
+}
+
+.landing-navbar-collapse {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.landing-navbar {
+  background: black;
+  top: -25px;
 }

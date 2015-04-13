@@ -69,7 +69,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
     var view = new CleatUp.Views.Dropdown({
       collection: this.interests
     });
-    this.$el.find(".dropdown-bar").html(view.render().$el);
+    this.$el.find(".interest-dropdown").html(view.render().$el);
   },
 
   groupsLanding: function () {

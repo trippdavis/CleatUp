@@ -4,6 +4,10 @@ CleatUp.Views.Dropdown = Backbone.View.extend({
     this.listenTo(this.collection, "sync", this.render);
   },
 
+  tagType: "li",
+
+  className: "dropdown",
+
   template: JST["dropdown"],
 
   render: function () {
