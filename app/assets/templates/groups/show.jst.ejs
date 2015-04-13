@@ -9,6 +9,7 @@
       <button class="edit-group btn btn-red">Edit</button>
       <button class="delete-group btn btn-red">Delete</button>
       <button class="edit-interests btn btn-red">Edit Interests</button>
+      <button class="create-event btn btn-red">Create Event!</button>
     <% } else { %>
       <button id="joined" class="join-group btn btn-red">Join Us!</button>
     <% } %>
@@ -22,7 +23,7 @@
 
   <% if (group.organizer){ %>
     <div class="group-organizer">
-      Organized By:
+      Organizer:
       <br>
       <%= group.organizer.username %>
     </div>
@@ -30,24 +31,15 @@
 </div>
 
 <div class="group-body">
-  <div>
+  <div class="group-description">
     <%= group.escape('description') %>
   </div>
 
-  <hr>
-
-  <div class="group-events">
-    <h4>Events:</h4>
-    <ul>
-      <% if (group.events) { %>
-        <% group.events.forEach(function (event) { %>
-          <li><a href="#/events/<%= event.id %>"><%= event.title %></a></li>
-        <% }) %>
-      <% } %>
-    </ul>
-
-    <% if (group.get('owned')) { %>
-      <button class="create-event">Create Event!</button>
-    <% } %>
-  </div>
+  <% if (group.events) { %>
+    <% group.events.forEach(function (event) { %>
+      <div class="group-event">
+        <%= event.title %>
+      </div>
+    <% }) %>
+  <% } %>
 </div>

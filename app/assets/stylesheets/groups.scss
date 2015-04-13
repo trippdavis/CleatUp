@@ -83,9 +83,23 @@
 
 .group-body {
   width: 78%;
+  float: right;
+}
+
+.group-description {
   border: 2px solid red;
   border-radius: 5px;
-  float: right;
+  padding: 10px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.group-event {
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 20px;
 }
 
 .group-organizer {
