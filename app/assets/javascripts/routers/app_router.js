@@ -1,6 +1,8 @@
 CleatUp.Routers.App = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this.$subEl = $("#sub-content");
+    this.$banner = $("#landing-banner");
     // this.collection = new CleatUp.Collections.Groups();
   },
 
@@ -34,6 +36,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
   landing: function () {
     var view = new CleatUp.Views.Landing();
     this._swapView(view);
+    this.$banner.removeClass("invisible-jumbotron");
   },
 
   eventNew: function (group_id) {
@@ -98,7 +101,8 @@ CleatUp.Routers.App = Backbone.Router.extend({
       this.currentView.remove();
     }
 
-    this.$rootEl.html(view.render().$el);
+    this.$banner.addClass("invisible-jumbotron");
+    this.$subEl.html(view.render().$el);
     this.currentView = view;
   }
 });
