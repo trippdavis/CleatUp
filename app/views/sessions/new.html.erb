@@ -35,10 +35,31 @@
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
 
+    <form action="/session" method="post">
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
+
+      <input
+        type="hidden"
+        name="user[username]"
+        value="username1">
+
+      <input
+        type="hidden"
+        name="user[password]"
+        value="password1">
+
+      <button type="submit" class="btn btn-primary">Demo user</button>
+    </form>
+
     <div>
       Need an account?
       <br>
-      <%= button_to "Sign up", new_user_url, method: :get %>
+      <form action="<%= new_user_url %>" method="get">
+        <button type="submit" class="btn btn-primary">Sign up</button>
+      </form>
     </div>
   </div>
 </div>

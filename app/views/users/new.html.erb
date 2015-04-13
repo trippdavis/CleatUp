@@ -39,7 +39,9 @@
     <div>
       Already have an account?
       <br>
-      <%= button_to "Log in", new_session_url, method: :get %>
+      <form action="<%= new_session_url %>" method="get">
+        <button type="submit" class="btn btn-primary">Log in</button>
+      </form>
     </div>
   </div>
 </div>
