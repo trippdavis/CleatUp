@@ -1,42 +1,53 @@
-<h3><%= group.escape('title') %></h3>
-
-<% if (group.organizer){ %>
-  <div>
-    Organized By: <%= group.organizer.username %>
+<div class="group-banner">
+  <div class="group-banner-title">
+    <h1><%= group.escape('title') %></h1>
   </div>
-<% } %>
-
-<hr>
-
-<div>
-  <%= group.escape('description') %>
+</div>
+<div class="group-navbar">
+  <div class="btn-group group-banner-buttons">
+    <% if (group.get('owned')) { %>
+      <button class="edit-group btn btn-red">Edit</button>
+      <button class="delete-group btn btn-red">Delete</button>
+      <button class="edit-interests btn btn-red">Edit Interests</button>
+    <% } else { %>
+      <button id="joined" class="join-group btn btn-red">Join Us!</button>
+    <% } %>
+  </div>
 </div>
 
-<hr>
+<div class="group-sidebar">
+  <img class="group-image" src="https://pbs.twimg.com/profile_images/378800000864623520/IDMXMmPB.jpeg">
 
-<% if (group.get('owned')) { %>
-  <button class="edit-group">Edit</button>
-  <button class="delete-group">Delete</button>
-  <button class="edit-interests">Edit Interests</button>
-<% } else { %>
-  <button id="joined" class="join-group">Join Us!</button>
-<% } %>
+  <hr>
 
-<button class="return-to-landing">Back</button>
-
-<hr>
-
-<div class="group-events">
-  <h4>Events:</h4>
-  <ul>
-    <% if (group.events) { %>
-      <% group.events.forEach(function (event) { %>
-        <li><a href="#/events/<%= event.id %>"><%= event.title %></a></li>
-      <% }) %>
-    <% } %>
-  </ul>
-
-  <% if (group.get('owned')) { %>
-    <button class="create-event">Create Event!</button>
+  <% if (group.organizer){ %>
+    <div class="group-organizer">
+      Organized By:
+      <br>
+      <%= group.organizer.username %>
+    </div>
   <% } %>
+</div>
+
+<div class="group-body">
+  <div>
+    <%= group.escape('description') %>
+  </div>
+
+  <hr>
+
+  <div class="group-events">
+    <h4>Events:</h4>
+    <ul>
+      <% if (group.events) { %>
+        <% group.events.forEach(function (event) { %>
+          <li><a href="#/events/<%= event.id %>"><%= event.title %></a></li>
+        <% }) %>
+      <% } %>
+    </ul>
+
+    <% if (group.get('owned')) { %>
+      <button class="create-event">Create Event!</button>
+    <% } %>
+  </div>
 </div>

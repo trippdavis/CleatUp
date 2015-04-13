@@ -18,12 +18,18 @@
   margin: 30px;
 }
 
-.landing-navbar-collapse {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
 .landing-navbar {
   background: black;
   top: -25px;
+  border-radius: 5px;
+}
+
+.interest-dropdown {
+  float: left;
+  margin: 8px;
+}
+
+.group-event-buttons {
+  float: right;
+  margin: 8px;
 }
