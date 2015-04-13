@@ -1,34 +1,45 @@
-<div>
-  Already have an account?
-  <br>
-  <%= button_to "Log in", new_session_url, method: :get %>
-</div>
+<div class="enter-background">
+  <div class="new-user col-md-4 col-md-offset-4">
+    <h3>Sign up</h3>
 
-<h3>Sign up</h3>
-
-<% if flash[:errors] %>
-  <ul>
-    <% flash[:errors].each do |err| %>
-      <li><%= err %></li>
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |err| %>
+          <li><%= err %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
 
-<form action="/users" method="post">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+    <form action="/users" method="post">
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%= form_authenticity_token %>">
 
-  <label>
-    Username:
-    <input type="text" name="user[username]" value="<%= @user.username %>">
-  </label>
+      <div class="form-group">
+        <input
+          type="text"
+          name="user[username]"
+          class="form-control"
+          placeholder="Enter username"
+          value="<%= @user.username %>">
+      </div>
 
-  <label>
-    Password:
-    <input type="password" name="user[password]">
-  </label>
+      <div>
+        <input
+          type="password"
+          name="user[password]"
+          class="form-control"
+          placeholder="Enter password">
+      </div>
 
-  <input type="submit" value="Sign up">
-</form>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+
+    <div>
+      Already have an account?
+      <br>
+      <%= button_to "Log in", new_session_url, method: :get %>
+    </div>
+  </div>
+</div>
