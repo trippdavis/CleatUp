@@ -81,7 +81,7 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
   },
 
   fillForm: function (title, description) {
-    this.$el.find(".group-title").val(title);
-    this.$el.find(".group-description").val(description);
+    this.$el.find(".form-group-title").val(title);
+    this.$el.find(".form-group-description").val(description);
   }
 });
