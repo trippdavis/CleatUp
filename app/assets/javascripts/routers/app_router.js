@@ -35,7 +35,6 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   landing: function () {
-    debugger
     var view = new CleatUp.Views.Landing({
       groups: this.groups,
       myEvents: this.myEvents,

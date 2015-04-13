@@ -8,22 +8,19 @@ CleatUp.Views.GroupsIndex = Backbone.View.extend({
         interest_id: interest_id
       }
     });
-    this.listenTo(this.collection, "sync", this.addGroupItems);
+    this.listenTo(this.collection, "sync", this.render);
   },
 
   template: JST['groups/index'],
 
   render: function () {
-    var content = this.template({ groups: this.collection });
+    var content = this.template();
     this.$el.html(content);
-    return this;
-  },
-
-  addGroupItems: function () {
     var $div = $(".group-items");
     this.collection.each(function (group) {
       var view = new CleatUp.Views.GroupItem({ model: group });
       $div.append(view.render().$el);
     });
-  }
+    return this;
+  },
 });
