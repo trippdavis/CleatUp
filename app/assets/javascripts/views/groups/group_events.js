@@ -8,6 +8,12 @@ CleatUp.Views.GroupEvents = Backbone.View.extend({
   render: function () {
     var content = this.template({ events: this.collection });
     this.$el.html(content);
+
+    this.collection.each(function (event) {
+      var view = new CleatUp.Views.GroupEvent({ model: event });
+      this.$el.find(".group-events").append(view.render().$el);
+    }.bind(this));
+
     return this;
   }
 });
