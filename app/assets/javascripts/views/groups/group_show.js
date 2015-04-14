@@ -1,10 +1,12 @@
 CleatUp.Views.GroupShow = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
-    this.event = options.event;
+    this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
     if (this.type === "group") {
       this.listenTo(this.model, "sync", this.addEvents);
+    } else {
+      this.listenTo(this.model, "sync", this.showEvent);
     }
   },
 
@@ -26,9 +28,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     if (this.model.get("membership_id")) {
       this.toggleButton();
     }
-    if (this.type === "event") {
-      this.showEvent();
-    }
     return this;
   },
 
@@ -48,6 +47,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   showEvent: function () {
+    this.event = this.collection.getOrFetch(this.event_id);
     var view = new CleatUp.Views.EventShow({ model: this.event });
     this.$el.find(".group-body").html(view.$el);
   },

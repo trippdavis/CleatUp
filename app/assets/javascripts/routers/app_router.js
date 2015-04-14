@@ -67,10 +67,10 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   eventShow: function (group_id, event_id) {
     var group = this.groups.getOrFetch(group_id);
-    var event = this.myEvents.getOrFetch(event_id);
     var view = new CleatUp.Views.GroupShow({
+      collection: this.myEvents,
       model: group,
-      event: event,
+      event_id: event_id,
       type: "event"
     });
     this._swapView(view);

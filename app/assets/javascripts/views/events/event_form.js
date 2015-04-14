@@ -44,10 +44,11 @@ CleatUp.Views.EventForm = Backbone.View.extend({
     this.model.set(data);
     this.model.save({}, {
       success: function () {
-        Backbone.history.navigate("#/events/" + this.model.id, { trigger: true });
+        Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + this.model.id, { trigger: true });
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {
+          debugger
           Backbone.history.navigate("#/events/" + model.id, { trigger: true });
         } else {
           this.handleError(model, response);
@@ -58,12 +59,12 @@ CleatUp.Views.EventForm = Backbone.View.extend({
 
   toShow: function (event) {
     event.preventDefault();
-    Backbone.history.navigate("#/events/" + this.model.id, { trigger: true });
+    Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + this.model.id, { trigger: true });
   },
 
   toIndex: function (event) {
     event.preventDefault();
-    Backbone.history.navigate("", { trigger: true });
+    Backbone.history.navigate("#groups/" + this.group_id, { trigger: true });
   },
 
   handleError: function (model, response) {
