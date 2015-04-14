@@ -46,6 +46,7 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
 
     this.addInterests(newInterestIDs);
     this.destroyInterests(oldInterestIDs);
+
     Backbone.history.navigate("", { trigger: true });
   },
 
