@@ -4,7 +4,6 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   },
 
   events: {
-    "click .return-to-landing": "toLanding",
     "click .delete-event": "destroy",
     "click .edit-event": "edit",
     "click .join-event": "joinEvent",
@@ -62,11 +61,6 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   edit: function () {
     event.preventDefault();
     Backbone.history.navigate("events/" + this.model.id + "/edit", { trigger: true });
-  },
-
-  toLanding: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("", { trigger: true });
   },
 
   destroy: function (event) {

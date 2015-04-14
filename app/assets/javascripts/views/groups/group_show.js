@@ -15,7 +15,8 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     "click .create-event": "newEvent",
     "click .edit-interests": "editInterests",
     "click .join-group": "joinGroup",
-    "click .leave-group": "leaveGroup"
+    "click .leave-group": "leaveGroup",
+    "click .group-banner": "groupHome"
   },
 
   template: JST['groups/show'],
@@ -30,6 +31,10 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       this.showEvent();
     }
     return this;
+  },
+
+  groupHome: function () {
+    Backbone.history.navigate("groups/" + this.model.id, { trigger: true });
   },
 
   addEvents: function () {

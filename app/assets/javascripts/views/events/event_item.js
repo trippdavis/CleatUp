@@ -12,6 +12,6 @@ CleatUp.Views.EventItem = Backbone.View.extend({
   },
 
   eventShow: function () {
-    Backbone.history.navigate("events/" + this.model.id, { trigger: true });
+    Backbone.history.navigate("groups/" + this.model.get("group_id") + "/events/" + this.model.id, { trigger: true });
   }
 });
