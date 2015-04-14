@@ -24,7 +24,7 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   },
 
   toggleButton: function () {
-    $button = $("#joined");
+    $button = $("#joined-event");
     $button.toggleClass("join-event");
     $button.toggleClass("leave-event");
     if ($button.text() === "Reserve Spot!") {

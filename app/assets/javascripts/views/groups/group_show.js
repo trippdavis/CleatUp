@@ -83,7 +83,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   toggleButton: function () {
-    $button = $("#joined");
+    $button = $("#joined-group");
     $button.toggleClass("join-group");
     $button.toggleClass("leave-group");
     if ($button.text() === "Join Us!") {
