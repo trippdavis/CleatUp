@@ -17,6 +17,8 @@ class Api::EventsController < ApplicationController
         )
     elsif type == "interest"
       events = Event.includes(:interests).where(interests: { id: params[:interest_id] })
+    elsif type == "group"
+      events = Event.where(group_id: params[:group_id])
     else
       events = Event.all
     end

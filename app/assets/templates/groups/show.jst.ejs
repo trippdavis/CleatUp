@@ -35,11 +35,5 @@
     <%= group.escape('description') %>
   </div>
 
-  <% if (group.events) { %>
-    <% group.events.forEach(function (event) { %>
-      <div class="group-event">
-        <%= event.title %>
-      </div>
-    <% }) %>
-  <% } %>
+  <ul class="group-events"></ul>
 </div>
