@@ -1,0 +1,7 @@
+<ul class="group-events">
+  <% if (events) { %>
+    <% events.forEach(function (event) { %>
+      <li><%= event.escape("title") %></li>
+    <% }) %>
+  <% } %>
+</ul>

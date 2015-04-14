@@ -1,7 +1,6 @@
 CleatUp.Views.GroupShow = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.collection, "sync", this.addEvents);
   },
 
   events: {
@@ -22,8 +21,19 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     if (this.model.get("membership_id")) {
       this.toggleButton();
     }
-
+    this.addEvents();
     return this;
+  },
+
+  addEvents: function () {
+    this.collection.fetch({
+      data: {
+        type: "group",
+        group_id: this.model.id
+      }
+    });
+    var view = new CleatUp.Views.GroupEvents({ collection: this.collection });
+    this.$el.find(".group-body").append(view.$el);
   },
 
   editInterests: function () {
@@ -70,19 +80,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       $button.text("Join Us!");
     }
   },
-
-  addEvents: function () {
-    this.collection.each(function (event) {
-      $(".group-events").append("<li>" + event.date + "</li>");
-    }.bind(this));
-  },
-
-  // addEvents: function () {
-  //   var view = new CleatUp.Views.GroupEventsIndex({
-  //     collection: this.model.comments()
-  //   });
-  //   this.$el.find(".group-events").html(view.render().$el);
-  // },
 
   edit: function (event) {
     event.preventDefault();
