@@ -9,7 +9,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   events: {
-    "click .return-to-landing": "toLanding",
     "click .delete-group": "destroy",
     "click .edit-group": "edit",
     "click .create-event": "newEvent",
@@ -101,11 +100,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   edit: function (event) {
     event.preventDefault();
     Backbone.history.navigate("groups/" + this.model.id + "/edit", { trigger: true });
-  },
-
-  toLanding: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("", { trigger: true });
   },
 
   destroy: function (event) {
