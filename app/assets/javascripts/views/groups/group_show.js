@@ -1,6 +1,7 @@
 CleatUp.Views.GroupShow = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync", this.addEvents);
   },
 
   events: {
@@ -21,7 +22,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     if (this.model.get("membership_id")) {
       this.toggleButton();
     }
-    this.addEvents();
     return this;
   },
 
