@@ -8,3 +8,11 @@
 .event-item:hover {
   cursor: pointer;
 }
+
+.event-show {
+  border: 2px solid red;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: left;
+}

@@ -3,6 +3,8 @@ CleatUp.Views.EventShow = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
   },
 
+  className: "event-show",
+
   events: {
     "click .delete-event": "destroy",
     "click .edit-event": "edit",
@@ -66,8 +68,8 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   destroy: function (event) {
     this.model.destroy({
       success: function () {
-        Backbone.history.navigate("", { trigger: true });
-      }
+        Backbone.history.navigate("groups/" + this.model.get("group_id"), { trigger: true });
+      }.bind(this)
     });
   }
 });

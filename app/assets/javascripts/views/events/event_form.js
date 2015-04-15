@@ -48,8 +48,7 @@ CleatUp.Views.EventForm = Backbone.View.extend({
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {
-          debugger
-          Backbone.history.navigate("#/events/" + model.id, { trigger: true });
+          Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + model.id, { trigger: true });
         } else {
           this.handleError(model, response);
         }
