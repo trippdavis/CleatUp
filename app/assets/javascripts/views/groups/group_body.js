@@ -53,14 +53,16 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   groupHome: function () {
-    this.$el.find(".group-body").html("<div class='group-description'>" + this.model.escape("description") + "</div>");
     this.collection.fetch({
       data: {
         type: "group",
         group_id: this.model.id
       }
     });
-    var view = new CleatUp.Views.GroupEvents({ collection: this.collection });
+    var view = new CleatUp.Views.GroupEvents({
+      model: this.model,
+      collection: this.collection
+    });
     this._swapBody(view);
   },
 

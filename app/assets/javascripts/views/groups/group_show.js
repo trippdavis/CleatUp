@@ -35,6 +35,16 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     return this;
   },
 
+  backHome: function () {
+    var view = new CleatUp.Views.GroupBody({
+      type: "group",
+      model: this.model,
+      collection: this.collection
+    });
+
+    this._addBody(view);
+  },
+
   newEvent: function () {
     var view = new CleatUp.Views.GroupBody({
       type: "event-new",

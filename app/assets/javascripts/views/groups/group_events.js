@@ -6,7 +6,7 @@ CleatUp.Views.GroupEvents = Backbone.View.extend({
   template: JST["groups/events"],
 
   render: function () {
-    var content = this.template({ events: this.collection });
+    var content = this.template({ group: this.model });
     this.$el.html(content);
 
     this.collection.each(function (event) {
