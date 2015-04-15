@@ -22,6 +22,7 @@ CleatUp.Views.EventForm = Backbone.View.extend({
     });
     this.$el.html(content);
     this.formSpecific();
+    this.setupFill();
     return this;
   },
 

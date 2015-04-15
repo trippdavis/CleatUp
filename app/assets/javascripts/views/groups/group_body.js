@@ -30,12 +30,11 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   clickEdit: function () {
-    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.event_id + "/edit");
-    editEvent();
+    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.currentEvent.id + "/edit");
+    this.editEvent();
   },
 
   editEvent: function () {
-    // var event = this.collection.getOrFetch(this.event_id);
     var view = new CleatUp.Views.EventForm({
       model: this.currentEvent,
       group_id: this.model.id,
@@ -84,6 +83,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   showEvent: function () {
+    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.currentEvent.id);
     var view = new CleatUp.Views.EventShow({
       model: this.currentEvent
     });
@@ -91,11 +91,9 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   destroy: function (event) {
-    debugger
-
-    this.model.destroy({
+    this.currentEvent.destroy({
       success: function () {
-        Backbone.history.navigate("groups/" + this.model.get("group_id"), { trigger: true });
+        this.backHome();
       }.bind(this)
     });
   },
