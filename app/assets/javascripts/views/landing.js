@@ -10,7 +10,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
   events: {
     "click .groups": "switchLanding",
     "click .events": "switchLanding",
-    "click .dropdown-item": "showInterest",
+    "click .interest-dropdown-item": "showInterest",
     "click .all-interests": "allLanding"
   },
 

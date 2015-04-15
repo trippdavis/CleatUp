@@ -21,3 +21,23 @@
   border-radius: 5px;
   padding-bottom: 20px;
 }
+
+.interest-dropdown-item {
+  width: 100%;
+  background: white;
+  border: none;
+}
+
+.interest-dropdown-item:hover {
+  background: red;
+}
+
+.all-interests {
+  width: 100%;
+  background: white;
+  border: none;
+}
+
+.all-interests:hover {
+  background: red;
+}
