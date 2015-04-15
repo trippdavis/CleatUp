@@ -2,11 +2,13 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
     this.event_id = options.event_id;
+    this.currentEvent = this.collection.getOrFetch(this.event_id);
   },
 
   className: "group-body",
 
   events: {
+    "click .delete-event": "destroy",
     "click .back-to-index": "backHome",
     "click .group-event": "clickEvent",
     "click .edit-event": "clickEdit",
@@ -33,9 +35,9 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   editEvent: function () {
-    var event = this.collection.getOrFetch(this.event_id);
+    // var event = this.collection.getOrFetch(this.event_id);
     var view = new CleatUp.Views.EventForm({
-      model: event,
+      model: this.currentEvent,
       group_id: this.model.id,
       formType: "Edit"
     });
@@ -43,10 +45,12 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   newEvent: function () {
-    var event = new CleatUp.Models.Event();
-    event.fetch();
+    // var event = new CleatUp.Models.Event();
+    // event.fetch();
+    this.currenEvent = new CleatUp.Models.Event();
+    this.currentEvent.fetch();
     var view = new CleatUp.Views.EventForm({
-      model: event,
+      model: this.currentEvent,
       group_id: this.model.id,
       formType: "New"
     });
@@ -73,15 +77,27 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   clickEvent: function (event) {
-    this.event_id = $(event.currentTarget).data("event-id");
-    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.event_id);
+    var event_id = $(event.currentTarget).data("event-id");
+    this.currentEvent = this.collection.getOrFetch(event_id);
+    Backbone.history.navigate("groups/" + this.model.id + "/events/" + event_id);
     this.showEvent();
   },
 
   showEvent: function () {
-    this.event = this.collection.getOrFetch(this.event_id);
-    var view = new CleatUp.Views.EventShow({ model: this.event });
+    var view = new CleatUp.Views.EventShow({
+      model: this.currentEvent
+    });
     this._swapBody(view);
+  },
+
+  destroy: function (event) {
+    debugger
+
+    this.model.destroy({
+      success: function () {
+        Backbone.history.navigate("groups/" + this.model.get("group_id"), { trigger: true });
+      }.bind(this)
+    });
   },
 
   _swapBody: function (view) {

@@ -6,7 +6,6 @@ CleatUp.Views.EventShow = Backbone.View.extend({
   className: "event-show",
 
   events: {
-    "click .delete-event": "destroy",
     "click .join-event": "joinEvent",
     "click .leave-event": "leaveEvent"
   },
@@ -19,6 +18,8 @@ CleatUp.Views.EventShow = Backbone.View.extend({
     if (this.model.get("reservation_id")) {
       this.toggleButton();
     }
+
+    this.$el.attr("data-event-id", this.model.id);
 
     return this;
   },
@@ -55,14 +56,6 @@ CleatUp.Views.EventShow = Backbone.View.extend({
       success: function () {
         this.model.set("reservation_id", 0);
         this.toggleButton();
-      }.bind(this)
-    });
-  },
-
-  destroy: function (event) {
-    this.model.destroy({
-      success: function () {
-        Backbone.history.navigate("groups/" + this.model.get("group_id"), { trigger: true });
       }.bind(this)
     });
   }
