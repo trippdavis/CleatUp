@@ -12,9 +12,7 @@ CleatUp.Views.EventForm = Backbone.View.extend({
   template: JST["events/form"],
 
   events: {
-    "submit .event-form": "submit",
-    "click .back-to-index": "toIndex",
-    "click .back-to-show": "toShow"
+    "submit .event-form": "submit"
   },
 
   render: function () {
@@ -54,16 +52,6 @@ CleatUp.Views.EventForm = Backbone.View.extend({
         }
       }.bind(this)
     });
-  },
-
-  toShow: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + this.model.id, { trigger: true });
-  },
-
-  toIndex: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("#groups/" + this.group_id, { trigger: true });
   },
 
   handleError: function (model, response) {

@@ -13,7 +13,10 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     "click .join-group": "joinGroup",
     "click .leave-group": "leaveGroup",
     "click .group-banner": "backHome",
-    "click .group-event": "clickEvent"
+    "click .back-to-index": "backHome",
+    "click .group-event": "clickEvent",
+    "click .edit-event": "editEvent",
+    "click .back-to-show": "showEvent"
   },
 
   template: JST['groups/show'],
