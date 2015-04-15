@@ -4,7 +4,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
     if (this.type === "group") {
-      this.listenTo(this.model, "sync", this.addEvents);
+      this.listenTo(this.model, "sync", this.showEvents);
     } else {
       this.listenTo(this.model, "sync", this.showEvent);
     }
@@ -35,7 +35,8 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     Backbone.history.navigate("groups/" + this.model.id, { trigger: true });
   },
 
-  addEvents: function () {
+  showEvents: function () {
+    this.$el.find(".group-body").html("<div class='group-description'>" + this.model.escape("description") + "</div>");
     this.collection.fetch({
       data: {
         type: "group",
