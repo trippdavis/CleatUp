@@ -46,7 +46,8 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this._addBody(view);
   },
 
-  newEvent: function () {
+  newEvent: function (event) {
+    $(event.target).blur();
     var view = new CleatUp.Views.GroupBody({
       type: "event-new",
       model: this.model,
@@ -57,12 +58,13 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this._addBody(view);
   },
 
-  editInterests: function () {
+  editInterests: function (event) {
+    $(event.target).prop("disabled", true);
     Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
   },
 
   joinGroup: function (event) {
-    event.preventDefault();
+    $(event.target).blur();
     $.ajax({
       url: "/group_memberships",
       type: "POST",
@@ -75,7 +77,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   leaveGroup: function (event) {
-    event.preventDefault();
+    $(event.target).blur();
     $.ajax({
       url: "/group_memberships/" + this.model.get("membership_id"),
       type: "DELETE",
