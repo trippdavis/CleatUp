@@ -9,7 +9,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   events: {
     "click .back-to-index": "backHome",
     "click .group-event": "clickEvent",
-    "click .edit-event": "editEvent",
+    "click .edit-event": "clickEdit",
     "click .back-to-show": "showEvent"
   },
 
@@ -25,6 +25,11 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     }
 
     return this;
+  },
+
+  clickEdit: function () {
+    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.event_id + "/edit");
+    editEvent();
   },
 
   editEvent: function () {
@@ -49,6 +54,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   backHome: function () {
+    Backbone.history.navigate("groups/" + this.model.id);
     this.groupHome();
   },
 
@@ -68,6 +74,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
 
   clickEvent: function (event) {
     this.event_id = $(event.currentTarget).data("event-id");
+    Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.event_id);
     this.showEvent();
   },
 

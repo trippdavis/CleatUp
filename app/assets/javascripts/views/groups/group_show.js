@@ -41,6 +41,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       model: this.model,
       collection: this.collection
     });
+    Backbone.history.navigate("groups/" + this.model.id);
 
     this._addBody(view);
   },
@@ -51,6 +52,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       model: this.model,
       collection: this.collection
     });
+    Backbone.history.navigate("groups/" + this.model.id + "/events/new");
 
     this._addBody(view);
   },
