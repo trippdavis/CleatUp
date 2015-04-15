@@ -6,7 +6,8 @@ CleatUp.Views.Navbar = Backbone.View.extend({
   template: JST["navbar"],
 
   events: {
-    "click .edit-interests": "editInterests"
+    "click .edit-interests": "editInterests",
+    "click .log-out": "logout"
   },
 
   render: function () {
@@ -31,5 +32,14 @@ CleatUp.Views.Navbar = Backbone.View.extend({
     });
 
     this.$el.append(view.render().$el);
+  },
+
+  logout: function (event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: "/session",
+      type: "DELETE"
+    });
   }
 });

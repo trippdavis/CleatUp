@@ -57,7 +57,11 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     this._swapBody(view);
   },
 
-  backHome: function () {
+  backHome: function (event) {
+    if (event) {
+      event.preventDefault();
+    }
+
     Backbone.history.navigate("groups/" + this.model.id);
     this.groupHome();
   },
@@ -83,7 +87,11 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     this.showEvent();
   },
 
-  showEvent: function () {
+  showEvent: function (event) {
+    if (event) {
+      event.preventDefault();
+    }
+
     Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.currentEvent.id);
     var view = new CleatUp.Views.EventShow({
       model: this.currentEvent

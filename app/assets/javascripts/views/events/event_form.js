@@ -27,8 +27,10 @@ CleatUp.Views.EventForm = Backbone.View.extend({
   formSpecific: function () {
     if (this.formType === "New") {
       this.$el.prepend("<h3>Create a New Event!</h3>");
+      this.$el.find(".back").addClass("back-to-index");
     } else {
       this.$el.prepend("<h3>Edit Your Event!</h3>");
+      this.$el.find(".back").addClass("back-to-show");
     }
   },
 

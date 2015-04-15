@@ -47,7 +47,9 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
     });
   },
 
-  back: function () {
+  back: function (event) {
+    event.preventDefault();
+
     if (this.formType === "New") {
       Backbone.history.navigate("", { trigger: true });
     } else {
