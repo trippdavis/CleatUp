@@ -6,6 +6,14 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this.groups = new CleatUp.Collections.Groups();
     this.myEvents = new CleatUp.Collections.Events();
     this.interests = new CleatUp.Collections.Interests();
+    this.addNavbar();
+  },
+
+  addNavbar: function () {
+    var view = new CleatUp.Views.Navbar({
+      interests: this.interests
+    });
+    $("#site-navbar").html(view.render().$el);
   },
 
   routes: {
@@ -51,6 +59,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
     var view = new CleatUp.Views.GroupShow({
       model: group,
       collection: this.myEvents,
+      interests: this.interests,
       event_id: event_id,
       type: type
     });

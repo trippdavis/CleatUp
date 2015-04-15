@@ -1,6 +1,6 @@
 class InterestingsController < ApplicationController
   def create
-    if params[:group_id] != ""
+    if params[:group_id]
       interestable_id = params[:group_id].to_i
     else
       interestable_id = current_user.id
@@ -20,7 +20,7 @@ class InterestingsController < ApplicationController
   end
 
   def destroy
-    if params[:group_id] != ""
+    if params[:group_id]
       interestable_id = params[:group_id].to_i
     else
       interestable_id = current_user.id

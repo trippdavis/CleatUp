@@ -47,11 +47,7 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
     this.addInterests(newInterestIDs);
     this.destroyInterests(oldInterestIDs);
 
-    if (this.type === "group") {
-      Backbone.history.navigate("groups/" + this.group_id, { trigger: true });
-    } else {
-      Backbone.history.navigate("", { trigger: true });
-    }
+    this.remove();
   },
 
   addInterests: function (newInterestIDs) {

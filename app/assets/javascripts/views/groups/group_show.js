@@ -1,5 +1,6 @@
 CleatUp.Views.GroupShow = Backbone.View.extend({
   initialize: function (options) {
+    this.interests = options.interests;
     this.type = options.type;
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
@@ -62,8 +63,23 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   editInterests: function (event) {
-    $(event.target).prop("disabled", true);
-    Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
+    // $(event.target).prop("disabled", true);
+    // Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
+    var type = "group";
+
+    this.interests.fetch({ data: {
+        interestable_type: type,
+        group_id: this.model.id
+      }
+    });
+
+    var view = new CleatUp.Views.InterestsIndex({
+      collection: this.interests,
+      type: type,
+      group_id: this.model.id
+    });
+    
+    this.$el.append(view.render().$el);
   },
 
   joinGroup: function (event) {
