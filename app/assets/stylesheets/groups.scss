@@ -59,6 +59,7 @@
 }
 
 .group-navbar {
+  background: white;
   border-left: 2px solid red;
   border-bottom: 2px solid red;
   border-right: 2px solid red;
@@ -83,6 +84,7 @@
 }
 
 .group-sidebar {
+  background: white;
   width: 20%;
   border: 2px solid red;
   border-radius: 5px;
@@ -96,6 +98,7 @@
 }
 
 .group-description {
+  background: white;
   border: 2px solid red;
   border-radius: 5px;
   padding: 10px;
@@ -104,6 +107,7 @@
 }
 
 .group-event {
+  background: white;
   border: 2px solid red;
   border-radius: 5px;
   padding: 10px;
@@ -121,4 +125,8 @@
 
 .group-interests {
   font-size: 20px;
+}
+
+.group-form-box {
+  margin-top: 20px;
 }

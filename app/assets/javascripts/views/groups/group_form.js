@@ -6,10 +6,11 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
 
   template: JST["groups/form"],
 
+  className: "group-form-box col-md-6 col-md-offset-3",
+
   events: {
     "submit .group-form": "submit",
-    "click .back-to-index": "toIndex",
-    "click .back-to-show": "toShow"
+    "click .back": "back"
   },
 
   render: function () {
@@ -22,10 +23,8 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
   formSpecific: function () {
     if (this.formType === "New") {
       this.$el.prepend("<h3>New Group</h3>");
-      this.$el.append("<button class='back-to-index'>Back</button>");
     } else {
-      this.$el.prepend("<h3>Edit Group</h3>");
-      this.$el.append("<button class='back-to-show'>Back</button>");
+      this.$el.prepend("<h3>Edit Your Group</h3>");
     }
   },
 
@@ -48,14 +47,12 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
     });
   },
 
-  toShow: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
-  },
-
-  toIndex: function (event) {
-    event.preventDefault();
-    Backbone.history.navigate("", { trigger: true });
+  back: function () {
+    if (this.formType === "New") {
+      Backbone.history.navigate("", { trigger: true });
+    } else {
+      Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
+    }
   },
 
   handleError: function (model, response) {
@@ -72,6 +69,8 @@ CleatUp.Views.GroupForm = Backbone.View.extend({
     errors.forEach( function (err) {
       $ul.append("<li>" + err + "</li>");
     });
+
+    $ul.parent().show();
   },
 
   setupFill: function () {
