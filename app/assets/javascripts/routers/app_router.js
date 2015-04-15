@@ -14,9 +14,8 @@ CleatUp.Routers.App = Backbone.Router.extend({
     "interests/:type/:id": "interestsIndex",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
-    "groups/:id/events/new": "eventNew",
-    "groups/:id/events/:id/edit": "eventEdit",
-    "groups/:id/events/:id": "eventShow",
+    "groups/:id/events/:attr1/:attr2": "groupShow",
+    "groups/:id/events/:attr1": "groupShow",
     "groups/:id": "groupShow"
   },
 
@@ -45,46 +44,29 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this.$banner.removeClass("invisible-banner");
   },
 
-  groupShow: function (id) {
+  groupShow: function (id, event_id, edit) {
     var group = this.groups.getOrFetch(id);
-    var view = new CleatUp.Views.GroupShow({
-      model: group,
-      collection: this.myEvents,
-      type: "group"
-    });
-    this._swapView(view);
-  },
+    var type = this.determineType(event_id, edit);
 
-  eventNew: function (group_id) {
-    var group = this.groups.getOrFetch(group_id);
     var view = new CleatUp.Views.GroupShow({
-      collection: this.myEvents,
       model: group,
-      type: "event-new"
-    });
-    this._swapView(view);
-  },
-
-  eventEdit: function (group_id, event_id) {
-    var group = this.groups.getOrFetch(group_id);
-    var view = new CleatUp.Views.GroupShow({
       collection: this.myEvents,
-      model: group,
       event_id: event_id,
-      type: "event-edit"
+      type: type
     });
     this._swapView(view);
   },
 
-  eventShow: function (group_id, event_id) {
-    var group = this.groups.getOrFetch(group_id);
-    var view = new CleatUp.Views.GroupShow({
-      collection: this.myEvents,
-      model: group,
-      event_id: event_id,
-      type: "event"
-    });
-    this._swapView(view);
+  determineType: function (event_id, edit) {
+    if (event_id === "new" && edit === null) {
+      return "event-new";
+    } else if (event_id && edit === null) {
+      return "event";
+    } else if (event_id && edit === "edit") {
+      return "event-edit";
+    } else {
+      return "group";
+    }
   },
 
   groupNew: function () {
