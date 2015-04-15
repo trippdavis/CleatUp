@@ -3,13 +3,12 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.type = options.type;
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
-
   },
 
   events: {
     "click .delete-group": "destroy",
     "click .edit-group": "edit",
-    "click .create-event": "clickNewEvent",
+    "click .create-event": "newEvent",
     "click .edit-interests": "editInterests",
     "click .join-group": "joinGroup",
     "click .leave-group": "leaveGroup",
@@ -25,15 +24,25 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       this.toggleButton();
     }
 
-    var currentBody = new CleatUp.Views.GroupBody({
+    var view = new CleatUp.Views.GroupBody({
       type: this.type,
       event_id: this.event_id,
       model: this.model,
       collection: this.collection
     });
 
-    this.$el.append(currentBody.render().$el);
+    this._addBody(view);
     return this;
+  },
+
+  newEvent: function () {
+    var view = new CleatUp.Views.GroupBody({
+      type: "event-new",
+      model: this.model,
+      collection: this.collection
+    });
+
+    this._addBody(view);
   },
 
   editInterests: function () {
@@ -87,4 +96,13 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       }
     });
   },
+
+  _addBody: function (view) {
+    if (this.currentBody) {
+      this.currentBody.remove();
+    }
+
+    this.$el.append(view.render().$el);
+    this.currentBody = view;
+  }
 });

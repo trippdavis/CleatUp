@@ -37,10 +37,6 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     this._swapBody(view);
   },
 
-  clickNewEvent: function () {
-    this.newEvent();
-  },
-
   newEvent: function () {
     var event = new CleatUp.Models.Event();
     event.fetch();
