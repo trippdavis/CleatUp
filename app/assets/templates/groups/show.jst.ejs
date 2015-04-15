@@ -28,6 +28,16 @@
       <%= group.organizer.username %>
     </div>
   <% } %>
+
+  <% if (group.interests){ %>
+    <hr>
+
+    <div class="group-interests">
+      For those interested in:
+      <br>
+      <%= group.interests.join(", ") %>
+    </div>
+  <% } %>
 </div>
 
 <div class="group-body">

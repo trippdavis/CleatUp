@@ -11,3 +11,7 @@ end
 json.(@owned, :owned)
 
 json.(@membership_id, :membership_id)
+
+json.interests(@interests) do |interest|
+  json.(interest, :topic)
+end
