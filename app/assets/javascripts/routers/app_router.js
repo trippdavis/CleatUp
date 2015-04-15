@@ -45,16 +45,6 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this.$banner.removeClass("invisible-banner");
   },
 
-  eventNew: function (group_id) {
-    var event = new CleatUp.Models.Event();
-    var view = new CleatUp.Views.EventForm({
-      formType: "New",
-      model: event,
-      group_id: group_id
-    });
-    this._swapView(view);
-  },
-
   groupShow: function (id) {
     var group = this.groups.getOrFetch(id);
     var view = new CleatUp.Views.GroupShow({
@@ -65,13 +55,23 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  eventNew: function (group_id) {
+    var group = this.groups.getOrFetch(group_id);
+    var view = new CleatUp.Views.GroupShow({
+      collection: this.myEvents,
+      model: group,
+      type: "event-new"
+    });
+    this._swapView(view);
+  },
+
   eventEdit: function (group_id, event_id) {
     var group = this.groups.getOrFetch(group_id);
     var view = new CleatUp.Views.GroupShow({
       collection: this.myEvents,
       model: group,
       event_id: event_id,
-      formType: "event_edit"
+      type: "event-edit"
     });
     this._swapView(view);
   },

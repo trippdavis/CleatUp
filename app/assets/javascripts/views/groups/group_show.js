@@ -7,15 +7,17 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       this.listenTo(this.model, "sync", this.showEvents);
     } else if (this.type === "event") {
       this.listenTo(this.model, "sync", this.showEvent);
-    } else {
+    } else if (this.type === "event-edit") {
       this.listenTo(this.model, "sync", this.editEvent);
+    } else {
+      this.listenTo(this.model, "sync", this.newEvent);
     }
   },
 
   events: {
     "click .delete-group": "destroy",
     "click .edit-group": "edit",
-    "click .create-event": "newEvent",
+    "click .create-event": "clickNewEvent",
     "click .edit-interests": "editInterests",
     "click .join-group": "joinGroup",
     "click .leave-group": "leaveGroup",
@@ -41,6 +43,17 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       formType: "Edit"
     });
     this.$el.find(".group-body").append(view.$el);
+  },
+
+  newEvent: function () {
+    event = new CleatUp.Models.Event();
+    event.fetch();
+    var view = new CleatUp.Views.EventForm({
+      model: event,
+      group_id: this.model.id,
+      formType: "New"
+    });
+    this.$el.find(".group-body").append(view.render().$el);
   },
 
   groupHome: function () {
@@ -69,7 +82,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
   },
 
-  newEvent: function (event) {
+  clickNewEvent: function (event) {
     event.preventDefault();
     Backbone.history.navigate("groups/" + this.model.id + "/events/new", { trigger: true });
   },
