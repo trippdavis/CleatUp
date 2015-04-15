@@ -1,15 +1,17 @@
-<div class="interests">
-  <h3>Interests:</h3>
+<div class="interests-modal">
+  <div class="interests">
+    <h3>Interests:</h3>
 
-  <br>
+    <br>
 
-  <div>
-    <% interests.each(function (interest) { %>
-      <button data-id="<%= interest.id %>" class="interest btn btn-default"><%= interest.escape("topic") %></button>
-    <% }) %>
+    <div>
+      <% interests.each(function (interest) { %>
+        <button data-id="<%= interest.id %>" class="interest btn btn-default"><%= interest.escape("topic") %></button>
+      <% }) %>
+    </div>
+
+    <br>
+
+    <button class="submit btn btn-primary">Submit!</button>
   </div>
-
-  <br>
-
-  <button class="submit btn btn-primary">Submit!</button>
 </div>

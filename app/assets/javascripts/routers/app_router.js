@@ -19,27 +19,11 @@ CleatUp.Routers.App = Backbone.Router.extend({
   routes: {
     "": "landing",
     "interests/:type": "interestsIndex",
-    "interests/:type/:id": "interestsIndex",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/:attr1/:attr2": "groupShow",
     "groups/:id/events/:attr1": "groupShow",
     "groups/:id": "groupShow"
-  },
-
-  interestsIndex: function (type, id) {
-    this.interests.fetch({ data: {
-        interestable_type: type,
-        group_id: id
-      }
-    });
-    var view = new CleatUp.Views.InterestsIndex({
-      collection: this.interests,
-      type: type,
-      group_id: id
-    });
-    this.$rootEl.append(view.render().$el);
-    this.currentModal = view;
   },
 
   landing: function () {

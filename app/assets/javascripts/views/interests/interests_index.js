@@ -6,11 +6,16 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
     this.listenTo(this.collection, "sync", this.preselectInterests);
   },
 
-  className: "interests-modal",
-
   events: {
     "click .interest": "handleClick",
-    "click .submit": "submitInterests"
+    "click .submit": "submitInterests",
+    "click": "escape"
+  },
+
+  escape: function (event) {
+    if ($(event.target).hasClass("interests-modal")) {
+      this.remove();
+    }
   },
 
   template: JST['interests/index'],
