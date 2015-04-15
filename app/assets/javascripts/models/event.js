@@ -14,6 +14,11 @@ CleatUp.Models.Event = Backbone.Model.extend({
       delete payload.date_time;
     }
 
+    if (payload.owned) {
+      this.owned = payload.owned;
+      delete payload.owned;
+    }
+
     if (payload.organizer) {
       this.organizer = payload.organizer;
       delete payload.organizer;

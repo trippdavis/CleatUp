@@ -98,13 +98,13 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     this.currentEvent.set(data);
     this.currentEvent.save({}, {
       success: function () {
+        this.currentEvent.owned = true;
         this.showEvent();
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {
           this.showEvent();
         } else {
-          debugger
           this.currentBody.handleError(model, response);
         }
       }.bind(this)

@@ -1,4 +1,6 @@
-<ul class="errors"></ul>
+<div class ="form-alert alert alert-danger" style="display: none">
+  <ul class="errors"></ul>
+</div>
 
 <form class="event-form">
   <% if (group_id) { %>
@@ -42,5 +44,6 @@
       placeholder="Description"></textarea>
   </div>
 
-  <input type="submit" value="Submit!">
+  <button type="submit" class="btn btn-primary">Submit!</button>
+  <button class="btn btn-danger back">Cancel</button>
 </form>

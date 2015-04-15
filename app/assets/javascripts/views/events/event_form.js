@@ -9,6 +9,8 @@ CleatUp.Views.EventForm = Backbone.View.extend({
     }
   },
 
+  className: "event-form-box",
+
   template: JST["events/form"],
 
   render: function () {
@@ -24,11 +26,9 @@ CleatUp.Views.EventForm = Backbone.View.extend({
 
   formSpecific: function () {
     if (this.formType === "New") {
-      this.$el.prepend("<h3>New Event</h3>");
-      this.$el.append("<button class='back-to-index'>Back</button>");
+      this.$el.prepend("<h3>Create a New Event!</h3>");
     } else {
-      this.$el.prepend("<h3>Edit Event</h3>");
-      this.$el.append("<button class='back-to-show'>Back</button>");
+      this.$el.prepend("<h3>Edit Your Event!</h3>");
     }
   },
 
@@ -50,6 +50,8 @@ CleatUp.Views.EventForm = Backbone.View.extend({
     errors.forEach( function (err) {
       $ul.append("<li>" + err + "</li>");
     });
+
+    $ul.parent().show();
   },
 
   setupFill: function () {
