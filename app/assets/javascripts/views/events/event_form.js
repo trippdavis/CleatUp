@@ -11,10 +11,6 @@ CleatUp.Views.EventForm = Backbone.View.extend({
 
   template: JST["events/form"],
 
-  events: {
-    "submit .event-form": "submit"
-  },
-
   render: function () {
     var content = this.template({
       event: this.model,
@@ -34,25 +30,6 @@ CleatUp.Views.EventForm = Backbone.View.extend({
       this.$el.prepend("<h3>Edit Event</h3>");
       this.$el.append("<button class='back-to-show'>Back</button>");
     }
-  },
-
-  submit: function (event) {
-    event.preventDefault();
-
-    var data = $(event.currentTarget).serializeJSON();
-    this.model.set(data);
-    this.model.save({}, {
-      success: function () {
-        Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + this.model.id, { trigger: true });
-      }.bind(this),
-      error: function (model, response) {
-        if (response.status === 500) {
-          Backbone.history.navigate("#groups/" + this.model.get("group_id") + "/events/" + model.id, { trigger: true });
-        } else {
-          this.handleError(model, response);
-        }
-      }.bind(this)
-    });
   },
 
   handleError: function (model, response) {

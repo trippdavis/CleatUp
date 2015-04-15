@@ -2,7 +2,9 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
     this.event_id = options.event_id;
-    this.currentEvent = this.collection.getOrFetch(this.event_id);
+    if (this.event_id > 0) {
+      this.currentEvent = this.collection.getOrFetch(this.event_id);
+    }
   },
 
   className: "group-body",
@@ -12,7 +14,8 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     "click .back-to-index": "backHome",
     "click .group-event": "clickEvent",
     "click .edit-event": "clickEdit",
-    "click .back-to-show": "showEvent"
+    "click .back-to-show": "showEvent",
+    "submit .event-form": "submitEvent"
   },
 
   render: function () {
@@ -44,9 +47,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   newEvent: function () {
-    // var event = new CleatUp.Models.Event();
-    // event.fetch();
-    this.currenEvent = new CleatUp.Models.Event();
+    this.currentEvent = new CleatUp.Models.Event();
     this.currentEvent.fetch();
     var view = new CleatUp.Views.EventForm({
       model: this.currentEvent,
@@ -88,6 +89,26 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
       model: this.currentEvent
     });
     this._swapBody(view);
+  },
+
+  submitEvent: function (event) {
+    event.preventDefault();
+
+    var data = $(event.currentTarget).serializeJSON();
+    this.currentEvent.set(data);
+    this.currentEvent.save({}, {
+      success: function () {
+        this.showEvent();
+      }.bind(this),
+      error: function (model, response) {
+        if (response.status === 500) {
+          this.showEvent();
+        } else {
+          debugger
+          this.currentBody.handleError(model, response);
+        }
+      }.bind(this)
+    });
   },
 
   destroy: function (event) {
