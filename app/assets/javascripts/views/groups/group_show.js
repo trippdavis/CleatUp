@@ -63,8 +63,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   editInterests: function (event) {
-    // $(event.target).prop("disabled", true);
-    // Backbone.history.navigate("interests/group/" + this.model.id, { trigger: true });
+    $(event.target).blur();
     var type = "group";
 
     this.interests.fetch({ data: {
@@ -78,7 +77,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       type: type,
       group_id: this.model.id
     });
-    
+
     this.$el.append(view.render().$el);
   },
 

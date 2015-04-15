@@ -59,6 +59,8 @@
 }
 
 .group-navbar {
+  position: relative;
+  z-index: 0;
   background: white;
   border-left: 2px solid red;
   border-bottom: 2px solid red;

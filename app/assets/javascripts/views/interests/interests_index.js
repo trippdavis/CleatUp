@@ -8,7 +8,7 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
 
   events: {
     "click .interest": "handleClick",
-    "click .submit": "submitInterests",
+    "click .submit-interests": "submitInterests",
     "click": "escape"
   },
 
