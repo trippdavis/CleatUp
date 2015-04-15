@@ -15,9 +15,9 @@ CleatUp.Routers.App = Backbone.Router.extend({
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/new": "eventNew",
+    "groups/:id/events/:id/edit": "eventEdit",
     "groups/:id/events/:id": "eventShow",
-    "groups/:id": "groupShow",
-    "events/:id/edit": "eventEdit"
+    "groups/:id": "groupShow"
   },
 
   interestsIndex: function (type, id) {
@@ -65,6 +65,17 @@ CleatUp.Routers.App = Backbone.Router.extend({
     this._swapView(view);
   },
 
+  eventEdit: function (group_id, event_id) {
+    var group = this.groups.getOrFetch(group_id);
+    var view = new CleatUp.Views.GroupShow({
+      collection: this.myEvents,
+      model: group,
+      event_id: event_id,
+      formType: "event_edit"
+    });
+    this._swapView(view);
+  },
+
   eventShow: function (group_id, event_id) {
     var group = this.groups.getOrFetch(group_id);
     var view = new CleatUp.Views.GroupShow({
@@ -90,15 +101,6 @@ CleatUp.Routers.App = Backbone.Router.extend({
     var view = new CleatUp.Views.GroupForm({
       formType: "Edit",
       model: group
-    });
-    this._swapView(view);
-  },
-
-  eventEdit: function (id) {
-    var event = this.myEvents.getOrFetch(id);
-    var view = new CleatUp.Views.EventForm({
-      formType: "Edit",
-      model: event
     });
     this._swapView(view);
   },

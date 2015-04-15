@@ -62,7 +62,7 @@ CleatUp.Views.EventShow = Backbone.View.extend({
 
   edit: function () {
     event.preventDefault();
-    Backbone.history.navigate("events/" + this.model.id + "/edit", { trigger: true });
+    Backbone.history.navigate("groups/" + this.model.get("group_id") + "/events/" + this.model.id + "/edit", { trigger: true });
   },
 
   destroy: function (event) {

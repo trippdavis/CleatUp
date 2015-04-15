@@ -6,6 +6,7 @@ CleatUp.Views.EventForm = Backbone.View.extend({
       this.group_id = null;
     }
     this.formType = options.formType;
+    this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.setupFill);
   },
 

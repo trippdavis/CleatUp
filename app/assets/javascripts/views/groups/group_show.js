@@ -5,8 +5,10 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.listenTo(this.model, "sync", this.render);
     if (this.type === "group") {
       this.listenTo(this.model, "sync", this.showEvents);
-    } else {
+    } else if (this.type === "event") {
       this.listenTo(this.model, "sync", this.showEvent);
+    } else {
+      this.listenTo(this.model, "sync", this.editEvent);
     }
   },
 
@@ -29,6 +31,16 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       this.toggleButton();
     }
     return this;
+  },
+
+  editEvent: function () {
+    this.event = this.collection.getOrFetch(this.event_id);
+    var view = new CleatUp.Views.EventForm({
+      model: this.event,
+      group_id: this.model.id,
+      formType: "Edit"
+    });
+    this.$el.find(".group-body").append(view.$el);
   },
 
   groupHome: function () {
