@@ -32,7 +32,6 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   addSidebar: function () {
-    debugger
     if (this.currentSidebar) {
       this.currentSidebar.remove();
     }
