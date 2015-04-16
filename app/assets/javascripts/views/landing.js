@@ -36,24 +36,6 @@ CleatUp.Views.Landing = Backbone.View.extend({
     this.currentLanding.switchIndex(interest_id);
   },
 
-  // interestedGroups: function (interest_id) {
-  //   var view = new CleatUp.Views.GroupsIndex({
-  //     collection: this.groups,
-  //     type: "interest",
-  //     interest_id: interest_id
-  //   });
-  //   this._swapLanding(view);
-  // },
-  //
-  // interestedEvents: function (interest_id) {
-  //   var view = new CleatUp.Views.EventsIndex({
-  //     collection: this.myEvents,
-  //     type: "interest",
-  //     interest_id: interest_id
-  //   });
-  //   this._swapLanding(view);
-  // },
-
   switchLanding: function (event) {
     $(event.target).prop("disabled", true);
     if ($(event.target).hasClass("events")) {
@@ -83,6 +65,8 @@ CleatUp.Views.Landing = Backbone.View.extend({
 
   eventsLanding: function () {
     var view = new CleatUp.Views.EventsLanding({
+      interest_id: 0,
+      type: "reserved",
       collection: this.myEvents
     });
     this._swapLanding(view);

@@ -4,23 +4,25 @@ class Api::EventsController < ApplicationController
 
   def index
     type = params["type"]
-    if type == "created"
-      events = Event.joins(group: :organizer).where(users: { id: current_user.id })
-    elsif type == "reserved"
-      events = current_user.events_reserved
-    elsif type == "joined-group"
-      events = Event.where(group_id: current_user.groups_joined.map(&:id));
-    elsif type == "other"
-      events = Event.joins(group: :organizer).where.not(
-        users: { id: current_user.id },
-        group_id: current_user.groups_joined.map(&:id)
-        )
-    elsif type == "interest"
-      events = Event.includes(:interests).where(interests: { id: params[:interest_id] })
-    elsif type == "group"
+    if type == "group"
       events = Event.where(group_id: params[:group_id])
     else
-      events = Event.all
+      if type == "created"
+        events = Event.joins(group: :organizer).where(users: { id: current_user.id })
+      elsif type == "reserved"
+        events = current_user.events_reserved
+      elsif type == "joined-group"
+        events = Event.where(group_id: current_user.groups_joined.map(&:id));
+      elsif type == "other"
+        events = Event.joins(group: :organizer).where.not(
+          users: { id: current_user.id },
+          group_id: current_user.groups_joined.map(&:id)
+        )
+      end
+
+      if params["interest_id"].to_i > 0
+        events = events.includes(:interests).where(interests: { id: params["interest_id"].to_i })
+      end
     end
 
     @events = events.order("date_time")
