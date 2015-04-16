@@ -48,7 +48,6 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
       this.updatedInterestIDs.push($(button).data("id"));
     }.bind(this));
 
-    this.model.interests = this.updatedInterestTopics;
     var newInterestIDs = _.difference(this.updatedInterestIDs, this.prevInterestIDs);
     var oldInterestIDs = _.difference(this.prevInterestIDs, this.updatedInterestIDs);
 
@@ -56,7 +55,10 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
     this.destroyInterests(oldInterestIDs);
 
     this.remove();
-    CleatUp.pubSub.trigger("interestsAdded");
+    if (this.type === "group") {
+      this.model.interests = this.updatedInterestTopics;
+      CleatUp.pubSub.trigger("interestsAdded");
+    }
   },
 
   addInterests: function (newInterestIDs) {
