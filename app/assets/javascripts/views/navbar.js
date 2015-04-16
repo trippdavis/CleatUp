@@ -39,7 +39,10 @@ CleatUp.Views.Navbar = Backbone.View.extend({
 
     $.ajax({
       url: "/session",
-      type: "DELETE"
+      type: "DELETE",
+      success: function () {
+        window.location.pathname = "/session/new";
+      }
     });
   }
 });
