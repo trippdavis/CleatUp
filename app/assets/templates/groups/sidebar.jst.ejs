@@ -1,0 +1,21 @@
+<img class="group-image" src="http://www.parnavsports.com/images/sports.jpg">
+
+<hr>
+
+<% if (group.organizer){ %>
+  <div class="group-organizer">
+    Organizer:
+    <br>
+    <%= group.organizer.username %>
+  </div>
+<% } %>
+
+<% if (group.interests && group.interests.length > 0){ %>
+  <hr>
+
+  <div class="group-interests">
+    For those interested in:
+    <br>
+    <%= group.interests.join(", ") %>
+  </div>
+<% } %>

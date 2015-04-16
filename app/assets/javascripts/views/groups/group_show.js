@@ -5,6 +5,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.fillBody);
+    CleatUp.pubSub.on("interestsAdded", this.addSidebar, this);
   },
 
   events: {
@@ -14,7 +15,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     "click .edit-interests": "editInterests",
     "click .join-group": "joinGroup",
     "click .leave-group": "leaveGroup",
-    "click .group-banner": "backHome"
+    "click .group-banner": "backHome",
   },
 
   template: JST['groups/show'],
@@ -25,7 +26,20 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     if (this.model.get("membership_id")) {
       this.toggleButton();
     }
+
+    this.addSidebar();
     return this;
+  },
+
+  addSidebar: function () {
+    debugger
+    if (this.currentSidebar) {
+      this.currentSidebar.remove();
+    }
+
+    var newSidebar = new CleatUp.Views.GroupSidebar({ model: this.model });
+    this.$el.find(".group-sidebar").html(newSidebar.render().$el);
+    this.currentSidebar = newSidebar;
   },
 
   fillBody: function () {
@@ -73,6 +87,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
     });
 
     var view = new CleatUp.Views.InterestsIndex({
+      model: this.model,
       collection: this.interests,
       type: type,
       group_id: this.model.id
