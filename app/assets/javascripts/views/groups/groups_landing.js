@@ -1,61 +1,34 @@
 CleatUp.Views.GroupsLanding = Backbone.View.extend({
   template: JST['groups/landing'],
 
+  className: "groups-landing",
+
   render: function () {
     var content = this.template();
     this.$el.html(content);
     this.$currentButton = this.$el.find(".joined-groups");
-    this.createdGroups();
-    this.joinedGroups();
-    this.otherGroups();
+    this.fetchGroup("created");
+    this.fetchGroup("joined");
+    this.fetchGroup("other");
     return this;
   },
 
-  // events: {
-  //   "click button": "switchIndex"
-  // },
-
-  // switchIndex: function (event) {
-  //   var $button = $(event.target);
-  //   $button.prop("disabled", true);
-  //   if ($button.hasClass("created-groups")) {
-  //     this.createdGroups();
-  //   } else if ($button.hasClass("joined-groups")) {
-  //     this.joinedGroups();
-  //   } else if ($button.hasClass("other-groups")) {
-  //     this.otherGroups();
-  //   }
-  //   this.$currentButton.prop("disabled", false);
-  //   this.$currentButton = $button;
-  // },
-
-  createdGroups: function () {
+  fetchGroup: function (type) {
     this.collection.fetch({
-      data: { type: "created" },
+      data: { type: type },
       success: function () {
-        var view = new CleatUp.Views.GroupsIndex({ collection: this.collection });
-        this.$el.find(".created-groups-list").html(view.render().$el);
+        if (this.collection.length > 0) {
+          this.addIndex(type);
+        }
       }.bind(this)
     });
   },
 
-  joinedGroups: function () {
-    this.collection.fetch({
-      data: { type: "joined" },
-      success: function () {
-        var view = new CleatUp.Views.GroupsIndex({ collection: this.collection });
-        this.$el.find(".joined-groups-list").html(view.render().$el);
-      }.bind(this)
+  addIndex: function (type) {
+    var view = new CleatUp.Views.GroupsIndex({
+      collection: this.collection,
+      type: type
     });
-  },
-
-  otherGroups: function () {
-    this.collection.fetch({
-      data: { type: "other" },
-      success: function () {
-        var view = new CleatUp.Views.GroupsIndex({ collection: this.collection });
-        this.$el.find(".other-groups-list").html(view.render().$el);
-      }.bind(this)
-    });
+    this.$el.find("." + type + "-groups-list").html(view.render().$el);
   }
 });

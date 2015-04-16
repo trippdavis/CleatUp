@@ -1,1 +1,11 @@
+<div class="groups-index-title">
+  <% if (type === "created") { %>
+    Created Groups:
+  <% } else if (type === "joined") { %>
+    Joined Groups:
+  <% } else { %>
+    Suggested Groups:
+  <% } %>
+</div>
+
 <div class="group-items"></div>
