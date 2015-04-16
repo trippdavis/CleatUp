@@ -17,8 +17,14 @@ CleatUp.Views.EventsIndex = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     $div = $(".event-items");
+    var currentDate = "";
     this.collection.each(function (event) {
-      var view = new CleatUp.Views.EventItem({ model: event });
+      var showDate = !(event.date === currentDate);
+      currentDate = event.date;
+      var view = new CleatUp.Views.EventItem({
+        model: event,
+        showDate: showDate
+      });
       $div.append(view.render().$el);
     });
     return this;

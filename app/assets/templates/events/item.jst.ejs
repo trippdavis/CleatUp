@@ -1,6 +1,8 @@
-<div class="event-date col-md-8">
-  <%= event.date %>
-</div>
+<% if (showDate) { %>
+  <div class="event-date col-md-8">
+    <%= event.date %>
+  </div>
+<% } %>
 
 <div class="event-item col-md-8">
   <div class="event-time col-md-2">
