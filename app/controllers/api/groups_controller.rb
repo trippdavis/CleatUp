@@ -13,8 +13,10 @@ class Api::GroupsController < ApplicationController
         organizer_id: current_user.id,
         id: current_user.groups_joined.map(&:id)
       )
-    elsif type == "interest"
-      @groups = Group.includes(:interests).where(interests: { id: params[:interest_id] })
+    end
+
+    if params["interest_id"].to_i > 0
+      @groups = @groups.includes(:interests).where(interests: { id: params["interest_id"].to_i })
     end
 
     render :json => @groups

@@ -1,4 +1,8 @@
 CleatUp.Views.GroupsLanding = Backbone.View.extend({
+  initialize: function (options) {
+    this.interest_id = options.interest_id;
+  },
+
   template: JST['groups/landing'],
 
   className: "groups-landing",
@@ -15,20 +19,32 @@ CleatUp.Views.GroupsLanding = Backbone.View.extend({
 
   fetchGroup: function (type) {
     this.collection.fetch({
-      data: { type: type },
+      data: {
+        type: type,
+        interest_id: this.interest_id
+      },
       success: function () {
-        if (this.collection.length > 0) {
-          this.addIndex(type);
-        }
+        this.showIndex(type);
       }.bind(this)
     });
   },
 
-  addIndex: function (type) {
-    var view = new CleatUp.Views.GroupsIndex({
-      collection: this.collection,
-      type: type
-    });
-    this.$el.find("." + type + "-groups-list").html(view.render().$el);
+  showIndex: function (type) {
+    if (this.collection.length > 0) {
+      var view = new CleatUp.Views.GroupsIndex({
+        collection: this.collection,
+        type: type
+      });
+      this.$el.find("." + type + "-groups-list").html(view.render().$el);
+    } else {
+      this.$el.find("." + type + "-groups-list").empty();
+    }
+  },
+
+  switchIndex: function (interest_id) {
+    this.interest_id = interest_id;
+    this.fetchGroup("created");
+    this.fetchGroup("joined");
+    this.fetchGroup("other");
   }
 });

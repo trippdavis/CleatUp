@@ -32,30 +32,27 @@ CleatUp.Views.Landing = Backbone.View.extend({
     $interestEl.toggleClass("selected-dropdown");
     $(".landing-dropdown").html($interestEl.text() + " " + "<span class='caret'>");
     var interest_id = $(event.target).data("interest-id");
-    if (this.currentClass === "groups") {
-      this.interestedGroups(interest_id);
-    } else {
-      this.interestedEvents(interest_id);
-    }
+
+    this.currentLanding.switchIndex(interest_id);
   },
 
-  interestedGroups: function (interest_id) {
-    var view = new CleatUp.Views.GroupsIndex({
-      collection: this.groups,
-      type: "interest",
-      interest_id: interest_id
-    });
-    this._swapLanding(view);
-  },
-
-  interestedEvents: function (interest_id) {
-    var view = new CleatUp.Views.EventsIndex({
-      collection: this.myEvents,
-      type: "interest",
-      interest_id: interest_id
-    });
-    this._swapLanding(view);
-  },
+  // interestedGroups: function (interest_id) {
+  //   var view = new CleatUp.Views.GroupsIndex({
+  //     collection: this.groups,
+  //     type: "interest",
+  //     interest_id: interest_id
+  //   });
+  //   this._swapLanding(view);
+  // },
+  //
+  // interestedEvents: function (interest_id) {
+  //   var view = new CleatUp.Views.EventsIndex({
+  //     collection: this.myEvents,
+  //     type: "interest",
+  //     interest_id: interest_id
+  //   });
+  //   this._swapLanding(view);
+  // },
 
   switchLanding: function (event) {
     $(event.target).prop("disabled", true);
@@ -78,6 +75,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
 
   groupsLanding: function () {
     var view = new CleatUp.Views.GroupsLanding({
+      interest_id: 0,
       collection: this.groups
     });
     this._swapLanding(view);
