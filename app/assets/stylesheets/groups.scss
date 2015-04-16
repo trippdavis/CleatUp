@@ -141,3 +141,9 @@
 .group-form-box {
   margin-top: 20px;
 }
+
+.group-items:after {
+  content: "";
+  display: block;
+  clear: both;
+}
