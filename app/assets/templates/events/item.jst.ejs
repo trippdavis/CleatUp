@@ -1,11 +1,17 @@
+<div class="event-date col-md-8">
+  <%= event.date %>
+</div>
+
 <div class="event-item col-md-8">
-  <div class="event-date-time">
-    <%= event.dateTime %>
+  <div class="event-time col-md-2">
+    <%= event.time %>
   </div>
-  <div class="event-group-title">
-    <%= event.escape("group_title") %>
-  </div>
-  <div class="event-title">
-    <%= event.escape("title") %>
+  <div class="event-item-info col-md-8">
+    <div class="event-group-title">
+      <%= event.escape("group_title") %>
+    </div>
+    <div class="event-title">
+      <%= event.escape("title") %>
+    </div>
   </div>
 </div>
