@@ -1,4 +1,8 @@
 <div class="group-event" data-event-id="<%= this.model.id %>">
-  <%= event.dateTime %>
-  <%= event.escape("title") %>
+  <div class="group-event-datetime">
+    <%= event.date + " - " + event.time %>
+  </div>
+  <div class="group-event-title">
+    <%= event.escape("title") %>
+  </div>
 </div>

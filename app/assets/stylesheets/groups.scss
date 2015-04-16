@@ -113,12 +113,21 @@
   border: 2px solid red;
   border-radius: 5px;
   padding: 10px;
-  font-size: 20px;
   margin-top: 20px;
 }
 
 .group-event:hover {
   cursor: pointer;
+}
+
+.group-event-datetime {
+  font-size: 15px;
+  text-align: left;
+}
+
+.group-event-title {
+  font-size: 25px;
+  text-align: left;
 }
 
 .group-organizer {
