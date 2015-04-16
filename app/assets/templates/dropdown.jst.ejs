@@ -1,6 +1,6 @@
-<button class="btn dropdown-toggle" data-toggle="dropdown">Interests <span class="caret"></span></button>
+<button class="btn dropdown-toggle landing-dropdown" data-toggle="dropdown">All Interests <span class="caret"></span></button>
 <ul class="dropdown-menu">
-  <li><button class="all-interests">All</button></li>
+  <li><button class="interest-dropdown-item selected-dropdown" data-interest-id="0">All Interests</button></li>
   <% interests.each(function (interest) { %>
     <li>
       <button data-interest-id="<%= interest.id %>" class="interest-dropdown-item">
