@@ -8,6 +8,12 @@
   margin: 1px;
 }
 
+.event-item:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .event-date {
   text-align: left;
   font-size: 20px;
@@ -45,4 +51,12 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+}
+
+.events-index-navigation {
+  padding-top: 43px;
+}
+
+.event-btn-group {
+  width: 100%;
 }

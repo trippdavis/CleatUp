@@ -53,3 +53,9 @@ body {
 .col-md-2 {
   padding-left: 0px;
 }
+
+.indexes-area:after {
+  content: "";
+  display: block;
+  clear: both;
+}
