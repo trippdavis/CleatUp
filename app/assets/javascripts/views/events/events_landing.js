@@ -35,42 +35,6 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
     this.switchIndex();
   },
 
-  // createdEvents: function () {
-  //   var view = new CleatUp.Views.EventsIndex({
-  //     collection: this.collection,
-  //     type: "created",
-  //     interest_id: this.interest_id
-  //   });
-  //   this._swapIndex(view);
-  // },
-  //
-  // reservedEvents: function () {
-  //   var view = new CleatUp.Views.EventsIndex({
-  //     collection: this.collection,
-  //     type: "reserved",
-  //     interest_id: this.interest_id
-  //   });
-  //   this._swapIndex(view);
-  // },
-  //
-  // joinedGroupEvents: function () {
-  //   var view = new CleatUp.Views.EventsIndex({
-  //     collection: this.collection,
-  //     type: "joined-group",
-  //     interest_id: this.interest_id
-  //   });
-  //   this._swapIndex(view);
-  // },
-  //
-  // otherEvents: function () {
-  //   var view = new CleatUp.Views.EventsIndex({
-  //     collection: this.collection,
-  //     type: "other",
-  //     interest_id: this.interest_id
-  //   });
-  //   this._swapIndex(view);
-  // },
-
   switchIndex: function (interest_id) {
     if (interest_id) {
       this.interest_id = interest_id;

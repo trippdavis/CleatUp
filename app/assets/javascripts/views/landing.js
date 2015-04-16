@@ -3,6 +3,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
     this.interests = options.interests;
     this.myEvents = options.myEvents;
     this.groups = options.groups;
+    this.interest_id = 0;
   },
 
   template: JST["landing"],
@@ -33,6 +34,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
     $(".landing-dropdown").html($interestEl.text() + " " + "<span class='caret'>");
     var interest_id = $(event.target).data("interest-id");
 
+    this.interest_id = interest_id;
     this.currentLanding.switchIndex(interest_id);
   },
 
@@ -57,7 +59,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
 
   groupsLanding: function () {
     var view = new CleatUp.Views.GroupsLanding({
-      interest_id: 0,
+      interest_id: this.interest_id,
       collection: this.groups
     });
     this._swapLanding(view);
@@ -65,7 +67,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
 
   eventsLanding: function () {
     var view = new CleatUp.Views.EventsLanding({
-      interest_id: 0,
+      interest_id: this.interest_id,
       type: "reserved",
       collection: this.myEvents
     });
