@@ -5,7 +5,10 @@ CleatUp.Views.EventsIndex = Backbone.View.extend({
     this.collection.fetch({
       data: {
         type: type,
-        interest_id: interest_id
+        interest_id: interest_id,
+      },
+      success: function (a,b,c) {
+        debugger
       }
     });
     this.listenTo(this.collection, "sync", this.render);

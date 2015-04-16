@@ -23,14 +23,15 @@ class Api::EventsController < ApplicationController
       events = Event.all
     end
 
-    @events = events.order("date_time");
+    @events = events.order("date_time")
 
-    render :json => @events
+    render "index"
   end
 
   def show
     @event = Event.find(params[:id])
     @organizer = @event.organizer
+    @group = @event.group
     @owned = { owned: (@event.organizer == current_user) }
 
     reservation = EventReservation.where(reserver_id: current_user.id, event_id: params[:id])
