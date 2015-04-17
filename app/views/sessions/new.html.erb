@@ -1,13 +1,15 @@
 <div class="enter-background">
-  <div class="new-session col-md-4 col-md-offset-4">
-    <h3>Log in</h3>
+  <div class="new-session col-md-4 col-md-offset-4 enter-form">
+    <h3 class="enter-header">Log in</h3>
 
     <% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |err| %>
-          <li><%= err %></li>
-        <% end %>
-      </ul>
+      <div class ="form-alert alert alert-danger">
+        <ul>
+          <% flash[:errors].each do |err| %>
+            <li><%= err %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <form action="/session" method="post">
@@ -32,7 +34,7 @@
           placeholder="Enter password">
       </div>
 
-      <button type="submit" class="btn btn-primary">Log in</button>
+      <button type="submit" class="btn btn-danger btn-enter">Log in</button>
     </form>
 
     <form action="/session" method="post">
@@ -51,15 +53,14 @@
         name="user[password]"
         value="password1">
 
-      <button type="submit" class="btn btn-primary">Demo user</button>
+      <button type="submit" class="btn btn-danger btn-enter demo-button">Demo user</button>
     </form>
 
-    <div>
-      Need an account?
-      <br>
-      <form action="<%= new_user_url %>" method="get">
-        <button type="submit" class="btn btn-primary">Sign up</button>
-      </form>
-    </div>
+    <hr>
+
+    <h5 class="enter-subheader">Need an account?</h5>
+    <form action="<%= new_user_url %>" method="get">
+      <button type="submit" class="btn btn-primary btn-enter">Sign up</button>
+    </form>
   </div>
 </div>

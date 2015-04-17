@@ -1,13 +1,15 @@
 <div class="enter-background">
-  <div class="new-user col-md-4 col-md-offset-4">
-    <h3>Sign up</h3>
+  <div class="new-user col-md-4 col-md-offset-4 enter-form">
+    <h3 class="enter-header">Sign up</h3>
 
     <% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |err| %>
-          <li><%= err %></li>
-        <% end %>
-      </ul>
+      <div class ="form-alert alert alert-danger">
+        <ul>
+          <% flash[:errors].each do |err| %>
+            <li><%= err %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <form action="/users" method="post">
@@ -25,7 +27,7 @@
           value="<%= @user.username %>">
       </div>
 
-      <div>
+      <div class="form-group">
         <input
           type="password"
           name="user[password]"
@@ -33,15 +35,14 @@
           placeholder="Enter password">
       </div>
 
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <button type="submit" class="btn btn-danger btn-enter">Sign in</button>
     </form>
 
-    <div>
-      Already have an account?
-      <br>
-      <form action="<%= new_session_url %>" method="get">
-        <button type="submit" class="btn btn-primary">Log in</button>
-      </form>
-    </div>
+    <hr>
+
+    <h5 class="enter-subheader">Already have an account?</h5>
+    <form action="<%= new_session_url %>" method="get">
+      <button type="submit" class="btn btn-primary btn-enter">Log in</button>
+    </form>
   </div>
 </div>
