@@ -27,10 +27,12 @@ CleatUp.Models.Event = Backbone.Model.extend({
   parseDT: function (dateTime) {
     var dt = dateTime;
     date = dt.split("T")[0].split("-");
+    this.formDate = date.join("-");
     year = date[0];
     month = date[1] - 1;
     day = date[2];
     time = dt.split("T")[1].split(".")[0].split(":");
+    this.formTime = time.join(":");
     hour = time[0];
     minute = time[1];
     this.dateTime = new Date(year, month, day, hour, minute);

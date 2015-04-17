@@ -62,13 +62,14 @@ CleatUp.Views.EventForm = Backbone.View.extend({
         this.model.get("title"),
         this.model.get("location"),
         this.model.get("description"),
-        this.model.date,
-        this.model.time
+        this.model.formDate,
+        this.model.formTime
       );
     }
   },
 
   fillForm: function (title, location, description, date , time) {
+    debugger
     this.$el.find(".form-event-title").val(title);
     this.$el.find(".form-event-location").val(location);
     this.$el.find(".form-event-description").val(description);
