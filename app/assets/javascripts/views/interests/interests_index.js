@@ -1,4 +1,4 @@
-CleatUp.Views.InterestsIndex = Backbone.View.extend({
+PickUp.Views.InterestsIndex = Backbone.View.extend({
   initialize: function (options) {
     this.group_id = options.group_id;
     this.type = options.type;
@@ -57,7 +57,7 @@ CleatUp.Views.InterestsIndex = Backbone.View.extend({
     this.remove();
     if (this.type === "group") {
       this.model.interests = this.updatedInterestTopics;
-      CleatUp.pubSub.trigger("interestsAdded");
+      PickUp.pubSub.trigger("interestsAdded");
     }
   },
 

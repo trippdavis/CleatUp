@@ -1,4 +1,4 @@
-CleatUp.Models.Event = Backbone.Model.extend({
+PickUp.Models.Event = Backbone.Model.extend({
   initialize: function () {
     this.organizer = null;
   },

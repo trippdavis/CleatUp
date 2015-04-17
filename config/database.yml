@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: CleatUp_development
+  database: PickUp_development
 
 test:
   <<: *default
-  database: CleatUp_test
+  database: PickUp_test
 
 production:
   <<: *default
-  database: CleatUp_production
-  username: CleatUp
-  password: <%= ENV['CLEATUP_DATABASE_PASSWORD'] %>
+  database: PickUp_production
+  username: PickUp
+  password: <%= ENV['PICKUP_DATABASE_PASSWORD'] %>

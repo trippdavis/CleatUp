@@ -1,4 +1,4 @@
-CleatUp.Views.GroupSidebar = Backbone.View.extend({
+PickUp.Views.GroupSidebar = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
   },

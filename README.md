@@ -1,11 +1,11 @@
-# CleatUp
+# PickUp
 
 <!-- [Heroku link][heroku]
 
 [heroku]: http://flux-capacitr.herokuapp.com -->
 
 ## Minimum Viable Product
-CleatUp is a clone of MeetUp built on Rails and Backbone. Users can:
+PickUp is a clone of MeetUp built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 

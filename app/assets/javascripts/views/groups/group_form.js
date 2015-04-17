@@ -1,4 +1,4 @@
-CleatUp.Views.GroupForm = Backbone.View.extend({
+PickUp.Views.GroupForm = Backbone.View.extend({
   initialize: function (options) {
     this.formType = options.formType;
     this.listenTo(this.model, "sync", this.setupFill);

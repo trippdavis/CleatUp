@@ -1,4 +1,4 @@
-CleatUp.Views.EventsIndex = Backbone.View.extend({
+PickUp.Views.EventsIndex = Backbone.View.extend({
   initialize: function (options) {
     var type = options.type;
     var interest_id = options.interest_id;
@@ -21,7 +21,7 @@ CleatUp.Views.EventsIndex = Backbone.View.extend({
     this.collection.each(function (event) {
       var showDate = !(event.date === currentDate);
       currentDate = event.date;
-      var view = new CleatUp.Views.EventItem({
+      var view = new PickUp.Views.EventItem({
         model: event,
         showDate: showDate
       });

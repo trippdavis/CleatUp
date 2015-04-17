@@ -1,4 +1,4 @@
-CleatUp.Views.GroupsLanding = Backbone.View.extend({
+PickUp.Views.GroupsLanding = Backbone.View.extend({
   initialize: function (options) {
     this.interest_id = options.interest_id;
   },
@@ -31,7 +31,7 @@ CleatUp.Views.GroupsLanding = Backbone.View.extend({
 
   showIndex: function (type) {
     if (this.collection.length > 0) {
-      var view = new CleatUp.Views.GroupsIndex({
+      var view = new PickUp.Views.GroupsIndex({
         collection: this.collection,
         type: type
       });

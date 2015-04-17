@@ -17,7 +17,7 @@
 //= require underscore
 //= require backbone
 //= require bootstrap
-//= require cleatup
+//= require pickup
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

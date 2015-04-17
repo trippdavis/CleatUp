@@ -1,11 +1,11 @@
-CleatUp.Views.GroupShow = Backbone.View.extend({
+PickUp.Views.GroupShow = Backbone.View.extend({
   initialize: function (options) {
     this.interests = options.interests;
     this.type = options.type;
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.fillBody);
-    CleatUp.pubSub.on("interestsAdded", this.addSidebar, this);
+    PickUp.pubSub.on("interestsAdded", this.addSidebar, this);
   },
 
   events: {
@@ -36,13 +36,13 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       this.currentSidebar.remove();
     }
 
-    var newSidebar = new CleatUp.Views.GroupSidebar({ model: this.model });
+    var newSidebar = new PickUp.Views.GroupSidebar({ model: this.model });
     this.$el.find(".group-sidebar").html(newSidebar.render().$el);
     this.currentSidebar = newSidebar;
   },
 
   fillBody: function () {
-    var view = new CleatUp.Views.GroupBody({
+    var view = new PickUp.Views.GroupBody({
       type: this.type,
       event_id: this.event_id,
       model: this.model,
@@ -53,7 +53,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
   },
 
   backHome: function () {
-    var view = new CleatUp.Views.GroupBody({
+    var view = new PickUp.Views.GroupBody({
       type: "group",
       model: this.model,
       collection: this.collection
@@ -65,7 +65,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
 
   newEvent: function (event) {
     $(event.target).blur();
-    var view = new CleatUp.Views.GroupBody({
+    var view = new PickUp.Views.GroupBody({
       type: "event-new",
       model: this.model,
       collection: this.collection
@@ -85,7 +85,7 @@ CleatUp.Views.GroupShow = Backbone.View.extend({
       }
     });
 
-    var view = new CleatUp.Views.InterestsIndex({
+    var view = new PickUp.Views.InterestsIndex({
       model: this.model,
       collection: this.interests,
       type: type,

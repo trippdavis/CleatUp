@@ -1,4 +1,4 @@
-CleatUp.Views.GroupItem = Backbone.View.extend({
+PickUp.Views.GroupItem = Backbone.View.extend({
   template: JST["groups/item"],
 
   events: {

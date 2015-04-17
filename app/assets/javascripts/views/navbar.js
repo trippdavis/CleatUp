@@ -1,4 +1,4 @@
-CleatUp.Views.Navbar = Backbone.View.extend({
+PickUp.Views.Navbar = Backbone.View.extend({
   initialize: function (options) {
     this.interests = options.interests;
   },
@@ -26,7 +26,7 @@ CleatUp.Views.Navbar = Backbone.View.extend({
       }
     });
 
-    var view = new CleatUp.Views.InterestsIndex({
+    var view = new PickUp.Views.InterestsIndex({
       collection: this.interests,
       type: type
     });

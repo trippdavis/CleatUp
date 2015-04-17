@@ -1,5 +1,5 @@
-CleatUp.Collections.Events = Backbone.Collection.extend({
-  model: CleatUp.Models.Event,
+PickUp.Collections.Events = Backbone.Collection.extend({
+  model: PickUp.Models.Event,
 
   url: "/api/events",
 

@@ -1,5 +1,5 @@
-CleatUp.Collections.Groups = Backbone.Collection.extend({
-  model: CleatUp.Models.Group,
+PickUp.Collections.Groups = Backbone.Collection.extend({
+  model: PickUp.Models.Group,
 
   url: "/api/groups",
 

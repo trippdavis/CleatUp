@@ -1,4 +1,4 @@
-CleatUp.Views.GroupBody = Backbone.View.extend({
+PickUp.Views.GroupBody = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
     this.event_id = options.event_id;
@@ -38,7 +38,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   editEvent: function () {
-    var view = new CleatUp.Views.EventForm({
+    var view = new PickUp.Views.EventForm({
       model: this.currentEvent,
       group_id: this.model.id,
       formType: "Edit"
@@ -47,9 +47,9 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
   },
 
   newEvent: function () {
-    this.currentEvent = new CleatUp.Models.Event();
+    this.currentEvent = new PickUp.Models.Event();
     this.currentEvent.fetch();
-    var view = new CleatUp.Views.EventForm({
+    var view = new PickUp.Views.EventForm({
       model: this.currentEvent,
       group_id: this.model.id,
       formType: "New"
@@ -73,7 +73,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
         group_id: this.model.id
       }
     });
-    var view = new CleatUp.Views.GroupEvents({
+    var view = new PickUp.Views.GroupEvents({
       model: this.model,
       collection: this.collection
     });
@@ -93,7 +93,7 @@ CleatUp.Views.GroupBody = Backbone.View.extend({
     }
 
     Backbone.history.navigate("groups/" + this.model.id + "/events/" + this.currentEvent.id);
-    var view = new CleatUp.Views.EventShow({
+    var view = new PickUp.Views.EventShow({
       model: this.currentEvent
     });
     this._swapBody(view);

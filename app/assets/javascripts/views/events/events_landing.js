@@ -1,4 +1,4 @@
-CleatUp.Views.EventsLanding = Backbone.View.extend({
+PickUp.Views.EventsLanding = Backbone.View.extend({
   initialize: function (options) {
     this.interest_id = options.interest_id;
     this.type = options.type;
@@ -46,7 +46,7 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
       this.interest_id = interest_id;
     }
 
-    var view = new CleatUp.Views.EventsIndex({
+    var view = new PickUp.Views.EventsIndex({
       collection: this.collection,
       type: this.type,
       interest_id: this.interest_id

@@ -1,4 +1,4 @@
-CleatUp.Views.GroupEvents = Backbone.View.extend({
+PickUp.Views.GroupEvents = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.collection, "sync", this.addEvents);
   },
@@ -14,7 +14,7 @@ CleatUp.Views.GroupEvents = Backbone.View.extend({
 
   addEvents: function () {
     this.collection.each(function (event) {
-      var view = new CleatUp.Views.GroupEvent({ model: event });
+      var view = new PickUp.Views.GroupEvent({ model: event });
       this.$el.find(".group-events").append(view.render().$el);
     }.bind(this));
   }

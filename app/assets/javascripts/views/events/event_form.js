@@ -1,4 +1,4 @@
-CleatUp.Views.EventForm = Backbone.View.extend({
+PickUp.Views.EventForm = Backbone.View.extend({
   initialize: function (options) {
     this.group_id = options.group_id;
     this.formType = options.formType;

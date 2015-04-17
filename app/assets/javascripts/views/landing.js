@@ -1,4 +1,4 @@
-CleatUp.Views.Landing = Backbone.View.extend({
+PickUp.Views.Landing = Backbone.View.extend({
   initialize: function (options) {
     this.interests = options.interests;
     this.myEvents = options.myEvents;
@@ -51,14 +51,14 @@ CleatUp.Views.Landing = Backbone.View.extend({
   },
 
   dropdown: function () {
-    var view = new CleatUp.Views.Dropdown({
+    var view = new PickUp.Views.Dropdown({
       collection: this.interests
     });
     this.$el.find(".interest-dropdown").html(view.render().$el);
   },
 
   groupsLanding: function () {
-    var view = new CleatUp.Views.GroupsLanding({
+    var view = new PickUp.Views.GroupsLanding({
       interest_id: this.interest_id,
       collection: this.groups
     });
@@ -66,7 +66,7 @@ CleatUp.Views.Landing = Backbone.View.extend({
   },
 
   eventsLanding: function () {
-    var view = new CleatUp.Views.EventsLanding({
+    var view = new PickUp.Views.EventsLanding({
       interest_id: this.interest_id,
       type: "reserved",
       collection: this.myEvents

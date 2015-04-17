@@ -1,4 +1,4 @@
-CleatUp.Models.Group = Backbone.Model.extend({
+PickUp.Models.Group = Backbone.Model.extend({
   initialize: function () {
     this.organizer = null;
     this.interests = [];

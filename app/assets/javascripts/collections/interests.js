@@ -1,5 +1,5 @@
-CleatUp.Collections.Interests = Backbone.Collection.extend({
-  model: CleatUp.Models.Interest,
+PickUp.Collections.Interests = Backbone.Collection.extend({
+  model: PickUp.Models.Interest,
 
   url: "/api/interests",
 });

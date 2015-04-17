@@ -1,16 +1,16 @@
-CleatUp.Routers.App = Backbone.Router.extend({
+PickUp.Routers.App = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.$subEl = $("#sub-content");
     this.$banner = $("#landing-banner");
-    this.groups = new CleatUp.Collections.Groups();
-    this.myEvents = new CleatUp.Collections.Events();
-    this.interests = new CleatUp.Collections.Interests();
+    this.groups = new PickUp.Collections.Groups();
+    this.myEvents = new PickUp.Collections.Events();
+    this.interests = new PickUp.Collections.Interests();
     this.addNavbar();
   },
 
   addNavbar: function () {
-    var view = new CleatUp.Views.Navbar({
+    var view = new PickUp.Views.Navbar({
       interests: this.interests
     });
     $("#site-navbar").html(view.render().$el);
@@ -27,7 +27,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   landing: function () {
-    var view = new CleatUp.Views.Landing({
+    var view = new PickUp.Views.Landing({
       groups: this.groups,
       myEvents: this.myEvents,
       interests: this.interests
@@ -40,7 +40,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
     var group = this.groups.getOrFetch(id);
     var type = this.determineType(event_id, edit);
 
-    var view = new CleatUp.Views.GroupShow({
+    var view = new PickUp.Views.GroupShow({
       model: group,
       collection: this.myEvents,
       interests: this.interests,
@@ -63,8 +63,8 @@ CleatUp.Routers.App = Backbone.Router.extend({
   },
 
   groupNew: function () {
-    var group = new CleatUp.Models.Group();
-    var view = new CleatUp.Views.GroupForm({
+    var group = new PickUp.Models.Group();
+    var view = new PickUp.Views.GroupForm({
       formType: "New",
       model: group
     });
@@ -73,7 +73,7 @@ CleatUp.Routers.App = Backbone.Router.extend({
 
   groupEdit: function (id) {
     var group = this.groups.getOrFetch(id);
-    var view = new CleatUp.Views.GroupForm({
+    var view = new PickUp.Views.GroupForm({
       formType: "Edit",
       model: group
     });

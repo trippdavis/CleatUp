@@ -1,4 +1,4 @@
-CleatUp.Views.EventItem = Backbone.View.extend({
+PickUp.Views.EventItem = Backbone.View.extend({
   initialize: function (options) {
     this.showDate = options.showDate;
   },
