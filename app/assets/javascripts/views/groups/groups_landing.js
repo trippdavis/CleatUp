@@ -41,8 +41,7 @@ PickUp.Views.GroupsLanding = Backbone.View.extend({
     }
   },
 
-  switchIndex: function (interest_id) {
-    this.interest_id = interest_id;
+  switchIndex: function () {
     this.fetchGroup("created");
     this.fetchGroup("joined");
     this.fetchGroup("other");

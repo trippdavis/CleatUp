@@ -34,7 +34,9 @@ PickUp.Views.Landing = Backbone.View.extend({
     $(".landing-dropdown").html($interestEl.text() + " " + "<span class='caret'>");
     var interest_id = $(event.target).data("interest-id");
 
+
     this.interest_id = interest_id;
+    this.currentLanding.interest_id = interest_id;
     this.currentLanding.switchIndex(interest_id);
   },
 
@@ -66,6 +68,7 @@ PickUp.Views.Landing = Backbone.View.extend({
   },
 
   eventsLanding: function () {
+    debugger
     var view = new PickUp.Views.EventsLanding({
       interest_id: this.interest_id,
       type: "reserved",

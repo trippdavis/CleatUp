@@ -26,7 +26,6 @@ class Api::EventsController < ApplicationController
     end
 
     @events = events.order("date_time")
-
     render "index"
   end
 
@@ -72,7 +71,7 @@ class Api::EventsController < ApplicationController
         @errors.delete("Date time can't be blank")
         @errors += date_time_errors
       end
-      
+
       render "form", :status => :unprocessable_entity
     end
   end

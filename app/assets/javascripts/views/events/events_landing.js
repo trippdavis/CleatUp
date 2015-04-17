@@ -8,19 +8,19 @@ PickUp.Views.EventsLanding = Backbone.View.extend({
 
   events: {
     "click button": "switchingIndex",
-    "click td": "clickDate"
+    // "click td": "clickDate"
   },
 
-  clickDate: function (event) {
-    debugger
-  },
+  // clickDate: function (event) {
+  //   debugger
+  // },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
     this.$currentButton = this.$el.find(".reserved-events");
     this.switchIndex();
-    this.$el.find("#calendar").datepicker();
+    // this.$el.find("#calendar").datepicker();
     return this;
   },
 
@@ -41,11 +41,7 @@ PickUp.Views.EventsLanding = Backbone.View.extend({
     this.switchIndex();
   },
 
-  switchIndex: function (interest_id) {
-    if (interest_id) {
-      this.interest_id = interest_id;
-    }
-
+  switchIndex: function () {
     var view = new PickUp.Views.EventsIndex({
       collection: this.collection,
       type: this.type,
