@@ -7,7 +7,12 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
   template: JST['events/landing'],
 
   events: {
-    "click button": "switchingIndex"
+    "click button": "switchingIndex",
+    "click td": "clickDate"
+  },
+
+  clickDate: function (event) {
+    debugger
   },
 
   render: function () {
