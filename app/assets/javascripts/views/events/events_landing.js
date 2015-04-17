@@ -15,6 +15,7 @@ CleatUp.Views.EventsLanding = Backbone.View.extend({
     this.$el.html(content);
     this.$currentButton = this.$el.find(".reserved-events");
     this.switchIndex();
+    this.$el.find("#calendar").datepicker();
     return this;
   },
 
