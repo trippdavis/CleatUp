@@ -9,22 +9,19 @@ PickUp is a clone of MeetUp built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-<!-- - [ ] Create a list of interests -->
-- [ ] View recommended groups <!-- based on interests -->
-- [ ] Search for groups (by keyword<!-- or interest -->)
-- [ ] View group events
-- [ ] Join groups
-- [ ] View joined groups
-- [ ] View events for joined groups
-- [ ] Search for events (by keyword<!-- or interest -->)
-- [ ] Join events
-- [ ] View joined events
-- [ ] Create groups
-<!-- - [ ] Attach interests to created groups -->
-- [ ] Create events for created groups
-<!-- - [ ] Attach interests to created events -->
+- [X] Create accounts
+- [X] Create sessions (log in)
+- [X] View recommended groups
+- [X] Search for groups
+- [X] View group events
+- [X] Join groups
+- [X] View joined groups
+- [X] View events for joined groups
+- [X] Search for events
+- [X] Join events
+- [X] View joined events
+- [X] Create groups
+- [X] Create events for created groups
 
 ## Design Docs
 * [View Wireframes][views]
@@ -104,7 +101,7 @@ will fetch from the new search routes.
 [Details][phase-eight]
 
 ### Bonus Features (TBD)
-- [ ] Interests
+- [X] Interests
 - [ ] Calendar Features (event time)
 - [ ] Mapping Features (event location)
 - [ ] Comments or Reviews (events and groups)
