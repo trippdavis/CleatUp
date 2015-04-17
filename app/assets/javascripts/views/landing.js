@@ -68,7 +68,6 @@ PickUp.Views.Landing = Backbone.View.extend({
   },
 
   eventsLanding: function () {
-    debugger
     var view = new PickUp.Views.EventsLanding({
       interest_id: this.interest_id,
       type: "reserved",

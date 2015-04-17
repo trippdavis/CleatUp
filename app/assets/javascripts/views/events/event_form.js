@@ -69,7 +69,6 @@ PickUp.Views.EventForm = Backbone.View.extend({
   },
 
   fillForm: function (title, location, description, date , time) {
-    debugger
     this.$el.find(".form-event-title").val(title);
     this.$el.find(".form-event-location").val(location);
     this.$el.find(".form-event-description").val(description);
