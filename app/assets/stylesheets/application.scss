@@ -31,7 +31,7 @@
 
 .enter-background {
   height: 100vh;
-  background-image: url("http://upload.wikimedia.org/wikipedia/commons/2/2b/Ireland_VIP's_take_part_in_the_opening_coin_toss..jpg");
+  background-image: url("https://s3.amazonaws.com/rb-wp-prod-assets/blog/wp-content/uploads/2014/07/8c12c6d776f1766436c2198692fa76a3-1386978804.jpg");
   background-size: 100% auto;
 }
 
@@ -62,7 +62,8 @@ body {
 }
 
 .enter-form {
-  background: #f4f4f4;
+  // background: #f4f4f4;
+  background: white;
   border: 1px solid black;
   border-radius: 5px;
   padding-bottom: 20px;
@@ -88,4 +89,9 @@ body {
 
 .navbar-brand-image {
   height: 100%;
+}
+
+.enter-description {
+  font-size: 50px;
+  padding-left: 40px;
 }
