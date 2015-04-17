@@ -23,7 +23,13 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
   render: function () {
     var content = this.template({ interests: this.collection });
     this.$el.html(content);
+    this.addHeader();
     return this;
+  },
+
+  addHeader: function () {
+    var header = this.type === "user" ? "What are your interests?" : "What are the interests of your group?";
+    this.$el.find(".interests-header").html(header);
   },
 
   preselectInterests: function () {
