@@ -52,6 +52,11 @@ class Api::EventsController < ApplicationController
       render :json => @event
     else
       @errors = @event.errors.full_messages
+      if @errors.include?("Date time can't be blank")
+        @errors.delete("Date time can't be blank")
+        @errors += date_time_errors
+      end
+
       render "form", :status => :unprocessable_entity
     end
   end
@@ -63,6 +68,11 @@ class Api::EventsController < ApplicationController
       render :json => @event
     else
       @errors = @event.errors.full_messages
+      if @errors.include?("Date time can't be blank")
+        @errors.delete("Date time can't be blank")
+        @errors += date_time_errors
+      end
+      
       render "form", :status => :unprocessable_entity
     end
   end
@@ -83,5 +93,13 @@ class Api::EventsController < ApplicationController
       event_params["date_time"] = parse_dateTime(params.require(:event).permit(:time, :date))
     end
     return event_params
+  end
+
+  def date_time_errors
+    errors = []
+    errors << "Date can't be blank" if params[:event][:date] == ""
+    errors << "Time can't be blank" if params[:event][:time] == ""
+
+    errors
   end
 end
