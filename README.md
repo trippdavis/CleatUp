@@ -1,8 +1,8 @@
 # PickUp
 
-<!-- [Heroku link][heroku]
+[Pickup link][pickup]
 
-[heroku]: http://flux-capacitr.herokuapp.com -->
+[pickup]: http://www.pickup-app.us
 
 ## Minimum Viable Product
 PickUp is a clone of MeetUp built on Rails and Backbone. Users can:
