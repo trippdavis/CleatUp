@@ -1,4 +1,4 @@
-PickUp.Views.GroupBody = Backbone.View.extend({
+PickUp.Views.GroupBody = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.type = options.type;
     this.event_id = options.event_id;
@@ -7,7 +7,7 @@ PickUp.Views.GroupBody = Backbone.View.extend({
     }
   },
 
-  className: "group-body",
+  template: JST["groups/body"],
 
   events: {
     "click .delete-event": "destroy",
@@ -19,6 +19,9 @@ PickUp.Views.GroupBody = Backbone.View.extend({
   },
 
   render: function () {
+    var content = this.template();
+    this.$el.html(content);
+
     if (this.type === "group") {
       this.groupHome();
     } else if (this.type === "event") {
@@ -129,10 +132,11 @@ PickUp.Views.GroupBody = Backbone.View.extend({
 
   _swapBody: function (view) {
     if (this.currentBody) {
-      this.currentBody.remove();
+      this.removeSubview(this.$el.find(".group-body"), this.currentBody);
     }
 
-    this.$el.html(view.render().$el);
+    this.addSubview(this.$el.find(".group-body"), view);
+    // this.$el.html(view.render().$el);
     this.currentBody = view;
   }
 });
