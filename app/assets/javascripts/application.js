@@ -18,6 +18,7 @@
 //= require backbone
 //= require bootstrap
 //= require pickup
+//= require composite_view
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
