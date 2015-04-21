@@ -51,7 +51,6 @@ PickUp.Views.GroupBody = Backbone.CompositeView.extend({
 
   newEvent: function () {
     this.currentEvent = new PickUp.Models.Event();
-    this.currentEvent.fetch();
     var view = new PickUp.Views.EventForm({
       model: this.currentEvent,
       group_id: this.model.id,
