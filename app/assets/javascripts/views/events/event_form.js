@@ -26,10 +26,10 @@ PickUp.Views.EventForm = Backbone.View.extend({
 
   formSpecific: function () {
     if (this.formType === "New") {
-      this.$el.prepend("<h3>Create a New Event!</h3>");
+      this.$el.prepend("<h3>Create a New Game!</h3>");
       this.$el.find(".back").addClass("back-to-index");
     } else {
-      this.$el.prepend("<h3>Edit Your Event!</h3>");
+      this.$el.prepend("<h3>Edit Your Game!</h3>");
       this.$el.find(".back").addClass("back-to-show");
     }
   },
