@@ -1,4 +1,4 @@
-PickUp.Views.EventsIndex = Backbone.View.extend({
+PickUp.Views.EventsIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     var type = options.type;
     var interest_id = options.interest_id;
@@ -16,7 +16,6 @@ PickUp.Views.EventsIndex = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    $div = $(".event-items");
     var currentDate = "";
     this.collection.each(function (event) {
       var showDate = !(event.date === currentDate);
@@ -25,8 +24,8 @@ PickUp.Views.EventsIndex = Backbone.View.extend({
         model: event,
         showDate: showDate
       });
-      $div.append(view.render().$el);
-    });
+      this.addSubview(".event-items", view);
+    }.bind(this));
     return this;
   },
 });

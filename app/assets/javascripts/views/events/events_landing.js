@@ -1,4 +1,4 @@
-PickUp.Views.EventsLanding = Backbone.View.extend({
+PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.interest_id = options.interest_id;
     this.type = options.type;
@@ -49,10 +49,10 @@ PickUp.Views.EventsLanding = Backbone.View.extend({
     });
 
     if (this.currentIndex) {
-      this.currentIndex.remove();
+      this.removeSubview(".events-list", this.currentIndex);
     }
 
-    this.$el.find(".events-list").html(view.render().$el);
+    this.addSubview(".events-list", view);
     this.currentIndex = view;
   }
 });
