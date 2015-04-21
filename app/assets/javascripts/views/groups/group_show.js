@@ -1,4 +1,4 @@
-PickUp.Views.GroupShow = Backbone.View.extend({
+PickUp.Views.GroupShow = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.interests = options.interests;
     this.type = options.type;
@@ -33,11 +33,11 @@ PickUp.Views.GroupShow = Backbone.View.extend({
 
   addSidebar: function () {
     if (this.currentSidebar) {
-      this.currentSidebar.remove();
+      this.removeSubview(".group-sidebar", this.currentSidebar);
     }
 
     var newSidebar = new PickUp.Views.GroupSidebar({ model: this.model });
-    this.$el.find(".group-sidebar").html(newSidebar.render().$el);
+    this.addSubview(".group-sidebar", newSidebar);
     this.currentSidebar = newSidebar;
   },
 
@@ -145,10 +145,10 @@ PickUp.Views.GroupShow = Backbone.View.extend({
 
   _addBody: function (view) {
     if (this.currentBody) {
-      this.currentBody.remove();
+      this.removeSubview(".group-show", this.currentBody);
     }
 
-    this.$el.append(view.render().$el);
+    this.addSubview(".group-show", view);
     this.currentBody = view;
   }
 });

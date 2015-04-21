@@ -1,19 +1,21 @@
-<div class="group-banner">
-  <div class="group-banner-title">
-    <h1><%= group.escape('title') %></h1>
+<div class="group-show">
+  <div class="group-banner">
+    <div class="group-banner-title">
+      <h1><%= group.escape('title') %></h1>
+    </div>
   </div>
-</div>
-<div class="group-navbar">
-  <div class="btn-group group-banner-buttons">
-    <% if (group.get('owned')) { %>
-      <button class="edit-group btn btn-red">Edit</button>
-      <button class="delete-group btn btn-red">Delete</button>
-      <button class="edit-interests btn btn-red">Edit Interests</button>
-      <button class="create-event btn btn-red">Create Event!</button>
-    <% } else { %>
-      <button id="joined-group" class="join-group btn btn-red">Join Us!</button>
-    <% } %>
+  <div class="group-navbar">
+    <div class="btn-group group-banner-buttons">
+      <% if (group.get('owned')) { %>
+        <button class="edit-group btn btn-red">Edit</button>
+        <button class="delete-group btn btn-red">Delete</button>
+        <button class="edit-interests btn btn-red">Edit Interests</button>
+        <button class="create-event btn btn-red">Create Event!</button>
+      <% } else { %>
+        <button id="joined-group" class="join-group btn btn-red">Join Us!</button>
+      <% } %>
+    </div>
   </div>
-</div>
 
-<div class="group-sidebar"></div>
+  <div class="group-sidebar"></div>
+</div>

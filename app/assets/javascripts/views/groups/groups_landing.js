@@ -1,4 +1,4 @@
-PickUp.Views.GroupsLanding = Backbone.View.extend({
+PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.interest_id = options.interest_id;
   },
@@ -35,13 +35,14 @@ PickUp.Views.GroupsLanding = Backbone.View.extend({
         collection: this.collection,
         type: type
       });
-      this.$el.find("." + type + "-groups-list").html(view.render().$el);
-    } else {
-      this.$el.find("." + type + "-groups-list").empty();
+      this.addSubview("." + type + "-groups-list", view);
     }
   },
 
   switchIndex: function () {
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
     this.fetchGroup("created");
     this.fetchGroup("joined");
     this.fetchGroup("other");

@@ -1,4 +1,4 @@
-PickUp.Views.GroupsIndex = Backbone.View.extend({
+PickUp.Views.GroupsIndex = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.type = options.type;
   },
@@ -8,11 +8,10 @@ PickUp.Views.GroupsIndex = Backbone.View.extend({
   render: function () {
     var content = this.template({ type: this.type });
     this.$el.html(content);
-    var $div = this.$el.find(".group-items");
     this.collection.each(function (group) {
       var view = new PickUp.Views.GroupItem({ model: group });
-      $div.append(view.render().$el);
-    });
+      this.addSubview(".group-items", view);
+    }.bind(this));
     return this;
   },
 });

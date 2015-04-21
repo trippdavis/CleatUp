@@ -1,4 +1,4 @@
-PickUp.Views.GroupEvents = Backbone.View.extend({
+PickUp.Views.GroupEvents = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.collection, "sync", this.addEvents);
   },
@@ -15,7 +15,7 @@ PickUp.Views.GroupEvents = Backbone.View.extend({
   addEvents: function () {
     this.collection.each(function (event) {
       var view = new PickUp.Views.GroupEvent({ model: event });
-      this.$el.find(".group-events").append(view.render().$el);
+      this.addSubview(".group-events", view);
     }.bind(this));
   }
 });

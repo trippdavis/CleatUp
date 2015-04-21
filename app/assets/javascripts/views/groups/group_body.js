@@ -132,11 +132,10 @@ PickUp.Views.GroupBody = Backbone.CompositeView.extend({
 
   _swapBody: function (view) {
     if (this.currentBody) {
-      this.removeSubview(this.$el.find(".group-body"), this.currentBody);
+      this.removeSubview(".group-body", this.currentBody);
     }
 
-    this.addSubview(this.$el.find(".group-body"), view);
-    // this.$el.html(view.render().$el);
+    this.addSubview(".group-body", view);
     this.currentBody = view;
   }
 });

@@ -57,7 +57,7 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
       collection: this.interests
     });
 
-    this.addSubview(this.$el.find(".interest-dropdown"), view);
+    this.addSubview(".interest-dropdown", view);
   },
 
   groupsLanding: function () {
@@ -79,10 +79,10 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
 
   _swapLanding: function (view) {
     if (this.currentLanding) {
-      this.removeSubview(this.$el.find(".indexes-area"), this.currentLanding);
+      this.removeSubview(".indexes-area", this.currentLanding);
     }
 
-    this.addSubview(this.$el.find(".indexes-area"), view);
+    this.addSubview(".indexes-area", view);
     this.currentLanding = view;
   }
 });
