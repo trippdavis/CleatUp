@@ -1,7 +1,7 @@
 PickUp.Views.Dropdown = Backbone.View.extend({
   initialize: function () {
     this.collection.fetch({ data: { type: "normal" } });
-    this.listenTo(this.collection, "sync", this.render);
+    this.listenToOnce(this.collection, "sync", this.render);
   },
 
   tagType: "li",
