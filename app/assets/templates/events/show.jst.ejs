@@ -1,5 +1,9 @@
 <h3><%= event.escape('title') %></h3>
-<%= event.dateTime %>
+
+<%= event.date %>
+<br>
+<%= event.time %>
+<br>
 <%= event.escape('location') %>
 
 <% if (event.organizer){ %>
