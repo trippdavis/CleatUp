@@ -5,6 +5,9 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.event_id = options.event_id;
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model, "sync", this.fillBody);
+    if (options.showInterests) {
+      this.listenTo(this.model, "sync", this.editInterests);
+    }
     PickUp.pubSub.on("interestsAdded", this.addSidebar, this);
   },
 

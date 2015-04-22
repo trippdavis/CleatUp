@@ -35,7 +35,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     this.model.set(data);
     this.model.save({}, {
       success: function () {
-        Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
+        Backbone.history.navigate("#/groups/" + this.model.id + "/interests", { trigger: true });
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {
