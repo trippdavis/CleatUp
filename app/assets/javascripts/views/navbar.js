@@ -19,16 +19,9 @@ PickUp.Views.Navbar = Backbone.View.extend({
   editInterests: function (event) {
     event.preventDefault();
 
-    var type = "user";
-
-    this.interests.fetch({ data: {
-        interestable_type: type
-      }
-    });
-
-    var view = new PickUp.Views.InterestsIndex({
+    var view = new PickUp.Views.InterestsModal({
       collection: this.interests,
-      type: type
+      type: "user"
     });
 
     this.$el.append(view.render().$el);

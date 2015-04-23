@@ -23,7 +23,6 @@ PickUp.Routers.App = Backbone.Router.extend({
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/:attr1/:attr2": "groupShow",
     "groups/:id/events/:attr1": "groupShow",
-    "groups/:id/interests": "groupShowInterests",
     "groups/:id": "groupShow"
   },
 
@@ -48,20 +47,6 @@ PickUp.Routers.App = Backbone.Router.extend({
       event_id: event_id,
       type: type,
       showInterests: false
-    });
-    this._swapView(view);
-  },
-
-  groupShowInterests: function (id) {
-    var group = this.groups.getOrFetch(id);
-    var type = "group";
-
-    var view = new PickUp.Views.GroupShow({
-      model: group,
-      collection: this.myEvents,
-      interests: this.interests,
-      type: type,
-      showInterests: true
     });
     this._swapView(view);
   },

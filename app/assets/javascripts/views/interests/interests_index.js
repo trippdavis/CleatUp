@@ -8,14 +8,7 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
 
   events: {
     "click .interest": "handleClick",
-    "click .submit-interests": "submitInterests",
-    "click": "escape"
-  },
-
-  escape: function (event) {
-    if ($(event.target).hasClass("interests-modal")) {
-      this.remove();
-    }
+    "click .submit-interests": "submitInterests"
   },
 
   template: JST['interests/index'],
@@ -61,6 +54,8 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
     this.destroyInterests(oldInterestIDs);
 
     this.remove();
+    PickUp.pubSub.trigger("exitInterests");
+    debugger
     if (this.type === "group") {
       this.model.interests = this.updatedInterestTopics;
       PickUp.pubSub.trigger("interestsAdded");

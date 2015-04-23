@@ -3,12 +3,17 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.interests = options.interests;
     this.type = options.type;
     this.event_id = options.event_id;
-    this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model, "sync", this.fillBody);
-    if (options.showInterests) {
-      this.listenTo(this.model, "sync", this.editInterests);
-    }
+    this.showInterests = options.showInterests;
+    this.listenTo(this.model, "sync", this.fillContent);
     PickUp.pubSub.on("interestsAdded", this.addSidebar, this);
+  },
+
+  fillContent: function () {
+    this.render();
+    this.fillBody();
+    if (this.showInterests) {
+      this.editInterests();
+    }
   },
 
   events: {
@@ -79,19 +84,14 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
   },
 
   editInterests: function (event) {
-    $(event.target).blur();
-    var type = "group";
+    if (event) {
+      $(event.target).blur();
+    }
 
-    this.interests.fetch({ data: {
-        interestable_type: type,
-        group_id: this.model.id
-      }
-    });
-
-    var view = new PickUp.Views.InterestsIndex({
+    var view = new PickUp.Views.InterestsModal({
       model: this.model,
       collection: this.interests,
-      type: type,
+      type: "group",
       group_id: this.model.id
     });
 
