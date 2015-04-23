@@ -8,11 +8,11 @@ PickUp.Views.InterestsModal = Backbone.CompositeView.extend({
         group_id: this.group_id
       }
     });
-    PickUp.pubSub.on("exitInterests", this.remove, this);
   },
 
   events: {
-    "click": "escape"
+    "click": "escape",
+    "click .submit-interests": "submitInterests"
   },
 
   escape: function (event) {
@@ -27,15 +27,68 @@ PickUp.Views.InterestsModal = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
 
-    var view = new PickUp.Views.InterestsIndex({
+    this.interestsIndex = new PickUp.Views.InterestsIndex({
       type: this.type,
       group_id: this.group_id,
       collection: this.collection,
       model: this.model
     });
 
-    this.addSubview(".interests", view);
-    // this.$el.find(".interests").html(view.$el);
+    this.addSubview(".interests", this.interestsIndex);
     return this;
+  },
+
+  submitInterests: function () {
+    buttons = $(".btn-success");
+    this.updatedInterestIDs = [];
+    this.updatedInterestTopics = [];
+    buttons.each(function (i, button) {
+      this.updatedInterestTopics.push($(button).text());
+      this.updatedInterestIDs.push($(button).data("id"));
+    }.bind(this));
+
+    var newInterestIDs = _.difference(this.updatedInterestIDs, this.interestsIndex.prevInterestIDs);
+    var oldInterestIDs = _.difference(this.interestsIndex.prevInterestIDs, this.updatedInterestIDs);
+
+    this.addInterests(newInterestIDs);
+    this.destroyInterests(oldInterestIDs);
+
+    if (this.type === "group") {
+      this.model.interests = this.updatedInterestTopics;
+      PickUp.pubSub.trigger("interestsAdded");
+    }
+    this.remove();
+  },
+
+  addInterests: function (newInterestIDs) {
+    var type = this.type;
+    var group_id = this.group_id;
+    newInterestIDs.forEach( function (interestID) {
+      $.ajax({
+        url: "/interestings",
+        type: "POST",
+        data: {
+          interest_id: interestID,
+          type: type,
+          group_id: group_id
+        }
+      });
+    });
+  },
+
+  destroyInterests: function (oldInterestIDs) {
+    var type = this.type;
+    var group_id = this.group_id;
+    oldInterestIDs.forEach( function (interestID) {
+      $.ajax({
+        url: "/interestings/1",
+        type: "DELETE",
+        data: {
+          interest_id: interestID,
+          type: type,
+          group_id: group_id
+        }
+      });
+    });
   }
 });

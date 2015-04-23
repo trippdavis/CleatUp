@@ -10,7 +10,8 @@ PickUp.Views.GroupForm = Backbone.View.extend({
 
   events: {
     "submit .group-form": "submit",
-    "click .back": "back"
+    "click .back": "back",
+    "click .show-interests": "showInterests"
   },
 
   render: function () {
@@ -18,6 +19,10 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     this.$el.html(content);
     this.formSpecific();
     return this;
+  },
+
+  showInterests: function () {
+    debugger
   },
 
   formSpecific: function () {
