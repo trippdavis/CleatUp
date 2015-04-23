@@ -49,7 +49,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     this.model.set(data);
     this.model.save({}, {
       success: function () {
-        $(".btn-success").each(function (interestBtn) {
+        $(".btn-success").each(function (i, interestBtn) {
           $.ajax({
             url: "/interestings",
             type: "POST",
