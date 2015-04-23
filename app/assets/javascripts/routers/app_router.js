@@ -2,7 +2,6 @@ PickUp.Routers.App = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this.$subEl = $("#sub-content");
-    this.$banner = $("#landing-banner");
     this.groups = new PickUp.Collections.Groups();
     this.myEvents = new PickUp.Collections.Events();
     this.interests = new PickUp.Collections.Interests();
@@ -18,7 +17,7 @@ PickUp.Routers.App = Backbone.Router.extend({
 
   routes: {
     "": "landing",
-    "user_interests": "userInterests",
+    "interests/user": "userInterests",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/:attr1/:attr2": "groupShow",
@@ -27,7 +26,10 @@ PickUp.Routers.App = Backbone.Router.extend({
   },
 
   userInterests: function () {
-    debugger
+    var view = new PickUp.Views.UserInterests({
+      interests: this.interests
+    });
+    this._swapView(view);
   },
 
   landing: function () {
@@ -37,7 +39,6 @@ PickUp.Routers.App = Backbone.Router.extend({
       interests: this.interests
     });
     this._swapView(view);
-    this.$banner.removeClass("invisible-banner");
   },
 
   groupShow: function (id, event_id, edit) {
@@ -95,7 +96,6 @@ PickUp.Routers.App = Backbone.Router.extend({
       this.currentModal = null;
     }
 
-    this.$banner.addClass("invisible-banner");
     this.$subEl.html(view.render().$el);
     this.currentView = view;
   }
