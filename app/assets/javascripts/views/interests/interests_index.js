@@ -53,9 +53,7 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
     this.addInterests(newInterestIDs);
     this.destroyInterests(oldInterestIDs);
 
-    this.remove();
     PickUp.pubSub.trigger("exitInterests");
-    debugger
     if (this.type === "group") {
       this.model.interests = this.updatedInterestTopics;
       PickUp.pubSub.trigger("interestsAdded");

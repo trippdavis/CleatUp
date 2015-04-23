@@ -1,4 +1,4 @@
-PickUp.Views.InterestsModal = Backbone.View.extend({
+PickUp.Views.InterestsModal = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.group_id = options.group_id;
     this.type = options.type;
@@ -34,7 +34,8 @@ PickUp.Views.InterestsModal = Backbone.View.extend({
       model: this.model
     });
 
-    this.$el.find(".interests").html(view.$el);
+    this.addSubview(".interests", view);
+    // this.$el.find(".interests").html(view.$el);
     return this;
   }
 });
