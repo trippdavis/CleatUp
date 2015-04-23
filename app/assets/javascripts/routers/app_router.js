@@ -18,12 +18,16 @@ PickUp.Routers.App = Backbone.Router.extend({
 
   routes: {
     "": "landing",
-    "interests/:type": "interestsIndex",
+    "user_interests": "userInterests",
     "groups/new": "groupNew",
     "groups/:id/edit": "groupEdit",
     "groups/:id/events/:attr1/:attr2": "groupShow",
     "groups/:id/events/:attr1": "groupShow",
     "groups/:id": "groupShow"
+  },
+
+  userInterests: function () {
+    debugger
   },
 
   landing: function () {

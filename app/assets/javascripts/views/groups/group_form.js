@@ -6,7 +6,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
 
   template: JST["groups/form"],
 
-  className: "group-form-box col-md-6 col-md-offset-3",
+  className: "group-form-box col-md-4 col-md-offset-4",
 
   events: {
     "click .submit-group-form": "submit",

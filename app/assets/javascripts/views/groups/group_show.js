@@ -28,6 +28,8 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
 
   template: JST['groups/show'],
 
+  className: "col-md-8 col-md-offset-2",
+
   render: function () {
     var content = this.template({ group: this.model });
     this.$el.html(content);
