@@ -1,5 +1,6 @@
 PickUp.Views.GroupForm = Backbone.View.extend({
   initialize: function (options) {
+    this.interests = options.interests;
     this.formType = options.formType;
     this.listenTo(this.model, "sync", this.setupFill);
   },
@@ -9,7 +10,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   className: "group-form-box col-md-6 col-md-offset-3",
 
   events: {
-    "submit .group-form": "submit",
+    "click .submit-group-form": "submit",
     "click .back": "back",
     "click .show-interests": "showInterests"
   },
@@ -22,7 +23,13 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   },
 
   showInterests: function () {
-    debugger
+    this.interests.fetch({ data: { type: "normal" } });
+    this.interestsIndex = new PickUp.Views.InterestsIndex({
+      type: "group",
+      collection: this.interests
+    });
+
+    $(".new-group-interests").html(this.interestsIndex.$el);
   },
 
   formSpecific: function () {
@@ -36,11 +43,11 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
 
-    var data = $(event.currentTarget).serializeJSON();
+    var data = $(event.currentTarget).parent().serializeJSON();
     this.model.set(data);
     this.model.save({}, {
       success: function () {
-        Backbone.history.navigate("#/groups/" + this.model.id + "/interests", { trigger: true });
+        Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {

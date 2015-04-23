@@ -32,6 +32,7 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
   },
 
   handleClick: function (event) {
+    event.preventDefault();
     $button = $(event.target);
     $button.toggleClass("btn-default btn-success");
   }
