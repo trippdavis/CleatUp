@@ -2,7 +2,9 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
     this.listenTo(this.collection, "sync", this.render);
-    this.listenTo(this.collection, "sync", this.preselectInterests);
+    if (!options.new) {
+      this.listenTo(this.collection, "sync", this.preselectInterests);
+    }
   },
 
   events: {
@@ -27,7 +29,7 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
     this.prevInterestIDs = [];
     this.collection.where({ interested: true }).forEach(function (interest) {
       this.prevInterestIDs.push(interest.id);
-      $('button[data-id="' + interest.id + '"]').toggleClass("btn-default btn-success");
+      this.$el.find('button[data-id="' + interest.id + '"]').toggleClass("btn-default btn-success");
     }.bind(this));
   },
 

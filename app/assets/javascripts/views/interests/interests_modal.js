@@ -39,7 +39,7 @@ PickUp.Views.InterestsModal = Backbone.CompositeView.extend({
   },
 
   submitInterests: function () {
-    buttons = $(".btn-success");
+    buttons = this.$el.find(".btn-success");
     this.updatedInterestIDs = [];
     this.updatedInterestTopics = [];
     buttons.each(function (i, button) {

@@ -1,6 +1,5 @@
 PickUp.Views.GroupForm = Backbone.View.extend({
   initialize: function (options) {
-    this.interests = options.interests;
     this.formType = options.formType;
     this.listenTo(this.model, "sync", this.setupFill);
   },
@@ -23,10 +22,13 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   },
 
   showInterests: function () {
-    this.interests.fetch({ data: { type: "normal" } });
+    event.preventDefault();
+    var interests = new PickUp.Collections.Interests();
+    interests.fetch({ data: { type: "normal" } });
     this.interestsIndex = new PickUp.Views.InterestsIndex({
+      new: true,
       type: "group",
-      collection: this.interests
+      collection: interests
     });
 
     $(".new-group-interests").html(this.interestsIndex.$el);
@@ -47,6 +49,17 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     this.model.set(data);
     this.model.save({}, {
       success: function () {
+        $(".btn-success").each(function (interestBtn) {
+          $.ajax({
+            url: "/interestings",
+            type: "POST",
+            data: {
+              interest_id: $(interestBtn).data("id"),
+              type: "group",
+              group_id: this.model.id
+            }
+          });
+        }.bind(this));
         Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
       }.bind(this),
       error: function (model, response) {

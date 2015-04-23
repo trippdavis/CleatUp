@@ -67,8 +67,7 @@ PickUp.Routers.App = Backbone.Router.extend({
     var group = new PickUp.Models.Group();
     var view = new PickUp.Views.GroupForm({
       formType: "New",
-      model: group,
-      interests: this.interests
+      model: group
     });
     this._swapView(view);
   },
