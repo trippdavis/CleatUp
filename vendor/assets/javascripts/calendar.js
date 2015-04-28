@@ -26,6 +26,7 @@
 		var _this = this;
 		var opts = $.extend({}, $.fn.calendar.defaults, options);
 		var week = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		var tHead = week.map(function (day) {
 			return "<th>" + day + "</th>";
 		}).join("");
@@ -89,19 +90,17 @@
 				tBody.append(tr);
 			}
 
-			/* set month head */
-			var monthStr = dateToStr(date).replace(/-\d+$/, '');
-			_this.find('.month').text(monthStr)
+			var year = date.getFullYear();
+			var month = months[date.getMonth()];
+			var monthStr = month + " " + year;
+			_this.find('.month').text(monthStr);
 		};
 
 		_this.getCurrentDate = function () {
 			return _this.data('date');
-		}
+		};
 
 		_this.init();
-		/* in date picker mode, and input date is empty,
-		 * should not update 'data-date' field (no selected).
-		 */
 		var initDate = opts.date? opts.date: new Date();
 		if (opts.date || !opts.picker) {
 			_this.data('date', dateToStr(initDate));
@@ -120,7 +119,8 @@
 		});
 
 		function updateTable(monthOffset) {
-			var date = strToDate(_this.find('.month').text());
+			var monthStr = _this.find('.month').text().split(" ");
+			var date = strToDate(monthStr[1] + "-" + (months.indexOf(monthStr[0]) + 1));
 			date.setMonth(date.getMonth() + monthOffset);
 			_this.update(date);
 		};
