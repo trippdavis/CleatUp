@@ -14,9 +14,11 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
 
   clickDate: function (event) {
     var day = $(event.target).text();
-    var yearMonth = $(".month").text().split("-");
-    var year = yearMonth[0];
-    var month = yearMonth[1] - 1;
+    var yearMonth = $(".month").text().split(" ");
+
+    var year = yearMonth[1];
+    var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+      "December"].indexOf(yearMonth[0]);
 
     var date = new Date(year, month, day);
     this.time = date.getTime();
