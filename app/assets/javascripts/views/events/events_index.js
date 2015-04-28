@@ -6,6 +6,7 @@ PickUp.Views.EventsIndex = Backbone.CompositeView.extend({
       data: {
         type: type,
         interest_id: interest_id,
+        time: options.time
       }
     });
     this.listenTo(this.collection, "sync", this.render);

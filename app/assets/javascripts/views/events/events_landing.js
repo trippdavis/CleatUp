@@ -2,6 +2,7 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.interest_id = options.interest_id;
     this.type = options.type;
+    this.time = Date.now();
   },
 
   template: JST['events/landing'],
@@ -12,8 +13,14 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
   },
 
   clickDate: function (event) {
-    debugger
-    // var day = $(event.target).
+    var day = $(event.target).text();
+    var yearMonth = $(".month").text().split("-");
+    var year = yearMonth[0];
+    var month = yearMonth[1] - 1;
+
+    var date = new Date(year, month, day);
+    this.time = date.getTime();
+    this.switchIndex();
   },
 
   render: function () {
@@ -46,7 +53,8 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
     var view = new PickUp.Views.EventsIndex({
       collection: this.collection,
       type: this.type,
-      interest_id: this.interest_id
+      interest_id: this.interest_id,
+      time: this.time
     });
 
     if (this.currentIndex) {

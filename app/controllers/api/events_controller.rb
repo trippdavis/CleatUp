@@ -25,7 +25,7 @@ class Api::EventsController < ApplicationController
       end
     end
 
-    @events = events.where("date_time >= ?", Time.now).order("date_time")
+    @events = events.where("date_time >= ?", (Time.at(params["time"].to_i / 1000.0) - 25200)).order("date_time")
     render "index"
   end
 
