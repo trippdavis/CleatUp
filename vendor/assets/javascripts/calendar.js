@@ -66,7 +66,12 @@
 				a.data('date', dateToStr(d));
 				if (date.getMonth() != d.getMonth()) { // the bounday month
 					tag.addClass('off');
-				} else if (_this.data('date') == a.data('date')) { // the select day
+				} else {
+					tag.addClass('date-square');
+				}
+
+
+				if (_this.data('date') == a.data('date')) { // the select day
 					tag.addClass('active');
 					_this.data('date', dateToStr(d));
 				}
@@ -104,15 +109,11 @@
 		_this.update(initDate);
 
 		/* event binding */
-		_this.delegate('tbody td', 'click', function () {
+		_this.delegate('tbody td.date-square', 'click', function () {
 			var $this = $(this);
 			_this.find('.active').removeClass('active');
 			$this.addClass('active');
 			_this.data('date', $this.find('a').data('date'));
-			/* if the 'off' tag become selected, switch to that month */
-			if ($this.hasClass('off')) {
-				_this.update(strToDate(_this.data('date')));
-			}
 			if (opts.picker) {  /* in picker mode, when date selected, panel hide */
 				_this.hide();
 			}

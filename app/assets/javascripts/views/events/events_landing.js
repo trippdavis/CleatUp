@@ -8,7 +8,7 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
 
   events: {
     "click button": "switchingIndex",
-    "click td": "clickDate"
+    "click .date-square": "clickDate"
   },
 
   clickDate: function (event) {

@@ -106,6 +106,7 @@
 }
 .cal td.off a {
   color: #b3b3b3;
+  visibility: hidden;
 }
 .cal td.active a, .cal td a:active {
   margin: -1px;
