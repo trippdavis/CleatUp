@@ -12,11 +12,11 @@
   z-index: 99;
 }
 
-
 .cal {
+  margin-top: 20px;
   background-color: white;
-  display: block;
-  width: 216px;
+  width: 100%;
+  display: table;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   border-collapse: collapse;
@@ -66,7 +66,6 @@
   float: right;
 }
 .cal th, .cal td {
-  width: 30px;
   text-align: center;
   text-shadow: 0 1px rgba(255, 255, 255, 0.8);
 }
@@ -74,15 +73,16 @@
   border-left: 0;
 }
 .cal th {
+  width: 14.28%;
   line-height: 20px;
-  font-size: 8px;
+  font-size: 12px;
   color: #696969;
   text-transform: uppercase;
   background: #f3f3f3;
   border-left: 1px solid #f3f3f3;
 }
 .cal td {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: bold;
   border-top: 1px solid #c2c2c2;
   border-left: 1px solid #c2c2c2;
@@ -91,7 +91,6 @@
   clear: both;
   display: block;
   position: relative;
-  width: 30px;
   line-height: 28px;
   color: #666;
   background-image: -webkit-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
