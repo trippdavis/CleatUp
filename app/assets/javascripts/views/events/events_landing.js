@@ -8,19 +8,20 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
 
   events: {
     "click button": "switchingIndex",
-    // "click td": "clickDate"
+    "click td": "clickDate"
   },
 
-  // clickDate: function (event) {
-  //   debugger
-  // },
+  clickDate: function (event) {
+    debugger
+    // var day = $(event.target).
+  },
 
   render: function () {
     var content = this.template();
     this.$el.html(content);
     this.$currentButton = this.$el.find(".reserved-events");
     this.switchIndex();
-    // this.$el.find("#calendar").datepicker();
+    this.$el.find("#calendar").calendar();
     return this;
   },
 

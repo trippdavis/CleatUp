@@ -25,7 +25,7 @@ class Api::EventsController < ApplicationController
       end
     end
 
-    @events = events.order("date_time")
+    @events = events.where("date_time >= ?", Time.now).order("date_time")
     render "index"
   end
 

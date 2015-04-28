@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
-//= require jquery-ui.min
+//= require calendar
 //= require underscore
 //= require backbone
 //= require bootstrap
