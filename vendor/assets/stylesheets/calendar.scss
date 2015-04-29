@@ -93,10 +93,10 @@
   position: relative;
   line-height: 28px;
   color: #666;
-  background-image: -webkit-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
-  background-image: -moz-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
-  background-image: -o-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
-  background-image: linear-gradient(to bottom, #eaeaea, #e5e5e5 60%, #d9d9d9);
+  // background-image: -webkit-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
+  // background-image: -moz-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
+  // background-image: -o-linear-gradient(top, #eaeaea, #e5e5e5 60%, #d9d9d9);
+  // background-image: linear-gradient(to bottom, #eaeaea, #e5e5e5 60%, #d9d9d9);
   -webkit-box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
 }
@@ -116,6 +116,7 @@
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
+
 .cal td.active:first-child a, .cal td:first-child a:active {
   border-left: 0;
   margin-left: 0;
@@ -127,4 +128,8 @@
 .cal tr:last-child td.active a, .cal tr:last-child td a:active {
   border-bottom: 0;
   margin-bottom: 0;
+}
+
+.has-game a {
+  background: yellow;
 }
