@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410190406) do
+ActiveRecord::Schema.define(version: 20150430163450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,12 @@ ActiveRecord::Schema.define(version: 20150410190406) do
   add_index "group_memberships", ["group_id", "member_id"], name: "index_group_memberships_on_group_id_and_member_id", unique: true, using: :btree
 
   create_table "groups", force: :cascade do |t|
-    t.integer  "organizer_id", null: false
-    t.string   "title",        null: false
-    t.text     "description",  null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "organizer_id",   null: false
+    t.string   "title",          null: false
+    t.text     "description",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "filepicker_url"
   end
 
   add_index "groups", ["organizer_id"], name: "index_groups_on_organizer_id", using: :btree

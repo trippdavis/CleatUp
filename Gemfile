@@ -17,6 +17,7 @@ gem 'annotate'
 gem 'backbone-on-rails'
 gem 'ejs'
 gem 'bootstrap-sass'
+gem 'filepicker-rails'
 
 group :development, :test do
   gem 'byebug'

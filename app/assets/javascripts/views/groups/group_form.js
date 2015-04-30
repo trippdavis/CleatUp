@@ -11,7 +11,8 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   events: {
     "click .submit-group-form": "submit",
     "click .back": "back",
-    "click .show-interests": "showInterests"
+    "click .show-interests": "showInterests",
+    "click .file-upload": "upload"
   },
 
   render: function () {
@@ -19,6 +20,13 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     this.$el.html(content);
     this.formSpecific();
     return this;
+  },
+
+  upload: function () {
+    filepicker.pick(function(blob) {
+      debugger
+      this.model.filepickerUrl = blob.url;
+    }.bind(this));
   },
 
   showInterests: function () {
@@ -46,6 +54,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     event.preventDefault();
 
     var data = $(event.currentTarget).parent().serializeJSON();
+    debugger
     this.model.set(data);
     this.model.save({}, {
       success: function () {
