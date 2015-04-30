@@ -5,6 +5,8 @@ PickUp.Views.UserInterests = Backbone.View.extend({
 
   template: JST["interests/user"],
 
+  className: "user-interests",
+
   events: {
     "click .submit-interests": "submitInterests"
   },

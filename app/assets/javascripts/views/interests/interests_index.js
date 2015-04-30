@@ -1,8 +1,9 @@
 PickUp.Views.InterestsIndex = Backbone.View.extend({
   initialize: function (options) {
     this.type = options.type;
+    this.new = options.new;
     this.listenTo(this.collection, "sync", this.render);
-    if (!options.new) {
+    if (!this.new) {
       this.listenTo(this.collection, "sync", this.preselectInterests);
     }
   },
@@ -21,7 +22,12 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
   },
 
   addHeader: function () {
-    var header = this.type === "user" ? "What are your interests?" : "What are the interests of your group?";
+    var header;
+    if (this.type === "user") {
+      header = (this.new ? "To get started, let us know what PickUps you are interested in:" : "What Pickups are you interested in:");
+    } else {
+      header = "What are the interests of your group:";
+    }
     this.$el.find(".interests-header").html(header);
   },
 

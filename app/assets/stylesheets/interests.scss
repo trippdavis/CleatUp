@@ -37,3 +37,16 @@
 .selected-dropdown {
   display: none;
 }
+
+.user-interests-box {
+  margin-top: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: white;
+}
+
+.user-interests {
+  background-image: url(http://photos4.meetupstatic.com/photos/event/7/a/e/6/highres_129991462.jpeg);
+  background-size: cover;
+  height: 100vh;
+}

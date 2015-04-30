@@ -28,6 +28,10 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
   },
 
   showInterest: function (event) {
+    $(".has-game").each( function (idx, game) {
+      $(game).removeClass("has-game");
+    });
+    
     var $interestEl = $(event.target);
     $(".selected-dropdown").toggleClass("selected-dropdown");
     $interestEl.toggleClass("selected-dropdown");
