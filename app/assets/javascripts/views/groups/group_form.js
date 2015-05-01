@@ -24,8 +24,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
 
   upload: function () {
     filepicker.pick(function(blob) {
-      debugger
-      this.model.filepickerUrl = blob.url;
+      this.filepickerUrl = blob.url;
     }.bind(this));
   },
 
@@ -54,7 +53,9 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     event.preventDefault();
 
     var data = $(event.currentTarget).parent().serializeJSON();
-    debugger
+    if (this.filepickerUrl) {
+      data.group.filepicker_url = this.filepickerUrl;
+    }
     this.model.set(data);
     this.model.save({}, {
       success: function () {
