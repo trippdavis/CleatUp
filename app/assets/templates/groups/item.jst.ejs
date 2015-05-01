@@ -1,5 +1,9 @@
 <div class="group-item">
-  <img class="group-image" src="http://therunnersports.com/wp-content/uploads/2014/08/packers.jpg">
+  <% if (group.escape("filepicker_url")) {%>
+    <img class="group-image" src="<%= group.escape("filepicker_url") %>">
+  <% } else { %>
+    <img class="group-image" src="http://therunnersports.com/wp-content/uploads/2014/08/packers.jpg">
+  <% } %>
 
   <div class="group-item-text">
     <%= group.escape("title") %>
