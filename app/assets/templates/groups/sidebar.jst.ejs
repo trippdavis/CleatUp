@@ -1,4 +1,8 @@
-<img class="group-image" src="http://www.parnavsports.com/images/sports.jpg">
+<% if (group.escape("filepicker_url")) {%>
+  <img class="group-show-image" src="<%= group.escape("filepicker_url") %>">
+<% } else { %>
+  <img class="group-show-image" src="http://www.parnavsports.com/images/sports.jpg">
+<% } %>
 
 <hr>
 
