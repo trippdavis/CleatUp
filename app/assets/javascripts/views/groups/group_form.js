@@ -22,7 +22,9 @@ PickUp.Views.GroupForm = Backbone.View.extend({
     return this;
   },
 
-  upload: function () {
+  upload: function (event) {
+    event.preventDefault();
+
     filepicker.pick(function(blob) {
       this.filepickerUrl = blob.url;
     }.bind(this));
