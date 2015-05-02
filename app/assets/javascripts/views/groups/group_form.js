@@ -24,9 +24,9 @@ PickUp.Views.GroupForm = Backbone.View.extend({
 
   upload: function (event) {
     event.preventDefault();
-
     filepicker.pick(function(blob) {
       this.filepickerUrl = blob.url;
+      $(".group-preview-image").attr("src", blob.url);
     }.bind(this));
   },
 
@@ -114,12 +114,13 @@ PickUp.Views.GroupForm = Backbone.View.extend({
 
   setupFill: function () {
     if (this.formType == "Edit") {
-      this.fillForm(this.model.get("title"), this.model.get("description"));
+      this.fillForm(this.model.get("title"), this.model.get("description"), this.model.get("filepicker_url"));
     }
   },
 
-  fillForm: function (title, description) {
-    this.$el.find(".form-group-title").val(title);
-    this.$el.find(".form-group-description").val(description);
+  fillForm: function (title, description, imageUrl) {
+    $(".form-group-title").val(title);
+    $(".form-group-description").val(description);
+    $(".group-preview-image").attr("src", imageUrl);
   }
 });
