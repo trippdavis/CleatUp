@@ -18,6 +18,7 @@ gem 'backbone-on-rails'
 gem 'ejs'
 gem 'bootstrap-sass'
 gem 'filepicker-rails'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'

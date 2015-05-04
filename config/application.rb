@@ -23,6 +23,6 @@ module PickUp
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.filepicker_rails.api_key = "AbOK6xdunTVyhN6FoOSikz"
+    config.filepicker_rails.api_key = ENV["filepicker_api_key"]
   end
 end
