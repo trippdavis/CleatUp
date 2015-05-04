@@ -3,6 +3,7 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
     this.interests = options.interests;
     this.myEvents = options.myEvents;
     this.groups = options.groups;
+    this.router = options.router;
     this.interest_id = 0;
   },
 
@@ -17,21 +18,22 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.groupsLanding();
+    if (this.router.currentLanding === "groups") {
+      this.groupsLanding();
+      this.$el.find("button.groups").prop("disabled", true);
+    } else {
+      this.eventsLanding();
+      this.$el.find("button.events").prop("disabled", true);
+    }
     this.dropdown();
-    this.currentClass = "groups";
     return this;
-  },
-
-  swapClass: function () {
-    this.currentClass = (this.currentClass === "groups" ? "events" : "groups");
   },
 
   showInterest: function (event) {
     $(".has-game").each( function (idx, game) {
       $(game).removeClass("has-game");
     });
-    
+
     var $interestEl = $(event.target);
     $(".selected-dropdown").toggleClass("selected-dropdown");
     $interestEl.toggleClass("selected-dropdown");
@@ -53,7 +55,7 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
       this.groupsLanding();
       $(".events").prop("disabled", false);
     }
-    this.swapClass();
+    this.router.switchLanding();
   },
 
   dropdown: function () {

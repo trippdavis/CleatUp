@@ -6,6 +6,7 @@ PickUp.Routers.App = Backbone.Router.extend({
     this.myEvents = new PickUp.Collections.Events();
     this.interests = new PickUp.Collections.Interests();
     this.addNavbar();
+    this.currentLanding = "groups";
   },
 
   addNavbar: function () {
@@ -36,9 +37,14 @@ PickUp.Routers.App = Backbone.Router.extend({
     var view = new PickUp.Views.Landing({
       groups: this.groups,
       myEvents: this.myEvents,
-      interests: this.interests
+      interests: this.interests,
+      router: this
     });
     this._swapView(view);
+  },
+
+  switchLanding: function () {
+    this.currentLanding = (this.currentLanding === "groups" ? "events" : "groups");
   },
 
   groupShow: function (id, event_id, edit) {
