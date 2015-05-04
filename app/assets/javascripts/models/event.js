@@ -24,19 +24,20 @@ PickUp.Models.Event = Backbone.Model.extend({
     return payload;
   },
 
-  parseDT: function (dateTime) {
-    var dt = dateTime;
-    date = dt.split("T")[0].split("-");
+  parseDT: function (dt) {
+    var date = dt.split("T")[0].split("-");
     this.formDate = date.join("-");
     this.year = date[0];
     this.month = date[1] - 1;
     this.day = date[2];
-    time = dt.split("T")[1].split(".")[0].split(":");
+    var time = dt.split("T")[1].split(".")[0].split(":");
     this.formTime = time.slice(0, 2).join(":");
-    hour = time[0];
-    minute = time[1];
+    var hour = time[0];
+    var minute = time[1];
     this.dateTime = new Date(this.year, this.month, this.day, hour, minute);
-    this.date = this.dateTime.toUTCString().split(" ").slice(0, 3).join(" ");
+    var dateString = this.dateTime.toDateString().split(" ").slice(0,3);
+    dateString[0] = dateString[0] + ",";
+    this.date = dateString.join(" ");
     var splitTime = this.dateTime.toLocaleString().split(", ")[1].split(":");
     this.time = splitTime.slice(0, 2).join(":") + " " + splitTime[2].split(" ")[1];
   }
