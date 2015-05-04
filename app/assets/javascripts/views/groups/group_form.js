@@ -34,7 +34,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   showInterests: function () {
     event.preventDefault();
     var interests = new PickUp.Collections.Interests();
-    interests.fetch({ data: { type: "normal" } });
+    interests.fetch({ data: { type: "normal"} });
     this.interestsIndex = new PickUp.Views.InterestsIndex({
       new: true,
       type: "group",
@@ -47,6 +47,7 @@ PickUp.Views.GroupForm = Backbone.View.extend({
   formSpecific: function () {
     if (this.formType === "New") {
       this.$el.prepend("<h3>New Group</h3>");
+      this.$el.find(".new-group-interests").css("visibility", "visible");
     } else {
       this.$el.prepend("<h3>Edit Your Group</h3>");
     }
