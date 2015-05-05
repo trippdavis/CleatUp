@@ -32,7 +32,8 @@
 .enter-background {
   height: 100vh;
   background-image: url("https://s3.amazonaws.com/rb-wp-prod-assets/blog/wp-content/uploads/2014/07/8c12c6d776f1766436c2198692fa76a3-1386978804.jpg");
-  background-size: 100% auto;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .body {
