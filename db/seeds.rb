@@ -1,4 +1,4 @@
-User.create(username: "LeBron James", password: "password1")
+User.create(username: "LeBron James", password: "password1", image_url: "http://blogs-images.forbes.com/kurtbadenhausen/files/2014/07/0324_lebron-james_650x455.jpg")
 User.create(username: "Kobe Bryant", password: "password2")
 User.create(username: "Tiger Woods", password: "password3")
 User.create(username: "Michael Jordan", password: "password4")

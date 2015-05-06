@@ -5,7 +5,7 @@ json.events(@events) do |event|
 end
 
 json.organizer do
-  json.(@organizer, :id, :username)
+  json.(@organizer, :id, :username, :image_url)
 end
 
 json.(@owned, :owned)
