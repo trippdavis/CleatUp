@@ -88,7 +88,8 @@ body {
 }
 
 .navbar-brand-image {
-  height: 100%;
+  height: 30px;
+  transform: translateY(-5px);
 }
 
 .enter-description {
@@ -130,4 +131,22 @@ body {
   transition: opacity 2s;
   transition-delay: 2s;
   z-index: 1;
+}
+
+.navbar-default .navbar-header {
+  padding: 5px;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: black;
+  font-size: 18px;
+}
+
+.navbar-default .navbar-nav > li {
+  border-top: 5px solid #f4f4f4;
+  border-bottom: 5px solid #f4f4f4;
+}
+
+.navbar-default .navbar-nav > li:hover {
+  border-bottom: 5px solid #5bc0de;
 }
