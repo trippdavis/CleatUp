@@ -100,14 +100,11 @@
   -webkit-box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.5);
 }
-.cal td a:hover, .cal td.off a {
-  background: #f3f3f3;
-}
 .cal td.off a {
   color: #b3b3b3;
   visibility: hidden;
 }
-.cal td.active a, .cal td a:active {
+.cal td.active a, .cal td a:active, .cal td a:hover {
   margin: -1px;
   color: #f3f3f3;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);

@@ -36,6 +36,7 @@ PickUp.Views.EventShow = Backbone.View.extend({
   },
 
   joinEvent: function (event) {
+    $(event.target).blur();
     event.preventDefault();
     $.ajax({
       url: "/event_reservations",
@@ -49,6 +50,7 @@ PickUp.Views.EventShow = Backbone.View.extend({
   },
 
   leaveEvent: function (event) {
+    $(event.target).blur();
     event.preventDefault();
     $.ajax({
       url: "/event_reservations/" + this.model.get("reservation_id"),
