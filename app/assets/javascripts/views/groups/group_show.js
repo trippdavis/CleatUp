@@ -120,7 +120,7 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
       group_id: this.model.id
     });
 
-    this.$el.append(view.render().$el);
+    this.addSubview(".group-show", view);
   },
 
   joinGroup: function (event) {

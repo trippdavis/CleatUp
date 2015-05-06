@@ -1,4 +1,4 @@
-PickUp.Views.UserInterests = Backbone.View.extend({
+PickUp.Views.UserInterests = Backbone.CompositeView.extend({
   initialize: function (options) {
     this.interests = options.interests;
   },
@@ -26,7 +26,7 @@ PickUp.Views.UserInterests = Backbone.View.extend({
       new: true,
       collection: this.interests
     });
-    this.$el.find(".interests").html(view.$el);
+    this.addSubview(".interests", view);
     return this;
   },
 
