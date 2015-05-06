@@ -5,11 +5,34 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
     this.event_id = options.event_id;
     this.showInterests = options.showInterests;
     this.listenTo(this.model, "sync", this.fillContent);
+    this.alert = false;
     PickUp.pubSub.on("interestsAdded", this.addSidebar, this);
+    PickUp.pubSub.on("newGroup", this.newGroup, this);
+    PickUp.pubSub.on("editedGroup", this.editedGroup, this);
+  },
+
+  newGroup: function () {
+    this.alert = true;
+    this.alertText = "Group created successfully!";
+  },
+
+  editedGroup: function () {
+    this.alert = true;
+    this.alertText = "Group edited successfully!";
+  },
+
+  showAlert: function () {
+    $(".group-alert").html(this.alertText);
+    $(".group-alert").css("display", "block");
+    setTimeout(2000);
+    $(".group-alert").animate({ opacity: 0 }, 2000);
   },
 
   fillContent: function () {
     this.render();
+    if (this.alert) {
+      this.showAlert();
+    }
     this.fillBody();
     if (this.showInterests) {
       this.editInterests();

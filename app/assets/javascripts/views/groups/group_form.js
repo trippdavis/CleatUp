@@ -75,6 +75,12 @@ PickUp.Views.GroupForm = Backbone.View.extend({
           });
         }.bind(this));
         Backbone.history.navigate("#/groups/" + this.model.id, { trigger: true });
+
+        if (this.formType === "New") {
+          PickUp.pubSub.trigger("newGroup");
+        } else {
+          PickUp.pubSub.trigger("editedGroup");
+        }
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {
