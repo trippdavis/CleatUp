@@ -41,6 +41,9 @@ PickUp.Views.GroupBody = Backbone.CompositeView.extend({
   },
 
   editEvent: function () {
+    $(".game-alert").html("Game edited successfully!");
+    $(".game-alert").css("display", "none");
+    $(".game-alert").css("opacity", 1);
     var view = new PickUp.Views.EventForm({
       model: this.currentEvent,
       group_id: this.model.id,
