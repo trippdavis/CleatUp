@@ -12,8 +12,6 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.$currentButton = this.$el.find(".joined-groups");
     this.fetchGroup("created");
-    this.fetchGroup("joined");
-    this.fetchGroup("other");
     return this;
   },
 
@@ -25,8 +23,17 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
       },
       success: function () {
         this.showIndex(type);
+        this.nextIndex(type);
       }.bind(this)
     });
+  },
+
+  nextIndex: function (type) {
+    if (type === "created") {
+      this.fetchGroup("joined");
+    } else if (type === "joined") {
+      this.fetchGroup("other");
+    }
   },
 
   showIndex: function (type) {
