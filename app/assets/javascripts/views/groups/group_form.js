@@ -130,6 +130,8 @@ PickUp.Views.GroupForm = Backbone.CompositeView.extend({
   fillForm: function (title, description, imageUrl) {
     $(".form-group-title").val(title);
     $(".form-group-description").val(description);
-    $(".group-preview-image").attr("src", imageUrl);
+    if (imageUrl) {
+      $(".group-preview-image").attr("src", imageUrl);
+    }
   }
 });

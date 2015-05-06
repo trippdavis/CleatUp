@@ -10,9 +10,19 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    this.$currentButton = this.$el.find(".joined-groups");
-    this.fetchGroup("created");
     return this;
+  },
+
+  fetchIndexes: function () {
+    this.$el.spin();
+    $(".created-groups-list").addClass("hidden-index");
+    $(".joined-groups-list").addClass("hidden-index");
+    $(".other-groups-list").addClass("hidden-index");
+    this.fetchGroup("created");
+  },
+
+  fetchGroups: function () {
+    $(".groups-landing").spin();
   },
 
   fetchGroup: function (type) {
@@ -44,14 +54,23 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
       });
       this.addSubview("." + type + "-groups-list", view);
     }
+
+    if (type === "other") {
+      this.revealIndexes();
+    }
+  },
+
+  revealIndexes: function () {
+    this.$el.spin(false);
+    $(".created-groups-list").removeClass("hidden-index");
+    $(".joined-groups-list").removeClass("hidden-index");
+    $(".other-groups-list").removeClass("hidden-index");
   },
 
   switchIndex: function () {
     this.eachSubview(function (subview) {
       subview.remove();
     });
-    this.fetchGroup("created");
-    this.fetchGroup("joined");
-    this.fetchGroup("other");
+    this.fetchIndexes();
   }
 });

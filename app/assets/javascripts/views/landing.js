@@ -18,6 +18,11 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
+    this.dropdown();
+    return this;
+  },
+
+  fillIndex: function () {
     if (this.router.currentLanding === "groups") {
       this.groupsLanding();
       this.$el.find("button.groups").prop("disabled", true);
@@ -25,8 +30,6 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
       this.eventsLanding();
       this.$el.find("button.events").prop("disabled", true);
     }
-    this.dropdown();
-    return this;
   },
 
   showInterest: function (event) {
@@ -89,6 +92,7 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
     }
 
     this.addSubview(".indexes-area", view);
+    view.fetchIndexes();
     this.currentLanding = view;
   }
 });

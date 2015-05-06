@@ -41,6 +41,7 @@ PickUp.Routers.App = Backbone.Router.extend({
       router: this
     });
     this._swapView(view);
+    view.fillIndex();
   },
 
   switchLanding: function () {

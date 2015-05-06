@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.serializejson
+//= require spin
+//= require jquery.spin
 //= require calendar
 //= require underscore
 //= require backbone

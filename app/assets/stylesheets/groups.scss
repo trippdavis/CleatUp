@@ -158,6 +158,7 @@
 
 .groups-landing {
   padding-top: 32px;
+  min-height: 300px;
 }
 
 .group-show-image {
@@ -173,4 +174,8 @@
 
 #upload-success {
   margin-bottom: 0px;
+}
+
+.hidden-index {
+  display: none;
 }
