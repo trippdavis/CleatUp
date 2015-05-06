@@ -108,8 +108,10 @@ PickUp.Views.GroupBody = Backbone.CompositeView.extend({
     this.currentEvent.set(data);
     this.currentEvent.save({}, {
       success: function () {
+        $(".game-alert").css("display", "block");
         this.currentEvent.owned = true;
         this.showEvent();
+        $(".game-alert").css("opacity", 0);
       }.bind(this),
       error: function (model, response) {
         if (response.status === 500) {

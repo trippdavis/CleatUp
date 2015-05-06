@@ -108,3 +108,12 @@ body {
 .btn-black:focus {
   color: white;
 }
+
+.game-alert {
+  display: none;
+  position: absolute;
+  right: 17px;
+  top: 180px;
+  opacity: 1;
+  transition: opacity 3s step-end;
+}
