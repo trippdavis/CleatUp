@@ -31,6 +31,7 @@ PickUp.Routers.App = Backbone.Router.extend({
       interests: this.interests
     });
     this._swapView(view);
+    $(".user-interests-box").spin();
   },
 
   landing: function () {

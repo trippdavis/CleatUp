@@ -18,6 +18,9 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
     var content = this.template({ interests: this.collection });
     this.$el.html(content);
     this.addHeader();
+    if (this.new) {
+      $(".hidden-interest").removeClass("hidden-interest");
+    }
     return this;
   },
 

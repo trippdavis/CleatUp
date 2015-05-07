@@ -18,7 +18,10 @@ PickUp.Views.UserInterests = Backbone.CompositeView.extend({
     this.interests.fetch({
       data: {
         type: "normal"
-      }
+      },
+      success: function () {
+        $(".user-interests-box").spin(false);
+      }.bind(this)
     });
 
     var view = new PickUp.Views.InterestsIndex({
