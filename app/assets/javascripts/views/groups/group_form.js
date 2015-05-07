@@ -35,7 +35,6 @@ PickUp.Views.GroupForm = Backbone.CompositeView.extend({
     event.preventDefault();
     $(".show-interests").remove();
     $(".new-group-interests").spin();
-    debugger
     var interests = new PickUp.Collections.Interests();
     interests.fetch({
       data: {
