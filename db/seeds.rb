@@ -15,7 +15,7 @@ User.create(username: "Lydia Ko", password: "password6", image_url: "http://www.
 User.create(username: "Mike Trout", password: "password7", image_url: "http://larrybrownsports.com/wp-content/uploads/2013/03/Mike-Trout-Angels.jpg")
 
 
-Group.create(organizer_id: 2, title: "NBA Hoopers", description: "We play intense games of basketball all over the country. Only join if you can keep up!")
+Group.create(organizer_id: 2, title: "NBA Hoopers", description: "We play intense games of basketball all over the country. Only join if you can keep up!", filepicker_url: "http://isportsweb.com/wp-content/uploads//2014/08/NBA-logo.jpg")
 Event.create(group_id: 1, title: "Rucker Park Session", description: "Serious pick-up sess at the legendary Rucker Park. A crowd will be there to watch us compete, so bring your game face and be ready to put on a show!", date_time: (DateTime.now + 30), location: "Rucker Park, New York, New York")
 EventReservation.create(event_id: 1, reserver_id: 1)
 Event.create(group_id: 1, title: "US vs World", description: "We are organizing a little matchup to see who produces the better talent, the US or the rest of the World. We might have to mix it up a little bit if the teams don't have even numbers.", date_time: (DateTime.now + 5), location: "Bradley Center, Milwaukee, WI")
@@ -25,7 +25,7 @@ Interesting.create(interest_id: 1, interestable_id: 1, interestable_type: "Group
 Interesting.create(interest_id: 7, interestable_id: 1, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 1, interestable_type: "Group")
 
-Group.create(organizer_id: 2, title: "Casual Basketball Players", description: "Just like the title says, we are a group that likes playing casual basketball games. Anybody is welcome!")
+Group.create(organizer_id: 2, title: "Casual Basketball Players", description: "Just like the title says, we are a group that likes playing casual basketball games. Anybody is welcome!", filepicker_url: "http://www.saintleo.edu/media/74405/health-wellness.jpg")
 Event.create(group_id: 2, title: "Afternoon at Rossi Park", description: "Gonna set up a tournament at Rossi Park for all those interested, you must RSVP ahead of time.", date_time: (DateTime.now + 10), location: "Rossi Park, San Francisco, CA")
 EventReservation.create(event_id: 4, reserver_id: 1)
 Event.create(group_id: 2, title: "Panhandle Session", description: "We rented out the courts on the panhandle for the afternoon. Come join us for a couple of games or the whole time.", date_time: (DateTime.now + 4), location: "Panhandle, San Francisco, CA")
@@ -35,7 +35,7 @@ Interesting.create(interest_id: 8, interestable_id: 2, interestable_type: "Group
 Interesting.create(interest_id: 9, interestable_id: 2, interestable_type: "Group")
 Interesting.create(interest_id: 10, interestable_id: 2, interestable_type: "Group")
 
-Group.create(organizer_id: 1, title: "Bay Area Ballers", description: "We play all sports and welcome all skill levels. Come join us!")
+Group.create(organizer_id: 1, title: "Bay Area Ballers", description: "We play all sports and welcome all skill levels. Come join us!", filepicker_url: "https://s-media-cache-ak0.pinimg.com/736x/75/78/34/757834ec8a93cdb7a2bf5e9f33ae47af.jpg")
 Event.create(group_id: 3, title: "Shootaround at Oracle Arena", description: "We have the awesome opportunity to shoot around at the Oracle Arena, the home of the Golden State Warriors! This is a once in a lifetime opporunity, so you better not miss out.", date_time: (DateTime.now + 25), location: "Oracle Arena, Oakland, CA")
 Event.create(group_id: 3, title: "Warriors!", description: "Come practice with the Golden State Warriors. Learn to shoot a step-back three with Steph Curry. You will be ready to play in the NBA in no time (maybe)! Anybody who comes gets a free ticket to the game that night!", date_time: (DateTime.now + 5), location: "Bradley Center, Milwaukee, WI")
 Interesting.create(interest_id: 1, interestable_id: 3, interestable_type: "Group")
@@ -46,7 +46,7 @@ Interesting.create(interest_id: 5, interestable_id: 3, interestable_type: "Group
 Interesting.create(interest_id: 6, interestable_id: 3, interestable_type: "Group")
 Interesting.create(interest_id: 8, interestable_id: 3, interestable_type: "Group")
 
-Group.create(organizer_id: 7, title: "Female Golfers", description: "Just a group of gals that like to get out and hit the links! We usually get a round every weekend!")
+Group.create(organizer_id: 7, title: "Female Golfers", description: "Just a group of gals that like to get out and hit the links! We usually get a round every weekend!", filepicker_url: "https://s-media-cache-ak0.pinimg.com/originals/55/d9/d5/55d9d50207a3fadf206eede4e25846a5.jpg")
 Event.create(group_id: 4, title: "18 at Presidio Golf Course", description: "Playing 18 at Presidio which is a beautiful course right in downtown SF.", date_time: (DateTime.now + 20), location: "Presidio Golf Course, San Francisco, CA")
 Event.create(group_id: 4, title: "Scramble at Pebble Beach", description: "We have a really great opportunity to play at Pebble Beach. Since the course will be challenging, we will have some fun with it and turn it into a scramble with four to a team.", date_time: (DateTime.now + 15), location: "Pebble Beach Resort, Del Monte Forest, CA")
 Interesting.create(interest_id: 4, interestable_id: 4, interestable_type: "Group")
@@ -54,7 +54,7 @@ Interesting.create(interest_id: 6, interestable_id: 4, interestable_type: "Group
 Interesting.create(interest_id: 7, interestable_id: 4, interestable_type: "Group")
 Interesting.create(interest_id: 10, interestable_id: 4, interestable_type: "Group")
 
-Group.create(organizer_id: 5, title: "Futbol in the US", description: 'Pick-up soccer games here in the states, because we all know what the real "football" is!')
+Group.create(organizer_id: 5, title: "Futbol in the US", description: 'Pick-up soccer games here in the states, because we all know what the real "football" is!', filepicker_url: "http://i.imgur.com/DY5ZkOv.jpg?1?5642")
 Event.create(group_id: 5, title: "Pick-up games at Golden Gate Park", description: "We will be playing games at Golden Gate Park all throughout the day. Games will be pretty casual and we will be hanging out and grilling as well.", date_time: (DateTime.now + 3), location: "Golden Gate Park, San Francisco, CA")
 Event.create(group_id: 5, title: "World Cup Tournament", description: "Trying to get a big tournament together, hopefully with some pretty serious, competitive teams.", date_time: (DateTime.now + 40), location: "George Washington High School, San Francisco, CA")
 EventReservation.create(event_id: 11, reserver_id: 1)
@@ -62,7 +62,7 @@ Interesting.create(interest_id: 3, interestable_id: 5, interestable_type: "Group
 Interesting.create(interest_id: 6, interestable_id: 5, interestable_type: "Group")
 Interesting.create(interest_id: 8, interestable_id: 5, interestable_type: "Group")
 
-Group.create(organizer_id: 3, title: "Drinking and Driving", description: "Just a group of guys who like to go out and have a good time on the course.")
+Group.create(organizer_id: 3, title: "Drinking and Driving", description: "Just a group of guys who like to go out and have a good time on the course.", filepicker_url: "http://www.bettergolfwithfitness.com/.a/6a00d8341e839953ef01156f3ac21c970c-800wi")
 Event.create(group_id: 6, title: "Maple Bluff 18", description: "Lets have a good at Maple Bluff. We will be renting carts for our round.", date_time: (DateTime.now + 7), location: "Maple Bluff Country Club, Madison, WI")
 EventReservation.create(event_id: 12, reserver_id: 1)
 Event.create(group_id: 6, title: "TPC Sawgrass", description: "Who can make it on the 17th green in one? We shall find that out and more as we check out the legendary TPC Sawgrass. Let's try and keep it a little classy....not", date_time: (DateTime.now + 22), location: "TPC Sawgrass, Vedra Beach, FL")
@@ -70,7 +70,7 @@ Interesting.create(interest_id: 4, interestable_id: 6, interestable_type: "Group
 Interesting.create(interest_id: 6, interestable_id: 6, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 6, interestable_type: "Group")
 
-Group.create(organizer_id: 1, title: "A little bit of everything", description: "We try to mix it up and play a bunch of sports. Anybody is welcome, but we take the games seriously and enjoy competing.")
+Group.create(organizer_id: 1, title: "A little bit of everything", description: "We try to mix it up and play a bunch of sports. Anybody is welcome, but we take the games seriously and enjoy competing.", filepicker_url: "http://www.territoryfm.com/sites/default/files/uploads/sports.jpg")
 Event.create(group_id: 7, title: "Night Baseball", description: "We will be playing a casual game of baseball under the lights at Rossi Park in Inner Richmond.", date_time: (DateTime.now + 14), location: "Rossi Park, San Francisco CA")
 Event.create(group_id: 7, title: "Games in Golden Gate Park", description: "We will just be hanging out in Golden Gate Park all day, playing whatever people want, bring whatever equipment you got. We will also be grilling out so bring some food and beer as well.", date_time: (DateTime.now + 14), location: "Golden Gate Park, San Francisco, CA")
 Interesting.create(interest_id: 1, interestable_id: 7, interestable_type: "Group")
@@ -84,14 +84,14 @@ Interesting.create(interest_id: 8, interestable_id: 7, interestable_type: "Group
 Interesting.create(interest_id: 9, interestable_id: 7, interestable_type: "Group")
 Interesting.create(interest_id: 10, interestable_id: 7, interestable_type: "Group")
 
-Group.create(organizer_id: 6, title: "Football BUMS :-(", description: "Always falling short of expectations, this is the group for you. Don't worry we won't judge you if you blow it in every big game. Casual players only, nothing serious!")
+Group.create(organizer_id: 6, title: "Football BUMS :-(", description: "Always falling short of expectations, this is the group for you. Don't worry we won't judge you if you blow it in every big game. Casual players only, nothing serious!", filepicker_url: "http://cdn1.bloguin.com/wp-content/uploads/sites/94/2013/09/buttfumble.jpg")
 Event.create(group_id: 8, title: "Super Bowl Watch Party", description: "Come on, you already know we aren't gonna be there. So bring some food and let's watch the Packers or Patriots or Seahawks or whoever isn't us win another title.", date_time: (DateTime.now + 40), location: "Jay Cutler's House, Chicago, IL")
 Event.create(group_id: 8, title: "Practice, Practice, Practice", description: "They say whenever you aren't practicing there is somebody else out there that is working on their game, getting better. So let's be those guys working on our game. Just kidding, let's just sit around and talk about our failures.", date_time: (DateTime.now + 23), location: "Soldier Field, Chicago, IL")
 Interesting.create(interest_id: 6, interestable_id: 8, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 8, interestable_type: "Group")
 Interesting.create(interest_id: 2, interestable_id: 8, interestable_type: "Group")
 
-Group.create(organizer_id: 1, title: "Sharpshooters", description: "Let's work on your shot. No games, just a bunch of shooting drills and competitions.")
+Group.create(organizer_id: 1, title: "Sharpshooters", description: "Let's work on your shot. No games, just a bunch of shooting drills and competitions.", filepicker_url: "http://www.sfexaminer.com/binary/7087/warriors3_0409.jpg")
 Event.create(group_id: 9, title: "3 Point Shootout", description: "Whose got the silkiest jumper in the game? Come try and take me down!", date_time: (DateTime.now + 17), location: "Oracle Arena, Oakland, CA")
 Event.create(group_id: 9, title: "Shooting Practice", description: "The best way to get better at shooting is to keep putting up shots. We have the gym for an hour so get up as many shots as you can.", date_time: (DateTime.now + 8), location: "Maples Pavilion, Palo Alto, CA")
 Interesting.create(interest_id: 1, interestable_id: 9, interestable_type: "Group")
@@ -102,17 +102,17 @@ Interesting.create(interest_id: 9, interestable_id: 9, interestable_type: "Group
 Interesting.create(interest_id: 10, interestable_id: 9, interestable_type: "Group")
 
 
-Group.create(organizer_id: 8, title: "Chicks dig the long ball", description: "Home run derbys, all the time. Who likes to bunt?")
+Group.create(organizer_id: 8, title: "Chicks dig the long ball", description: "Home run derbys, all the time. Who likes to bunt?", filepicker_url: "http://yourbestimpression.com/blog/wp-content/uploads/2009/04/homerun.jpg")
 Event.create(group_id: 10, title: "AT&T Park", description: "Yes, that's right, we are gonna have a derby at the home of the San Francisco Giants. Get out the canoes cause you know we are going for McCovey Cove!", date_time: (DateTime.now + 11), location: "AT&T Park, San Francisco, CA")
-Event.create(group_id: 10, title: "Fenway Park Bombing", description: "We get the chance to hit balls at the historic Fenway Park. So much history has happened in that place, it's gonna be awesome. Watch our for the Green Monster." date_time: (DateTime.now + 23), location: "Fenway Park, Boston, MA")
+Event.create(group_id: 10, title: "Fenway Park Bombing", description: "We get the chance to hit balls at the historic Fenway Park. So much history has happened in that place, it's gonna be awesome. Watch out for the Green Monster.", date_time: (DateTime.now + 23), location: "Fenway Park, Boston, MA")
 EventReservation.create(event_id: 21, reserver_id: 1)
 Interesting.create(interest_id: 5, interestable_id: 10, interestable_type: "Group")
 Interesting.create(interest_id: 7, interestable_id: 10, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 10, interestable_type: "Group")
 
 
-Group.create(organizer_id: 4, title: "Championship players", description: "We play all sorts of sports, but you must be someone who has reached the pinnacle of your sport. We get serious so get ready to go hard.")
-Event.create(group_id: 11, title: "Football at Lambeau", desciption: "We get to play on the Frozen Tundra. We should have enough to play some 7 on 7. Full speed, tackle, let's go!!", date_time: (DateTime.now + 9), location: "Lambeau Field, Green Bay, WI")
+Group.create(organizer_id: 4, title: "Championship players", description: "We play all sorts of sports, but you must be someone who has reached the pinnacle of your sport. We get serious so get ready to go hard.", filepicker_url: "http://static4.therichestimages.com/cdn/864/486/90/cw/wp-content/uploads/2013/11/four-trophies_slide.jpg")
+Event.create(group_id: 11, title: "Football at Lambeau", description: "We get to play on the Frozen Tundra. We should have enough to play some 7 on 7. Full speed, tackle, let's go!!", date_time: (DateTime.now + 9), location: "Lambeau Field, Green Bay, WI")
 Event.create(group_id: 11, title: "Basketball at AT&T Center", description: "Playing on the court of the San Antonio Spurs. Greg Popavich will be there to give us pointer/make us feel like fools.", date_time: (DateTime.now + 17), location: "AT&T Center, San Antonio, TX")
 Interesting.create(interest_id: 1, interestable_id: 11, interestable_type: "Group")
 Interesting.create(interest_id: 2, interestable_id: 11, interestable_type: "Group")
@@ -125,9 +125,9 @@ Interesting.create(interest_id: 9, interestable_id: 11, interestable_type: "Grou
 Interesting.create(interest_id: 10, interestable_id: 11, interestable_type: "Group")
 
 
-Group.create(oragnizer_id: 8, title: "Sundays in the park", description: "We play sports to get outside and have a good time. We have games going on every Sundays in Golden Gate Park, stop by and join us!")
+Group.create(organizer_id: 8, title: "Sundays in the park", description: "We play sports to get outside and have a good time. We have games going on every Sundays in Golden Gate Park, stop by and join us!", filepicker_url: "http://static1.squarespace.com/static/5020b649e4b03f6f4d19970a/t/521cff86e4b0460ba3208c1b/1377632140635/Ultimate+Frisbee+Game+1")
 Event.create(group_id: 12, title: "Golden Gate Park", description: "Toss a frisbee around, maybe play some soccer. Bring whatever you want and whoever you want.", date_time: (DateTime.now + 18), location: "Golden Gate Park, San Francisco, CA")
-Event.create(group_id: 12, title: "Central Park", description: "Planning on playing some basketball but, like always, bring what you want and see who else is willing to play. Planning on going out for some beers after as well." date_time: (DateTime.now + 27), location: "Central Park, New York, NY")
+Event.create(group_id: 12, title: "Central Park", description: "Planning on playing some basketball but, like always, bring what you want and see who else is willing to play. Planning on going out for some drinks after as well.", date_time: (DateTime.now + 27), location: "Central Park, New York, NY")
 Interesting.create(interest_id: 1, interestable_id: 12, interestable_type: "Group")
 Interesting.create(interest_id: 2, interestable_id: 12, interestable_type: "Group")
 Interesting.create(interest_id: 3, interestable_id: 12, interestable_type: "Group")
