@@ -121,6 +121,7 @@ PickUp.Views.GroupShow = Backbone.CompositeView.extend({
     });
 
     this.addSubview(".group-show", view);
+    $(".interests").spin();
   },
 
   joinGroup: function (event) {
