@@ -25,6 +25,7 @@ PickUp.Views.Navbar = Backbone.View.extend({
     });
 
     this.$el.append(view.render().$el);
+    $(".interests").spin();
   },
 
   logout: function (event) {

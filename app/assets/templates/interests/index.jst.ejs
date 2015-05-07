@@ -4,7 +4,7 @@
 
 <div>
   <% interests.each(function (interest) { %>
-    <button data-id="<%= interest.id %>" class="interest btn btn-default"><%= interest.escape("topic") %></button>
+    <button data-id="<%= interest.id %>" class="hidden-interest interest btn btn-default"><%= interest.escape("topic") %></button>
   <% }) %>
 </div>
 

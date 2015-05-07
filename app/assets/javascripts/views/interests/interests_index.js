@@ -37,6 +37,13 @@ PickUp.Views.InterestsIndex = Backbone.View.extend({
       this.prevInterestIDs.push(interest.id);
       this.$el.find('button[data-id="' + interest.id + '"]').toggleClass("btn-default btn-success");
     }.bind(this));
+    this.revealInterests();
+  },
+
+  revealInterests: function () {
+    $(".interests").spin(false);
+    $(".hidden-interest").removeClass("hidden-interest");
+    $(".hidden-button").removeClass("hidden-button");
   },
 
   handleClick: function (event) {
