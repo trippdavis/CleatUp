@@ -14,6 +14,9 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
   },
 
   fetchIndexes: function () {
+    this.eachSubview(function (subview) {
+      subview.remove();
+    });
     this.$el.spin();
     $(".created-groups-list").addClass("hidden-index");
     $(".joined-groups-list").addClass("hidden-index");
@@ -65,12 +68,5 @@ PickUp.Views.GroupsLanding = Backbone.CompositeView.extend({
     $(".created-groups-list").removeClass("hidden-index");
     $(".joined-groups-list").removeClass("hidden-index");
     $(".other-groups-list").removeClass("hidden-index");
-  },
-
-  switchIndex: function () {
-    this.eachSubview(function (subview) {
-      subview.remove();
-    });
-    this.fetchIndexes();
   }
 });

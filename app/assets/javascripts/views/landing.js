@@ -46,7 +46,7 @@ PickUp.Views.Landing = Backbone.CompositeView.extend({
 
     this.interest_id = interest_id;
     this.currentLanding.interest_id = interest_id;
-    this.currentLanding.switchIndex(interest_id);
+    this.currentLanding.fetchIndexes();
   },
 
   switchLanding: function (event) {

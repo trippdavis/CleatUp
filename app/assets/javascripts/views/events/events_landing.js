@@ -25,7 +25,7 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
 
     var date = new Date(year, month, day);
     this.time = date.getTime();
-    this.switchIndex();
+    this.fetchIndexes();
   },
 
   highlightDates: function () {
@@ -37,7 +37,7 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
         });
         $dates.each( function (idx, date) {
           $(date).parent().addClass("has-game");
-        })
+        });
       }
     }.bind(this));
   },
@@ -46,7 +46,6 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
     var content = this.template();
     this.$el.html(content);
     this.$currentButton = this.$el.find(".reserved-events");
-    this.switchIndex();
     this.$el.find("#calendar").calendar();
     return this;
   },
@@ -69,20 +68,35 @@ PickUp.Views.EventsLanding = Backbone.CompositeView.extend({
     }
     this.$currentButton.prop("disabled", false);
     this.$currentButton = $button;
+    this.fetchIndexes();
+  },
+
+  fetchIndexes: function () {
+    if (this.currentIndex) {
+      this.removeSubview(".events-list", this.currentIndex);
+    }
+    $(".events-list").spin();
     this.switchIndex();
   },
 
   switchIndex: function () {
+    this.collection.fetch({
+      data: {
+        type: this.type,
+        interest_id: this.interest_id,
+        time: this.time
+      },
+      success: function () {
+        $(".events-list").spin(false);
+      }.bind(this)
+    });
+
     var view = new PickUp.Views.EventsIndex({
       collection: this.collection,
       type: this.type,
       interest_id: this.interest_id,
       time: this.time
     });
-
-    if (this.currentIndex) {
-      this.removeSubview(".events-list", this.currentIndex);
-    }
 
     this.addSubview(".events-list", view);
     this.currentIndex = view;
