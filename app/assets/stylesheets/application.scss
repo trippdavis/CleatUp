@@ -150,3 +150,41 @@ body {
 .navbar-default .navbar-nav > li:hover {
   border-bottom: 5px solid #5bc0de;
 }
+
+#footer {
+  background: black;
+  height: 60px;
+  width: 100%;
+  margin-top: 30px;
+  color: white;
+  font-size: 20px;
+  line-height: 60px;
+}
+
+.created-by {
+  float: left;
+  padding-left: 20px;
+}
+
+.linked-in {
+  float: right;
+}
+
+.github-repo {
+  float: right;
+}
+
+#sub-content:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+.footer-a {
+  color: white;
+  padding-right: 20px;
+}
+
+.footer-a:hover {
+  text-decoration: none;
+}
