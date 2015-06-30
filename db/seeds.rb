@@ -91,7 +91,7 @@ Interesting.create(interest_id: 6, interestable_id: 8, interestable_type: "Group
 Interesting.create(interest_id: 9, interestable_id: 8, interestable_type: "Group")
 Interesting.create(interest_id: 2, interestable_id: 8, interestable_type: "Group")
 
-Group.create(organizer_id: 1, title: "Sharpshooters", description: "Let's work on your shot. No games, just a bunch of shooting drills and competitions.", filepicker_url: "http://www.sfexaminer.com/binary/7087/warriors3_0409.jpg")
+Group.create(organizer_id: 1, title: "Sharpshooters", description: "Let's work on your shot. No games, just a bunch of shooting drills and competitions.", filepicker_url: "https://espngrantland.files.wordpress.com/2014/06/danny-green-tri1.jpg?w=750")
 Event.create(group_id: 9, title: "3 Point Shootout", description: "Whose got the silkiest jumper in the game? Come try and take me down!", date_time: (DateTime.now + 17), location: "Oracle Arena, Oakland, CA")
 Event.create(group_id: 9, title: "Shooting Practice", description: "The best way to get better at shooting is to keep putting up shots. We have the gym for an hour so get up as many shots as you can.", date_time: (DateTime.now + 8), location: "Maples Pavilion, Palo Alto, CA")
 Interesting.create(interest_id: 1, interestable_id: 9, interestable_type: "Group")
