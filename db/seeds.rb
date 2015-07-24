@@ -3,9 +3,6 @@ GroupMembership.create(group_id: 1, member_id: 1)
 GroupMembership.create(group_id: 6, member_id: 1)
 GroupMembership.create(group_id: 12, member_id: 1)
 
-
-
-
 User.create(username: "LeBron James", password: "password1", image_url: "http://s1.ibtimes.com/sites/www.ibtimes.com/files/styles/v2_article_large/public/2011/06/17/115556-lebron-james.jpg?itok=fyZbOFHC")
 User.create(username: "Rickie Fowler", password: "password2", image_url: "http://www2.pictures.zimbio.com/gi/Rickie+Fowler+World+Golf+Championships+Bridgestone+d2wl7MfFiR4l.jpg")
 User.create(username: "Aaron Rodgers", password: "password3", image_url: "http://competenetwork.com/wp-content/uploads/2015/01/aaron-rodgers-5.jpg")
@@ -13,7 +10,6 @@ User.create(username: "Lionel Messi", password: "password4", image_url: "http://
 User.create(username: "Jay Cutler", password: "password5", image_url: "http://cdn.bleacherreport.net/images_root/article/media_slots/photos/000/550/526/tumblr_maczxh7gfo1rge9rdo1_500_original_original.jpg?1348087174")
 User.create(username: "Lydia Ko", password: "password6", image_url: "http://www.stuff.co.nz/content/dam/images/1/1/r/t/5/c/image.related.StuffLandscapeSixteenByNine.620x349.12cdfa.png/1419305382652.jpg")
 User.create(username: "Mike Trout", password: "password7", image_url: "http://larrybrownsports.com/wp-content/uploads/2013/03/Mike-Trout-Angels.jpg")
-
 
 Group.create(organizer_id: 2, title: "NBA Hoopers", description: "We play intense games of basketball all over the country. Only join if you can keep up!", filepicker_url: "http://isportsweb.com/wp-content/uploads//2014/08/NBA-logo.jpg")
 Event.create(group_id: 1, title: "Rucker Park Session", description: "Serious pick-up sess at the legendary Rucker Park. A crowd will be there to watch us compete, so bring your game face and be ready to put on a show!", date_time: (DateTime.now + 30), location: "Rucker Park, New York, New York")
@@ -24,6 +20,8 @@ Event.create(group_id: 1, title: "Skills Games", description: "Organizing a bunc
 Interesting.create(interest_id: 1, interestable_id: 1, interestable_type: "Group")
 Interesting.create(interest_id: 7, interestable_id: 1, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 1, interestable_type: "Group")
+GroupMembership.create(group_id: 1, member_id: 3)
+GroupMembership.create(group_id: 1, member_id: 5)
 
 Group.create(organizer_id: 2, title: "Casual Basketball Players", description: "Just like the title says, we are a group that likes playing casual basketball games. Anybody is welcome!", filepicker_url: "http://www.saintleo.edu/media/74405/health-wellness.jpg")
 Event.create(group_id: 2, title: "Afternoon at Rossi Park", description: "Gonna set up a tournament at Rossi Park for all those interested, you must RSVP ahead of time.", date_time: (DateTime.now + 10), location: "Rossi Park, San Francisco, CA")
@@ -34,6 +32,8 @@ Interesting.create(interest_id: 6, interestable_id: 2, interestable_type: "Group
 Interesting.create(interest_id: 8, interestable_id: 2, interestable_type: "Group")
 Interesting.create(interest_id: 9, interestable_id: 2, interestable_type: "Group")
 Interesting.create(interest_id: 10, interestable_id: 2, interestable_type: "Group")
+GroupMembership.create(group_id: 2, member_id: 3)
+GroupMembership.create(group_id: 2, member_id: 6)
 
 Group.create(organizer_id: 1, title: "Bay Area Ballers", description: "We play all sports and welcome all skill levels. Come join us!", filepicker_url: "https://s-media-cache-ak0.pinimg.com/736x/75/78/34/757834ec8a93cdb7a2bf5e9f33ae47af.jpg")
 Event.create(group_id: 3, title: "Shootaround at Oracle Arena", description: "We have the awesome opportunity to shoot around at the Oracle Arena, the home of the Golden State Warriors! This is a once in a lifetime opporunity, so you better not miss out.", date_time: (DateTime.now + 25), location: "Oracle Arena, Oakland, CA")
