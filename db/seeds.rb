@@ -22,6 +22,7 @@ Interesting.create(interest_id: 7, interestable_id: 1, interestable_type: "Group
 Interesting.create(interest_id: 9, interestable_id: 1, interestable_type: "Group")
 GroupMembership.create(group_id: 1, member_id: 3)
 GroupMembership.create(group_id: 1, member_id: 5)
+GroupMembership.create(group_id: 1, member_id: 6)
 
 Group.create(organizer_id: 2, title: "Casual Basketball Players", description: "Just like the title says, we are a group that likes playing casual basketball games. Anybody is welcome!", filepicker_url: "http://www.saintleo.edu/media/74405/health-wellness.jpg")
 Event.create(group_id: 2, title: "Afternoon at Rossi Park", description: "Gonna set up a tournament at Rossi Park for all those interested, you must RSVP ahead of time.", date_time: (DateTime.now + 10), location: "Rossi Park, San Francisco, CA")
